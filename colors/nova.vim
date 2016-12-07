@@ -3,7 +3,7 @@
 
 " Default Color Definitions
 let s:foreground	= "#4d4d4c"
-let s:background	= "#eeeeee"
+let s:background	= "#fafafa"
 let s:selection		= "#d6d6d6"
 let s:line		= "#efefef"
 let s:window		= "#efefef"
