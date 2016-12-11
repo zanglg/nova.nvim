@@ -11,7 +11,7 @@ let s:dark_grey		= "#BDBDBD"
 
 let s:red               = "#D32F2F"
 let s:pink              = "#C2185B"
-let s:purple            = "#7B1FA2"
+let s:purple            = "#9C27B0"
 let s:deep_purple       = "#512DA8"
 let s:indigo            = "#303F9F"
 let s:blue              = "#1976D2"
@@ -93,8 +93,8 @@ exe 'hi		WildMenu        guifg= ' . s:foreground . ' guibg= ' . s:yellow
 hi	link	Boolean         Constant
 hi	link	Character       Constant
 exe 'hi		Comment         guifg= ' . s:inconspicuous
-exe 'hi		Conditional     guifg= ' . s:cyan
-exe 'hi		Constant        guifg= ' . s:orange
+exe 'hi		Conditional     guifg= ' . s:deep_orange
+exe 'hi		Constant        guifg= ' . s:amber . ' gui = ' . s:bold
 hi	link	Debug           Special
 exe 'hi		Define          guifg= ' . s:purple
 hi	link	Delimiter       Special
@@ -110,15 +110,15 @@ hi	link	Keyword         Statement
 hi	link	Label           Statement
 hi	link	Macro           PreProc
 hi	link	Number          Constant
-exe 'hi		Operator        guifg= ' . s:teal
+exe 'hi		Operator        guifg= ' . s:teal ' gui= ' . s:bold
 hi	link	PreCondit       PreProc
 exe 'hi		PreProc         guifg= ' . s:cyan
 exe 'hi		Repeat          guifg= ' . s:purple
 exe 'hi		Special         guifg= ' . s:foreground
 hi	link	SpecialChar     Special
 hi	link	SpecialComment  Special
-exe 'hi		Statement       gui='  . s:none . ' guifg= ' . s:lime
-exe 'hi		StorageClass    guifg= ' . s:purple
+exe 'hi		Statement       gui='  . s:bold . ' guifg= ' . s:light_green
+exe 'hi		StorageClass    guifg= ' . s:cyan . ' gui= ' . s:none
 exe 'hi		String          guifg= ' . s:light_green
 exe 'hi		Structure       guifg= ' . s:purple
 hi	link	Tag             Special
