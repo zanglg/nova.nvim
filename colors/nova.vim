@@ -4,16 +4,10 @@
 " Default Color Definitions
 let s:foreground	= "#4d4d4c"
 let s:background	= "#fafafa"
-let s:selection		= "#d6d6d6"
-let s:line		= "#efefef"
-let s:window		= "#efefef"
-let s:inconspicuous	= "#8e908C"
 
 let s:light_grey	= "#EEEEEE"
-let s:grey		= "#E0E0E0"
+let s:normal_grey	= "#E0E0E0"
 let s:dark_grey		= "#BDBDBD"
-
-let s:black		= "#374046"
 
 let s:red               = "#D32F2F"
 let s:pink              = "#C2185B"
@@ -38,6 +32,13 @@ let s:reverse		= "reverse"
 let s:undercurl		= "undercurl"
 let s:underline		= "underline"
 
+" s:line commonly used to draw the line, status bar and cursor.
+" s:selection used to indicate visual select, pmenu etc.
+" s:inconspicuous used to indicate readable test, like comment.
+exe 'let s:line		= ' . 's:light_grey'
+exe 'let s:selection	= ' . 's:normal_grey'
+exe 'let s:inconspicuous= ' . 's:dark_grey'
+
 let colors_name = 'nova'
 set background=light
 hi clear
@@ -50,24 +51,24 @@ exe 'hi		Conceal         guifg= ' . s:line . ' guibg= ' . s:selection
 exe 'hi		CursorColumn    guibg= ' . s:line
 exe 'hi		CursorLine      guibg= ' . s:line
 exe 'hi		CursorLineNr    gui='  . s:bold . ' guifg= ' . s:deep_orange
-exe 'hi		DiffAdd         guibg= ' . s:light_blue
-exe 'hi		DiffChange      guibg= ' . s:pink
-exe 'hi		DiffDelete      gui='  . s:bold . ' guifg= ' . s:blue . ' guibg= ' . s:cyan
-exe 'hi		DiffText        gui='  . s:bold . ' guibg= ' . s:red
+exe 'hi		DiffAdd         guifg= ' . s:light_green . ' guibg= ' . s:selection
+exe 'hi		DiffChange      guibg= ' . s:selection
+exe 'hi		DiffDelete      guifg= ' . s:red . ' guibg= ' . s:selection
+exe 'hi		DiffText        gui= ' . s:bold . ' guibg= ' . s:selection . ' guifg= ' . s:red
 exe 'hi		Directory       guifg= ' . s:blue
 exe 'hi		ErrorMsg        guifg= ' . s:foreground . ' guibg= ' . s:red
-exe 'hi		FoldColumn      guifg= ' . s:inconspicuous . ' guibg= ' . s:background
-exe 'hi		Folded          guifg= ' . s:inconspicuous . ' guibg= ' . s:background
-exe 'hi		IncSearch       gui='  . s:reverse
-exe 'hi		LineNr          guifg= ' . s:dark_grey
+exe 'hi		FoldColumn      guifg= ' . s:normal_grey . ' guibg= ' . s:background
+exe 'hi		Folded          guifg= ' . s:normal_grey . ' guibg= ' . s:background
+exe 'hi		IncSearch       gui= ' . s:none 'guifg= ' . s:foreground . ' guibg= ' . s:orange
+exe 'hi		LineNr          guifg= ' . s:inconspicuous
 exe 'hi		MatchParen      guibg= ' . s:selection
 exe 'hi		ModeMsg         gui='  . s:bold . ' guifg= ' . s:light_green
 exe 'hi		MoreMsg         gui='  . s:bold . ' guifg= ' . s:light_green
 exe 'hi		NonText         gui='  . s:bold . ' guifg= ' . s:selection
 exe 'hi		Pmenu           guifg= ' . s:foreground . ' guibg= ' . s:selection
-exe 'hi		PmenuSbar       guibg= ' . s:grey
-exe 'hi		PmenuSel        gui='  . s:reverse . ' guifg= ' . s:foreground . ' guibg= ' . s:selection
-exe 'hi		PmenuThumb      guibg= ' . s:black
+exe 'hi		PmenuSbar       guibg= ' . s:dark_grey
+exe 'hi		PmenuSel        gui='  . s:reverse . ' guifg= ' . s:blue . ' guibg= ' . s:selection
+exe 'hi		PmenuThumb      guibg= ' . s:inconspicuous
 exe 'hi		Question        gui='  . s:bold . ' guifg= ' . s:light_green
 exe 'hi		Search          guifg= ' . s:foreground . ' guibg= ' . s:orange
 exe 'hi		SignColumn      guifg= ' . s:blue . ' guibg= ' . s:background
@@ -76,17 +77,17 @@ exe 'hi		SpellBad        gui='  . s:undercurl
 exe 'hi		SpellCap        gui='  . s:undercurl
 exe 'hi		SpellLocal      gui='  . s:undercurl
 exe 'hi		SpellRare       gui='  . s:undercurl
-exe 'hi		StatusLine      gui='  . s:reverse . ' guifg= ' . s:window . ' guibg= ' . s:orange
-exe 'hi		StatusLineNC    gui='  . s:reverse . ' guifg= ' . s:window . ' guibg= ' . s:foreground
-exe 'hi		TabLine         gui='  . s:reverse . ' guifg= ' . s:foreground . ' guibg= ' . s:background
+exe 'hi		StatusLine      gui='  . s:reverse . ' guifg= ' . s:line . ' guibg= ' . s:foreground
+exe 'hi		StatusLineNC    gui='  . s:bold . ' guifg= ' . s:line . ' guibg= ' . s:foreground
+exe 'hi		TabLine         gui='  . s:bold . ' guifg= ' . s:line . ' guibg= ' . s:foreground
 exe 'hi		TabLineFill     gui='  . s:reverse
 exe 'hi		TabLineSel      gui='  . s:bold
 exe 'hi		TermCursor      gui='  . s:reverse
-exe 'hi		Title           gui='  . s:bold . ' guifg= ' . s:inconspicuous
-exe 'hi		VertSplit       guifg= ' . s:background . ' guibg= ' . s:blue
+exe 'hi		Title           gui='  . s:bold . ' guifg= ' . s:foreground
+exe 'hi		VertSplit       guifg= ' . s:line . ' guibg= ' . s:line
 exe 'hi		Visual          guibg= ' . s:selection
 exe 'hi		WarningMsg      guifg= ' . s:red
-exe 'hi		WildMenu        guifg= ' . s:black . ' guibg= ' . s:yellow
+exe 'hi		WildMenu        guifg= ' . s:foreground . ' guibg= ' . s:yellow
 
 
 hi	link	Boolean         Constant
@@ -103,7 +104,7 @@ hi	link	Exception       Statement
 hi	link	Float           Number
 exe 'hi		Function        guifg= ' . s:blue
 exe 'hi		Identifier      guifg= ' . s:red
-exe 'hi		Ignore          guifg= ' . s:dark_grey
+exe 'hi		Ignore          guifg= ' . s:inconspicuous
 exe 'hi		Include         guifg= ' . s:blue
 hi	link	Keyword         Statement
 hi	link	Label           Statement
@@ -121,7 +122,7 @@ exe 'hi		StorageClass    guifg= ' . s:purple
 exe 'hi		String          guifg= ' . s:light_green
 exe 'hi		Structure       guifg= ' . s:purple
 hi	link	Tag             Special
-exe 'hi		Todo            guifg= ' . s:inconspicuous . ' guibg= ' . s:background
+exe 'hi		Todo            guifg= ' . s:pink . ' guibg= ' . s:background ' gui= ' . s:bold
 exe 'hi		Type            guifg= ' . s:pink . ' gui= ' . s:none
 hi	link	Typedef         Type
 exe 'hi		Underlined      gui='  . s:underline . ' guifg= ' . s:blue
