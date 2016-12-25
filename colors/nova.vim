@@ -11,7 +11,7 @@ let s:dark_grey		= "#BDBDBD"
 
 let s:red               = "#D32F2F"
 let s:pink              = "#C2185B"
-let s:purple            = "#9C27B0"
+let s:purple            = "#7B1FA2"
 let s:deep_purple       = "#512DA8"
 let s:indigo            = "#303F9F"
 let s:blue              = "#1976D2"
