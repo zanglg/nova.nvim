@@ -58,5 +58,5 @@ If you want add more other language's highlight group, please feel kind to pull 
 
 ## ScreenShot
 ### C/C++
-![light_cpp](/screenshots/light_cpp.jpeg)
-![dark_cpp](/screenshots/dark_cpp.jpeg)
+![light_cpp](/screenshots/light_cpp.jpeg?raw=true)
+![dark_cpp](/screenshots/dark_cpp.jpeg?raw=true)
