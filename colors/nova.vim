@@ -1,128 +1,169 @@
-" 'nova.vim' -- A light color scheme, only supports 24bit true color
+" 'nova.vim' -- A color scheme, only supports 24bit true color
 " Maintainer: Zang Leigang (zang.lg@outlook.com)
+" Thanks http://materialuicolors.co, great colors
+
+hi clear
+if exists("syntax_on")
+	syntax reset
+endif
+let colors_name = 'nova'
 
 " Default Color Definitions
-let s:foreground	= "#4d4d4c"
-let s:background	= "#fafafa"
+if &background == "light"
+	" Grey 800/400/300/200/50
+	let s:foreground    = "#424242"
+	let s:inconspicuous = "#BDBDBD"
+	let s:selection     = "#E0E0E0"
+	let s:line          = "#EEEEEE"
+	let s:background    = "#fafafa"
 
-let s:light_grey	= "#EEEEEE"
-let s:normal_grey	= "#E0E0E0"
-let s:dark_grey		= "#BDBDBD"
+	let s:red           = "#D32F2F"
+	let s:pink          = "#C2185B"
+	let s:purple        = "#7B1FA2"
+	let s:deep_purple   = "#512DA8"
+	let s:indigo        = "#303F9F"
+	let s:blue          = "#1976D2"
+	let s:light_blue    = "#0288D1"
+	let s:cyan          = "#0097A7"
+	let s:teal          = "#00796B"
+	let s:green         = "#388E3C"
+	let s:light_green   = "#689F38"
+	let s:lime          = "#AFB42B"
+	let s:yellow        = "#FBC02D"
+	let s:amber         = "#FFA000"
+	let s:orange        = "#F57C00"
+	let s:deep_orange   = "#E64A19"
+else
+	" Blue Grey 50/200/700/800/900
+	let s:foreground    = "#ECEFF1"
+	let s:inconspicuous = "#B0BEC5"
+	let s:selection     = "#455A64"
+	let s:line          = "#37474F"
+	let s:background    = "#263238"
 
-let s:red               = "#D32F2F"
-let s:pink              = "#C2185B"
-let s:purple            = "#7B1FA2"
-let s:deep_purple       = "#512DA8"
-let s:indigo            = "#303F9F"
-let s:blue              = "#1976D2"
-let s:light_blue        = "#0288D1"
-let s:cyan              = "#0097A7"
-let s:teal              = "#00796B"
-let s:green             = "#388E3C"
-let s:light_green       = "#689F38"
-let s:lime              = "#AFB42B"
-let s:yellow            = "#FBC02D"
-let s:amber             = "#FFA000"
-let s:orange            = "#F57C00"
-let s:deep_orange       = "#E64A19"
+	let s:red           = "#EF5350"
+	let s:pink          = "#EC407A"
+	let s:purple        = "#AB47BC"
+	let s:deep_purple   = "#7E57C2"
+	let s:indigo        = "#5C6BC0"
+	let s:blue          = "#42A5F5"
+	let s:light_blue    = "#29B6F6"
+	let s:cyan          = "#26C6DA"
+	let s:teal          = "#26A69A"
+	let s:green         = "#66BB6A"
+	let s:light_green   = "#9CCC65"
+	let s:lime          = "#D4E157"
+	let s:yellow        = "#FFEE58"
+	let s:amber         = "#FFCA28"
+	let s:orange        = "#FFA726"
+	let s:deep_orange   = "#FF7043"
+endif
 
-let s:bold		= "bold"
-let s:none		= "none"
-let s:reverse		= "reverse"
-let s:undercurl		= "undercurl"
-let s:underline		= "underline"
+	let s:bold          = "bold"
+	let s:none          = "none"
+	let s:reverse       = "reverse"
+	let s:undercurl     = "undercurl"
+	let s:underline     = "underline"
 
-" s:line commonly used to draw the line, status bar and cursor.
-" s:selection used to indicate visual select, pmenu etc.
-" s:inconspicuous used to indicate readable test, like comment.
-exe 'let s:line		= ' . 's:light_grey'
-exe 'let s:selection	= ' . 's:normal_grey'
-exe 'let s:inconspicuous= ' . 's:dark_grey'
+fun! s:HL(group, guifg, guibg, gui)
+	let histring = "hi " . a:group
 
-let colors_name = 'nova'
-set background=light
-hi clear
-syntax reset
+	if a:guifg != ''
+		let histring .= " guifg= " . a:guifg
+	endif
 
-exe 'hi		Normal          guifg= ' . s:foreground . ' guibg= ' . s:background
+	if a:guibg != ''
+		let histring .= " guibg= " . a:guibg
+	endif
 
-exe 'hi		ColorColumn     guibg= ' . s:line
-exe 'hi		Conceal         guifg= ' . s:line . ' guibg= ' . s:selection
-exe 'hi		CursorColumn    guibg= ' . s:line
-exe 'hi		CursorLine      guibg= ' . s:line
-exe 'hi		CursorLineNr    gui='  . s:bold . ' guifg= ' . s:deep_orange
-exe 'hi		DiffAdd         guifg= ' . s:light_green . ' guibg= ' . s:selection
-exe 'hi		DiffChange      guibg= ' . s:selection
-exe 'hi		DiffDelete      guifg= ' . s:red . ' guibg= ' . s:selection
-exe 'hi		DiffText        gui= ' . s:bold . ' guibg= ' . s:selection . ' guifg= ' . s:red
-exe 'hi		Directory       guifg= ' . s:blue
-exe 'hi		ErrorMsg        guifg= ' . s:foreground . ' guibg= ' . s:red
-exe 'hi		FoldColumn      guifg= ' . s:normal_grey . ' guibg= ' . s:background
-exe 'hi		Folded          guifg= ' . s:normal_grey . ' guibg= ' . s:background
-exe 'hi		IncSearch       gui= ' . s:none 'guifg= ' . s:foreground . ' guibg= ' . s:orange
-exe 'hi		LineNr          guifg= ' . s:inconspicuous
-exe 'hi		MatchParen      guibg= ' . s:selection
-exe 'hi		ModeMsg         gui='  . s:bold . ' guifg= ' . s:light_green
-exe 'hi		MoreMsg         gui='  . s:bold . ' guifg= ' . s:light_green
-exe 'hi		NonText         gui='  . s:bold . ' guifg= ' . s:selection
-exe 'hi		Pmenu           guifg= ' . s:foreground . ' guibg= ' . s:selection
-exe 'hi		PmenuSbar       guibg= ' . s:dark_grey
-exe 'hi		PmenuSel        gui='  . s:reverse . ' guifg= ' . s:blue . ' guibg= ' . s:selection
-exe 'hi		PmenuThumb      guibg= ' . s:inconspicuous
-exe 'hi		Question        gui='  . s:bold . ' guifg= ' . s:light_green
-exe 'hi		Search          guifg= ' . s:foreground . ' guibg= ' . s:orange
-exe 'hi		SignColumn      guifg= ' . s:blue . ' guibg= ' . s:background
-exe 'hi		SpecialKey      guifg= ' . s:selection
-exe 'hi		SpellBad        gui='  . s:undercurl
-exe 'hi		SpellCap        gui='  . s:undercurl
-exe 'hi		SpellLocal      gui='  . s:undercurl
-exe 'hi		SpellRare       gui='  . s:undercurl
-exe 'hi		StatusLine      gui='  . s:reverse . ' guifg= ' . s:line . ' guibg= ' . s:foreground
-exe 'hi		StatusLineNC    gui='  . s:bold . ' guifg= ' . s:line . ' guibg= ' . s:foreground
-exe 'hi		TabLine         gui='  . s:bold . ' guifg= ' . s:line . ' guibg= ' . s:foreground
-exe 'hi		TabLineFill     gui='  . s:reverse
-exe 'hi		TabLineSel      gui='  . s:bold
-exe 'hi		TermCursor      gui='  . s:reverse
-exe 'hi		Title           gui='  . s:bold . ' guifg= ' . s:foreground
-exe 'hi		VertSplit       guifg= ' . s:line . ' guibg= ' . s:line
-exe 'hi		Visual          guibg= ' . s:selection
-exe 'hi		WarningMsg      guifg= ' . s:red
-exe 'hi		WildMenu        guifg= ' . s:foreground . ' guibg= ' . s:yellow
+	if a:gui != ''
+		let histring .= " gui= " . a:gui
+	endif
+
+	execute histring
+endfun
+
+" General highlight group
+call s:HL("Normal"         , s:foreground    , s:background    , '')
+
+call s:HL("ColorColumn"    , ''              , s:line          , '')
+call s:HL("Conceal"        , s:line          , s:selection     , '')
+call s:HL("CursorColumn"   , ''              , s:line          , '')
+call s:HL("CursorLine"     , ''              , s:line          , '')
+call s:HL("CursorLineNr"   , s:deep_orange   , ''              , s:bold)
+call s:HL("DiffAdd"        , s:light_green   , s:selection     , '')
+call s:HL("DiffChange"     , ''              , s:selection     , '')
+call s:HL("DiffDelete"     , s:red           , s:selection     , '')
+call s:HL("DiffText"       , s:red           , s:selection     , s:bold)
+call s:HL("Directory"      , s:blue          , ''              , '')
+call s:HL("ErrorMsg"       , s:foreground    , s:red           , '')
+call s:HL("FoldColumn"     , s:selection     , s:background    , '')
+call s:HL("Folded"         , s:selection     , s:background    , '')
+call s:HL("IncSearch"      , ''              , s:orange        , s:none)
+call s:HL("LineNr"         , s:inconspicuous , ''              , '')
+call s:HL("MatchParen"     , ''              , s:selection     , '')
+call s:HL("ModeMsg"        , s:light_green   , ''              , s:bold)
+call s:HL("MoreMsg"        , s:light_green   , ''              , s:bold)
+call s:HL("NonText"        , s:selection     , ''              , s:bold)
+call s:HL("Pmenu"          , s:foreground    , s:selection     , '')
+call s:HL("PmenuSbar"      , ''              , s:inconspicuous , '')
+call s:HL("PmenuSel"       , s:blue          , s:selection     , s:reverse)
+call s:HL("PmenuThumb"     , ''              , s:inconspicuous , '')
+call s:HL("Question"       , s:light_green   , ''              , s:bold)
+call s:HL("Search"         , s:foreground    , s:orange        , '')
+call s:HL("SignColumn"     , s:blue          , s:background    , '')
+call s:HL("SpecialKey"     , s:selection     , ''              , '')
+call s:HL("SpellBad"       , ''              , ''              , s:undercurl)
+call s:HL("SpellCap"       , ''              , ''              , s:undercurl)
+call s:HL("SpellLocal"     , ''              , ''              , s:undercurl)
+call s:HL("SpellRare"      , ''              , ''              , s:undercurl)
+call s:HL("StatusLine"     , s:line          , s:foreground    , s:reverse)
+call s:HL("StatusLineNC"   , s:line          , s:foreground    , s:bold)
+call s:HL("TabLine"        , s:line          , s:foreground    , s:bold)
+call s:HL("TabLineFill"    , ''              , ''              , s:reverse)
+call s:HL("TabLineSel"     , ''              , ''              , s:bold)
+call s:HL("TermCursor"     , ''              , ''              , s:reverse)
+call s:HL("Title"          , s:foreground    , ''              , s:bold)
+call s:HL("VertSplit"      , s:line          , s:line          , '')
+call s:HL("Visual"         , ''              , s:selection     , '')
+call s:HL("WarningMsg"     , s:red           , ''              , '')
+call s:HL("WildMenu"       , s:foreground    , s:yellow        , '')
 
 
-hi	link	Boolean         Constant
-hi	link	Character       Constant
-exe 'hi		Comment         guifg= ' . s:inconspicuous
-exe 'hi		Conditional     guifg= ' . s:deep_orange
-exe 'hi		Constant        guifg= ' . s:amber . ' gui = ' . s:bold
-hi	link	Debug           Special
-exe 'hi		Define          guifg= ' . s:purple
-hi	link	Delimiter       Special
-hi	link	EndOfBuffer     NonText
-exe 'hi		Error           guifg= ' . s:foreground . ' guibg= ' . s:red
-hi	link	Exception       Statement
-hi	link	Float           Number
-exe 'hi		Function        guifg= ' . s:blue
-exe 'hi		Identifier      guifg= ' . s:red
-exe 'hi		Ignore          guifg= ' . s:inconspicuous
-exe 'hi		Include         guifg= ' . s:blue
-hi	link	Keyword         Statement
-hi	link	Label           Statement
-hi	link	Macro           PreProc
-hi	link	Number          Constant
-exe 'hi		Operator        guifg= ' . s:teal ' gui= ' . s:bold
-hi	link	PreCondit       PreProc
-exe 'hi		PreProc         guifg= ' . s:cyan
-exe 'hi		Repeat          guifg= ' . s:purple
-exe 'hi		Special         guifg= ' . s:foreground
-hi	link	SpecialChar     Special
-hi	link	SpecialComment  Special
-exe 'hi		Statement       gui='  . s:bold . ' guifg= ' . s:light_green
-exe 'hi		StorageClass    guifg= ' . s:cyan . ' gui= ' . s:none
-exe 'hi		String          guifg= ' . s:light_green
-exe 'hi		Structure       guifg= ' . s:purple
-hi	link	Tag             Special
-exe 'hi		Todo            guifg= ' . s:pink . ' guibg= ' . s:background ' gui= ' . s:bold
-exe 'hi		Type            guifg= ' . s:pink . ' gui= ' . s:none
-hi	link	Typedef         Type
-exe 'hi		Underlined      gui='  . s:underline . ' guifg= ' . s:blue
+" Standard syntax highlight group
+call s:HL("Boolean"        , s:amber         , ''              , '')
+call s:HL("Character"      , s:amber         , ''              , '')
+call s:HL("Comment"        , s:inconspicuous , ''              , '')
+call s:HL("Conditional"    , s:deep_orange   , ''              , '')
+call s:HL("Constant"       , s:amber         , ''              , '')
+call s:HL("Debug"          , s:foreground    , ''              , '')
+call s:HL("Define"         , s:purple        , ''              , '')
+call s:HL("Delimiter"      , s:foreground    , ''              , '')
+call s:HL("EndOfBuffer"    , s:selection     , ''              , s:bold)
+call s:HL("Error"          , s:foreground    , s:red           , '')
+call s:HL("Exception"      , s:light_green   , ''              , s:bold)
+call s:HL("Float"          , s:amber         , ''              , '')
+call s:HL("Function"       , s:blue          , ''              , '')
+call s:HL("Identifier"     , s:red           , ''              , '')
+call s:HL("Ignore"         , s:inconspicuous , ''              , '')
+call s:HL("Include"        , s:blue          , ''              , '')
+call s:HL("Keyword"        , s:light_green   , ''              , s:bold)
+call s:HL("Label"          , s:light_green   , ''              , s:bold)
+call s:HL("Macro"          , s:cyan          , ''              , '')
+call s:HL("Number"         , s:amber         , ''              , '')
+call s:HL("Operator"       , s:teal          , ''              , s:bold)
+call s:HL("PreCondit"      , s:cyan          , ''              , '')
+call s:HL("PreProc"        , s:cyan          , ''              , '')
+call s:HL("Repeat"         , s:purple        , ''              , '')
+call s:HL("Special"        , s:foreground    , ''              , '')
+call s:HL("SpecialChar"    , s:foreground    , ''              , '')
+call s:HL("SpecialComment" , s:foreground    , ''              , '')
+call s:HL("Statement"      , s:light_green   , ''              , s:bold)
+call s:HL("StorageClass"   , s:cyan          , ''              , s:none)
+call s:HL("String"         , s:light_green   , ''              , '')
+call s:HL("Structure"      , s:purple        , ''              , '')
+call s:HL("Tag"            , s:foreground    , ''              , '')
+call s:HL("Todo"           , s:pink          , s:background    , s:bold)
+call s:HL("Type"           , s:pink          , ''              , s:none)
+call s:HL("Typedef"        , s:pink          , ''              , s:none)
+call s:HL("Underlined"     , s:blue          , ''              , s:underline)
