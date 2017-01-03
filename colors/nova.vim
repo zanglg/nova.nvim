@@ -10,9 +10,9 @@ let colors_name = 'nova'
 
 " Default Color Definitions
 if &background == "light"
-	" Grey 800/400/300/200/50
+	" Grey 800/600/300/200/50
 	let s:foreground    = "#424242"
-	let s:inconspicuous = "#BDBDBD"
+	let s:inconspicuous = "#757575"
 	let s:selection     = "#E0E0E0"
 	let s:line          = "#EEEEEE"
 	let s:background    = "#fafafa"
