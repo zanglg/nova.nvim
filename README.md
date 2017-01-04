@@ -1,9 +1,9 @@
 # NOVA
-Another VIM color theme, but only support true color for neovim / vim.
+Another VIM color theme, but only supports true color for neovim / vim.
 
 ## Limited
 ### Terminal
-WARNING: This color scheme only support true color.
+WARNING: This color scheme only supports true color.
 Check if your terminal supports true color here: [terminal](https://gist.github.com/XVilka/8346728)
 ### Tmux
 * Tmux version must >= v2.2
@@ -46,9 +46,9 @@ set background=dark
 ```
 
 ## Support Languages and plugins
-For now, I only test for C/C++.
-But I add all standard highlight group. I think it can works well for other language.
-If you want add more other language's highlight group, please feel kind to pull a request.
+I have only tested for C/C++.
+But I add all the standard highlight groups. I think it will work well for other languages.
+If you want to add more highlight group, please feel kind to submit a pull request.
 
 ### Language
 * C/C++
