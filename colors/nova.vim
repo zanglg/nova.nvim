@@ -127,8 +127,7 @@ call s:HL("Title"          , s:foreground    , ''              , s:bold)
 call s:HL("VertSplit"      , s:line          , s:line          , '')
 call s:HL("Visual"         , ''              , s:selection     , '')
 call s:HL("WarningMsg"     , s:red           , ''              , '')
-call s:HL("WildMenu"       , s:foreground    , s:yellow        , '')
-
+call s:HL("WildMenu"       , s:red           , s:line          , s:bold)
 
 " Standard syntax highlight group
 call s:HL("Boolean"        , s:amber         , ''              , '')
