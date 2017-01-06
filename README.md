@@ -1,25 +1,36 @@
 # NOVA
 Another VIM color theme, but only supports true color for neovim / vim.
 
+## Palette
+![palette](/screenshots/palette.png?raw=true)
+
 ## Limited
 ### Terminal
 WARNING: This color scheme only supports true color.
+
 Check if your terminal supports true color here: [terminal](https://gist.github.com/XVilka/8346728)
 ### Tmux
 * Tmux version must >= v2.2
 * set your $TERM to "xterm-256color"
 * add this line to your .tmux.conf:
+
     ```tmux
     set-option -ga terminal-overrides ",xterm-256color:Tc"
     ```
 
 ## Installation
 ### Manual install
-`git clone https://github.com/zanglg/nova.vim`
+```vim
+git clone https://github.com/zanglg/nova.vim
+```
 for NeoVIM:
-`mv nova.vim/colors/nova.vim ~/.config/nvim/colors/`
+```vim
+mv nova.vim/colors/nova.vim ~/.config/nvim/colors/
+```
 for VIM:
-`mv nova.vim/colors/nova.vim ~/.vim/colors/`
+```vim
+mv nova.vim/colors/nova.vim ~/.vim/colors/
+```
 
 ### Plugin manager:
 [vim-plug](https://github.com/junegunn/vim-plug)
