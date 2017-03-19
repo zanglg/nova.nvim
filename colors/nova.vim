@@ -166,3 +166,8 @@ call s:HL("Todo"           , s:pink          , s:background    , s:bold)
 call s:HL("Type"           , s:pink          , ''              , s:none)
 call s:HL("Typedef"        , s:pink          , ''              , s:none)
 call s:HL("Underlined"     , s:blue          , ''              , s:underline)
+
+" diff
+call s:HL("diffAdded"      , s:light_green   , s:selection     , '')
+call s:HL("diffChanged"    , ''              , s:selection     , '')
+call s:HL("diffRemoved"    , s:red           , s:selection     , '')
