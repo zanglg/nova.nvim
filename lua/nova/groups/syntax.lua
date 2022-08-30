@@ -15,8 +15,8 @@ return {
     Function       = { fg = colors.blue },
 
     Statement      = { fg = colors.purple },
-    Conditional    = { fg = colors.purple },
-    Repeat         = { fg = colors.purple },
+    Conditional    = { fg = colors.pink },
+    Repeat         = { fg = colors.pink },
     Label          = { fg = colors.pink },
     Operator       = { fg = colors.cyan },
     Keyword        = { fg = colors.purple },
@@ -25,13 +25,13 @@ return {
     PreProc        = { fg = colors.blue },
     Include        = { fg = colors.violet },
     Define         = { fg = colors.cyan },
-    Macro          = { fg = colors.purple },
+    Macro          = { fg = colors.brown },
     PreCondit      = { fg = colors.yellow },
 
-    Type           = { fg = colors.pink },
+    Type           = { fg = colors.red },
     StorageClass   = { fg = colors.purple },
     Structure      = { fg = colors.purple },
-    Typedef        = { fg = colors.pink },
+    Typedef        = { fg = colors.red },
 
     Special        = { fg = colors.lime },
     SpecialChar    = { fg = colors.lime },
