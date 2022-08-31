@@ -23,7 +23,7 @@ return {
     Exception      = { fg = colors.purple },
 
     PreProc        = { fg = colors.blue },
-    Include        = { fg = colors.violet },
+    Include        = { fg = colors.deeppurple },
     Define         = { fg = colors.cyan },
     Macro          = { fg = colors.brown },
     PreCondit      = { fg = colors.yellow },
