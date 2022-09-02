@@ -28,7 +28,7 @@ return {
     LineNr         = { fg = colors.inconspicuous },
     LineNrAbove    = { fg = colors.inconspicuous },
     LineNrBelow    = { fg = colors.inconspicuous },
-    CursorLineNr   = { fg = colors.orange, bold = true },
+    CursorLineNr   = { fg = colors.yellow, bold = true },
     CursorLineSign = { fg = colors.inconspicuous, bold = true },
     CursorLineFold = { fg = colors.inconspicuous, bold = true },
     MatchParen     = { fg = colors.background, bg = colors.teal },
