@@ -1,5 +1,7 @@
+local M = {}
+
 -- stylua: ignore start
-function hsl2rgb(h, s, l)
+M.hsl2rgb = function(h, s, l)
     local c = (1 - math.abs(2 * l - 1)) * s
     local x = c * (1 - math.abs((h / 60) % 2 - 1))
     local m = l - c / 2
@@ -18,3 +20,5 @@ function hsl2rgb(h, s, l)
 
     return string.format("#%02x%02x%02x", round(r), round(g), round(b))
 end
+
+return M
