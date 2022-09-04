@@ -1,12 +1,14 @@
-nova = {}
+local nova = {}
 
-nova.setup = function()
-    nova.colors = require("nova.color").generate()
+nova.setup = function(opts)
+    -- override default options
+    nova.options = require("nova.option").setup(opts)
 
-    nova.higroups = {
-        builtin = require("nova.groups.builtin"),
-        standard = require("nova.groups.syntax"),
-    }
+    -- make color palette
+    nova.colors = require("nova.colors").setup()
+
+    -- todo: support hilight groups override
+    nova.groups = require("nova.groups").setup()
 end
 
 nova.load = function()
@@ -18,10 +20,8 @@ nova.load = function()
     vim.o.termguicolors = true
     vim.g.colors_name = "nova"
 
-    for _, group in pairs(nova.higroups) do
-        for hl, col in pairs(group) do
-            vim.api.nvim_set_hl(0, hl, col)
-        end
+    for hl, col in pairs(nova.groups) do
+        vim.api.nvim_set_hl(0, hl, col)
     end
 end
 

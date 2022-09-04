@@ -1,4 +1,4 @@
-local colors = nova.colors
+local colors = require("nova").colors
 
 -- stylua: ignore
 return {
