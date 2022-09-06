@@ -3,10 +3,12 @@ local groups = {}
 groups.setup = function()
     local result = {}
 
+    -- stylua: ignore
     local groups = {
-        builtin = require("nova.groups.builtin"),
-        standard = require("nova.groups.syntax"),
-        hop = require("nova.groups.hop"),
+        builtin    = require("nova.groups.builtin"),
+        standard   = require("nova.groups.syntax"),
+        hop        = require("nova.groups.hop"),
+        treesitter = require("nova.groups.treesitter"),
     }
 
     for _, group in pairs(groups) do
