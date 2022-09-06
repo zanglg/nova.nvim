@@ -57,7 +57,7 @@ return {
     TabLine        = { fg = colors.foreground, bg = colors.line },
     TabLineFill    = { bg = colors.line },
     TabLineSel     = { fg = colors.yellow, bg = colors.line },
-    Title          = { fg = colors.background, bold = true },
+    Title          = { fg = colors.red, bold = true },
     Visual         = { bg = colors.selection },
     VisualNOS      = { bg = colors.red },
     WarningMsg     = { fg = colors.red },
