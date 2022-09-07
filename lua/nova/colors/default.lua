@@ -43,8 +43,8 @@ M.setup = function()
             cyan          = hsl2rgb(187, 0.47, 0.55),
             blue          = hsl2rgb(207, 0.82, 0.66),
             indigo        = hsl2rgb(231, 0.65, 0.65),
-            violet        = hsl2rgb(255, 0.65, 0.65),
-            purple        = hsl2rgb(286, 0.60, 0.67),
+            violet        = hsl2rgb(255, 0.60, 0.70),
+            purple        = hsl2rgb(290, 0.60, 0.67),
             pink          = hsl2rgb(340, 0.65, 0.65),
         }
     end
