@@ -9,8 +9,9 @@ M.setup = function()
         return {
             foreground    = hsl2rgb(200, 0.15, 0.35),
             inconspicuous = hsl2rgb(200, 0.15, 0.55),
+            splitline     = hsl2rgb(200, 0.15, 0.85),
             selection     = hsl2rgb(200, 0.15, 0.90),
-            line          = hsl2rgb(200, 0.15, 0.95),
+            stripline     = hsl2rgb(200, 0.15, 0.95),
             background    = hsl2rgb(200, 0.15, 0.99),
 
             red           = hsl2rgb(350, 0.66, 0.47),
@@ -26,8 +27,9 @@ M.setup = function()
         return {
             foreground    = hsl2rgb(211, 0.43, 0.75),
             inconspicuous = hsl2rgb(211, 0.20, 0.50),
+            splitline     = hsl2rgb(211, 0.43, 0.30),
             selection     = hsl2rgb(211, 0.43, 0.25),
-            line          = hsl2rgb(211, 0.43, 0.20),
+            stripline     = hsl2rgb(211, 0.43, 0.20),
             background    = hsl2rgb(211, 0.43, 0.15),
 
             red           = hsl2rgb(350, 0.65, 0.65),
