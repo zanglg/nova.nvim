@@ -9,6 +9,7 @@ groups.setup = function()
         standard   = require("nova.groups.syntax"),
         hop        = require("nova.groups.hop"),
         treesitter = require("nova.groups.treesitter"),
+        whichkey   = require("nova.groups.whichkey"),
     }
 
     for _, group in pairs(groups) do
