@@ -33,8 +33,8 @@ return {
     Structure      = { fg = colors.purple },
     Typedef        = { fg = colors.violet },
 
-    Special        = { fg = colors.orange },
-    SpecialChar    = { fg = colors.orange },
+    Special        = { fg = colors.brown },
+    SpecialChar    = { fg = colors.brown },
     Tag            = { fg = colors.red, bold = true },
     Delimiter      = { fg = colors.cyan },
     SpecialComment = { fg = colors.inconspicuous },

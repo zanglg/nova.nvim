@@ -15,7 +15,7 @@ M.setup = function()
             background    = hsl2rgb(200, 0.15, 0.99),
 
             red           = hsl2rgb(350, 0.66, 0.47),
-            orange        = hsl2rgb(015, 1.00, 0.60),
+            brown         = hsl2rgb(015, 0.15, 0.50),
             yellow        = hsl2rgb(045, 0.75, 0.40),
             green         = hsl2rgb(123, 0.46, 0.34),
             cyan          = hsl2rgb(185, 1.00, 0.28),
@@ -33,7 +33,7 @@ M.setup = function()
             background    = hsl2rgb(211, 0.43, 0.15),
 
             red           = hsl2rgb(350, 0.65, 0.65),
-            orange        = hsl2rgb(015, 0.50, 0.65),
+            brown         = hsl2rgb(015, 0.15, 0.65),
             yellow        = hsl2rgb(044, 0.50, 0.60),
             green         = hsl2rgb(088, 0.50, 0.60),
             cyan          = hsl2rgb(187, 0.80, 0.65),
