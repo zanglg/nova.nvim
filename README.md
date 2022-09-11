@@ -4,7 +4,12 @@
 
 ## ⭐ Features
 
-- todo.
+- [nvim-treesiter](https://github.com/nvim-treesitter/nvim-treesitter), *WIP*
+- [nvim-ts-rainbow](https://github.com/p00f/nvim-ts-rainbow)
+- [which-key.nvim](https://github.com/folke/which-key.nvim)
+- [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim), *WIP*
+- [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim), *YTS*
+- [hop.nvim](https://github.com/phaazon/hop.nvim)
 
 ## 📦 Instalation
 
@@ -17,7 +22,8 @@ packer.nvim:
 use({
     "zanglg/nova.nvim",
     config = function()
-        require("nova").setup()
+        -- support both dark and light style
+        require("nova").setup({ background = "dark" })
 
         -- load colorscheme
         vim.cmd([[colorscheme nova]])
