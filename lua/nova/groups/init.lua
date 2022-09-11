@@ -10,6 +10,7 @@ groups.setup = function()
         hop        = require("nova.groups.hop"),
         treesitter = require("nova.groups.treesitter"),
         whichkey   = require("nova.groups.whichkey"),
+        telescope  = require("nova.groups.telescope"),
     }
 
     for _, group in pairs(groups) do
