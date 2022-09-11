@@ -1,6 +1,10 @@
 local colors = require("nova").colors
 
 return {
+    -- Object and struct fields.
+    TSField = { fg = colors.red },
+    TSProperty = { fg = colors.red },
+
     rainbowcol1 = { fg = colors.red },
     rainbowcol2 = { fg = colors.green },
     rainbowcol3 = { fg = colors.blue },
