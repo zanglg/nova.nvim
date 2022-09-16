@@ -28,10 +28,10 @@ return {
     Macro          = { fg = colors.violet },
     PreCondit      = { fg = colors.violet },
 
-    Type           = { fg = colors.violet },
+    Type           = { fg = colors.red },
     StorageClass   = { fg = colors.purple },
     Structure      = { fg = colors.purple },
-    Typedef        = { fg = colors.violet },
+    Typedef        = { fg = colors.red },
 
     Special        = { fg = colors.brown },
     SpecialChar    = { fg = colors.brown },
