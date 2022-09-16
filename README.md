@@ -34,3 +34,16 @@ use({
 ## 🔧 Configuration
 
 - todo.
+
+
+## 🎨 Preview
+
+**The color and group was not fixed finally, so screenshot may have a big change.**
+
+- **dark mode:**
+
+<img width="2209" alt="dark" src="https://user-images.githubusercontent.com/4172061/190657325-be88e26f-907a-434d-a5f1-af7634e335ed.png">
+
+- **light mode:**
+
+<img width="2209" alt="light" src="https://user-images.githubusercontent.com/4172061/190657375-2b722ead-e218-49dc-b747-b6c0a4b599b3.png">
