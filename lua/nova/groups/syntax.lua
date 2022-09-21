@@ -1,47 +1,53 @@
-local colors = require("nova").colors
+local M = {}
 
--- stylua: ignore
-return {
-    Comment        = { fg = colors.inconspicuous },
+M.get = function()
+    local colors = require("nova.colors").get()
 
-    Constant       = { fg = colors.yellow },
-    String         = { fg = colors.green },
-    Character      = { fg = colors.green },
-    Number         = { fg = colors.yellow },
-    Boolean        = { fg = colors.yellow },
-    Float          = { fg = colors.yellow },
+    -- stylua: ignore
+    return {
+        Comment        = { fg = colors.inconspicuous },
 
-    Identifier     = { fg = colors.foreground },
-    Function       = { fg = colors.blue },
+        Constant       = { fg = colors.yellow },
+        String         = { fg = colors.green },
+        Character      = { fg = colors.green },
+        Number         = { fg = colors.yellow },
+        Boolean        = { fg = colors.yellow },
+        Float          = { fg = colors.yellow },
 
-    Statement      = { fg = colors.purple },
-    Conditional    = { fg = colors.purple },
-    Repeat         = { fg = colors.purple },
-    Label          = { fg = colors.purple },
-    Operator       = { fg = colors.cyan },
-    Keyword        = { fg = colors.purple },
-    Exception      = { fg = colors.purple },
+        Identifier     = { fg = colors.foreground },
+        Function       = { fg = colors.blue },
 
-    PreProc        = { fg = colors.violet },
-    Include        = { fg = colors.violet },
-    Define         = { fg = colors.violet },
-    Macro          = { fg = colors.violet },
-    PreCondit      = { fg = colors.violet },
+        Statement      = { fg = colors.purple },
+        Conditional    = { fg = colors.purple },
+        Repeat         = { fg = colors.purple },
+        Label          = { fg = colors.purple },
+        Operator       = { fg = colors.cyan },
+        Keyword        = { fg = colors.purple },
+        Exception      = { fg = colors.purple },
 
-    Type           = { fg = colors.red },
-    StorageClass   = { fg = colors.purple },
-    Structure      = { fg = colors.purple },
-    Typedef        = { fg = colors.red },
+        PreProc        = { fg = colors.violet },
+        Include        = { fg = colors.violet },
+        Define         = { fg = colors.violet },
+        Macro          = { fg = colors.violet },
+        PreCondit      = { fg = colors.violet },
 
-    Special        = { fg = colors.brown },
-    SpecialChar    = { fg = colors.brown },
-    Tag            = { fg = colors.red, bold = true },
-    Delimiter      = { fg = colors.cyan },
-    SpecialComment = { fg = colors.inconspicuous },
-    Debug          = { fg = colors.red },
+        Type           = { fg = colors.red },
+        StorageClass   = { fg = colors.purple },
+        Structure      = { fg = colors.purple },
+        Typedef        = { fg = colors.red },
 
-    Underlined     = { fg = colors.blue, underline = true },
-    Ignore         = { fg = colors.inconspicuous },
-    Error          = { fg = colors.red },
-    Todo           = { fg = colors.red, bold = true },
-}
+        Special        = { fg = colors.brown },
+        SpecialChar    = { fg = colors.brown },
+        Tag            = { fg = colors.red, bold = true },
+        Delimiter      = { fg = colors.cyan },
+        SpecialComment = { fg = colors.inconspicuous },
+        Debug          = { fg = colors.red },
+
+        Underlined     = { fg = colors.blue, underline = true },
+        Ignore         = { fg = colors.inconspicuous },
+        Error          = { fg = colors.red },
+        Todo           = { fg = colors.red, bold = true },
+    }
+end
+
+return M

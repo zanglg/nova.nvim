@@ -26,7 +26,7 @@ use({
         require("nova").setup({ background = "dark" })
 
         -- load colorscheme
-        vim.cmd([[colorscheme nova]])
+        require("nova").load()
     end,
 })
 ```

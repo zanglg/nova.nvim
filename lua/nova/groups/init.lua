@@ -1,25 +1,25 @@
-local groups = {}
+local M = {}
 
-groups.setup = function()
-    local result = {}
-
+M.setup = function()
     -- stylua: ignore
     local groups = {
-        builtin    = require("nova.groups.builtin"),
-        standard   = require("nova.groups.syntax"),
-        hop        = require("nova.groups.hop"),
-        treesitter = require("nova.groups.treesitter"),
-        whichkey   = require("nova.groups.whichkey"),
-        telescope  = require("nova.groups.telescope"),
+        builtin    = require("nova.groups.builtin").get(),
+        standard   = require("nova.groups.syntax").get(),
+        hop        = require("nova.groups.hop").get(),
+        treesitter = require("nova.groups.treesitter").get(),
+        whichkey   = require("nova.groups.whichkey").get(),
+        telescope  = require("nova.groups.telescope").get(),
     }
 
-    for _, group in pairs(groups) do
-        for hl, col in pairs(group) do
-            result[hl] = col
-        end
-    end
-
-    return result
+    M.groups = groups
 end
 
-return groups
+M.load = function()
+    for _, groups in pairs(M.groups) do
+        for hl, col in pairs(groups) do
+            vim.api.nvim_set_hl(0, hl, col)
+        end
+    end
+end
+
+return M
