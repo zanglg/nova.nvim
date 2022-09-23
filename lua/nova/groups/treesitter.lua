@@ -5,17 +5,23 @@ M.get = function()
 
     -- stylua: ignore
     return {
-        -- Object and struct fields.
-        TSField = { fg = colors.red },
-        TSProperty = { fg = colors.red },
+        -- Parameters of a function.
+        TSParameter          = { fg = colors.brown },
+        -- References to parameters of a function.
+        TSParameterReference = { fg = colors.brown },
 
-        rainbowcol1 = { fg = colors.red },
-        rainbowcol2 = { fg = colors.green },
-        rainbowcol3 = { fg = colors.blue },
-        rainbowcol4 = { fg = colors.yellow },
-        rainbowcol5 = { fg = colors.purple },
-        rainbowcol6 = { fg = colors.cyan },
-        rainbowcol7 = { fg = colors.violet },
+        -- Object and struct fields.
+        TSField              = { fg = colors.red },
+        TSProperty           = { fg = colors.red },
+
+        -- rainbow
+        rainbowcol1          = { fg = colors.red },
+        rainbowcol2          = { fg = colors.green },
+        rainbowcol3          = { fg = colors.blue },
+        rainbowcol4          = { fg = colors.yellow },
+        rainbowcol5          = { fg = colors.purple },
+        rainbowcol6          = { fg = colors.cyan },
+        rainbowcol7          = { fg = colors.violet },
     }
 end
 
