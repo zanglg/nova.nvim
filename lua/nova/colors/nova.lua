@@ -31,7 +31,7 @@ local dark = {
     background    = hsl2rgb(211, 0.43, 0.15),
 
     red           = hsl2rgb(350, 0.65, 0.65),
-    brown         = hsl2rgb(015, 0.15, 0.65),
+    brown         = hsl2rgb(015, 0.15, 0.60),
     yellow        = hsl2rgb(044, 0.50, 0.60),
     green         = hsl2rgb(088, 0.50, 0.60),
     cyan          = hsl2rgb(187, 0.80, 0.65),
