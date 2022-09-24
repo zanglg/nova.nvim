@@ -9,6 +9,7 @@ M.setup = function()
         treesitter = require("nova.groups.treesitter").get(),
         whichkey   = require("nova.groups.whichkey").get(),
         telescope  = require("nova.groups.telescope").get(),
+        diagnostic = require("nova.groups.diagnostic").get(),
     }
 
     M.groups = groups
