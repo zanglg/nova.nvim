@@ -25,11 +25,11 @@ M.get = function()
         Keyword        = { fg = colors.purple },
         Exception      = { fg = colors.purple },
 
-        PreProc        = { fg = colors.violet },
-        Include        = { fg = colors.violet },
-        Define         = { fg = colors.violet },
-        Macro          = { fg = colors.violet },
-        PreCondit      = { fg = colors.violet },
+        PreProc        = { fg = colors.teal },
+        Include        = { fg = colors.teal },
+        Define         = { fg = colors.teal },
+        Macro          = { fg = colors.brown },
+        PreCondit      = { fg = colors.teal },
 
         Type           = { fg = colors.red },
         StorageClass   = { fg = colors.purple },

@@ -11,8 +11,8 @@ M.get = function()
         TSParameterReference = { fg = colors.brown },
 
         -- Object and struct fields.
-        TSField              = { fg = colors.red },
-        TSProperty           = { fg = colors.red },
+        TSField              = { fg = colors.violet },
+        TSProperty           = { fg = colors.violet },
 
         -- rainbow
         rainbowcol1          = { fg = colors.red },
