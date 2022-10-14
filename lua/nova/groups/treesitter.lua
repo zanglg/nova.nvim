@@ -13,6 +13,7 @@ M.get = function()
         -- Object and struct fields.
         TSField              = { fg = colors.violet },
         TSProperty           = { fg = colors.violet },
+        TSNamespace          = { fg = colors.lime },
 
         -- rainbow
         rainbowcol1          = { fg = colors.red },

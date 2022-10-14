@@ -21,7 +21,7 @@ M.get = function()
         Conditional    = { fg = colors.purple },
         Repeat         = { fg = colors.purple },
         Label          = { fg = colors.purple },
-        Operator       = { fg = colors.cyan },
+        Operator       = { fg = colors.teal },
         Keyword        = { fg = colors.purple },
         Exception      = { fg = colors.purple },
 
