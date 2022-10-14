@@ -4,12 +4,13 @@ M.setup = function()
     -- stylua: ignore
     local groups = {
         builtin    = require("nova.groups.builtin").get(),
-        standard   = require("nova.groups.syntax").get(),
+        diagnostic = require("nova.groups.diagnostic").get(),
+        gitsigns   = require("nova.groups.gitsigns").get(),
         hop        = require("nova.groups.hop").get(),
+        standard   = require("nova.groups.syntax").get(),
+        telescope  = require("nova.groups.telescope").get(),
         treesitter = require("nova.groups.treesitter").get(),
         whichkey   = require("nova.groups.whichkey").get(),
-        telescope  = require("nova.groups.telescope").get(),
-        diagnostic = require("nova.groups.diagnostic").get(),
     }
 
     M.groups = groups
