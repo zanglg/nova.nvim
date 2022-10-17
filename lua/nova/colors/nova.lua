@@ -45,9 +45,7 @@ local dark = {
 }
 
 M.setup = function()
-    local options = require("nova.option").get()
-
-    M.colors = options.background == "light" and light or dark
+    M.colors = vim.o.background == "light" and light or dark
 end
 
 M.get = function()
