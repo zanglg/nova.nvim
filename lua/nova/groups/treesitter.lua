@@ -6,14 +6,14 @@ M.get = function()
     -- stylua: ignore
     return {
         -- Parameters of a function.
-        TSParameter          = { fg = colors.brown },
+        TSParameter          = { fg = colors.teal },
         -- References to parameters of a function.
-        TSParameterReference = { fg = colors.brown },
+        TSParameterReference = { fg = colors.teal },
 
         -- Object and struct fields.
         TSField              = { fg = colors.violet },
         TSProperty           = { fg = colors.violet },
-        TSNamespace          = { fg = colors.lime },
+        TSNamespace          = { fg = colors.violet },
 
         -- rainbow
         rainbowcol1          = { fg = colors.red },
