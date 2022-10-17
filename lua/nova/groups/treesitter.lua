@@ -13,6 +13,7 @@ M.get = function()
         -- Object and struct fields.
         TSField              = { fg = colors.violet },
         TSProperty           = { fg = colors.violet },
+        -- Identifiers referring to modules and namespaces.
         TSNamespace          = { fg = colors.violet },
 
         -- rainbow
