@@ -32,12 +32,13 @@ local dark = {
     stripline     = hsl2rgb(211, 0.43, 0.20),
     background    = hsl2rgb(211, 0.43, 0.15),
 
+
     red           = hsl2rgb(350, 0.65, 0.65),
     brown         = hsl2rgb(015, 0.15, 0.60),
     yellow        = hsl2rgb(044, 0.50, 0.60),
     lime          = hsl2rgb(066, 0.50, 0.55),
-    green         = hsl2rgb(088, 0.50, 0.60),
-    teal          = hsl2rgb(174, 1.00, 0.35),
+    green         = hsl2rgb(095, 0.38, 0.62),
+    teal          = hsl2rgb(170, 0.75, 0.45),
     cyan          = hsl2rgb(187, 0.80, 0.65),
     blue          = hsl2rgb(205, 0.80, 0.65),
     violet        = hsl2rgb(250, 0.50, 0.65),
