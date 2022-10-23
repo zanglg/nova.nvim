@@ -5,16 +5,15 @@ M.get = function()
 
     -- stylua: ignore
     return {
-        -- Parameters of a function.
-        TSParameter          = { fg = colors.teal },
-        -- References to parameters of a function.
-        TSParameterReference = { fg = colors.teal },
+        -- Functions
+        ["@parameter"]       = { fg = colors.teal },
 
-        -- Object and struct fields.
-        TSField              = { fg = colors.violet },
-        TSProperty           = { fg = colors.violet },
-        -- Identifiers referring to modules and namespaces.
-        TSNamespace          = { fg = colors.violet },
+        -- Types
+        ["@field"]           = { fg = colors.violet },
+        ["@property"]        = { fg = colors.violet },
+
+        -- Identifiers
+        ["@namespace"]       = { fg = colors.violet },
 
         -- rainbow
         rainbowcol1          = { fg = colors.red },
