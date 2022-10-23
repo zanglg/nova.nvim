@@ -23,7 +23,10 @@ use({
     "zanglg/nova.nvim",
     config = function()
         -- support both dark and light style
-        require("nova").setup({ background = "dark" })
+        vim.o.background = "dark"
+
+        -- setup color palette
+        require("nova").setup()
 
         -- load colorscheme
         require("nova").load()

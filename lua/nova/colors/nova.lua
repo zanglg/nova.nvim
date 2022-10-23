@@ -32,7 +32,6 @@ local dark = {
     stripline     = hsl2rgb(211, 0.43, 0.20),
     background    = hsl2rgb(211, 0.43, 0.15),
 
-
     red           = hsl2rgb(350, 0.65, 0.65),
     brown         = hsl2rgb(015, 0.15, 0.60),
     yellow        = hsl2rgb(044, 0.50, 0.60),
