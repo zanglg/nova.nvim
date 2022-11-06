@@ -15,6 +15,10 @@ M.get = function()
         -- Identifiers
         ["@namespace"]       = { fg = colors.violet },
 
+        -- Text, mainly for markup languages.
+        ["@text.title"]      = { fg = colors.red },
+        ["@text.literal"]    = { fg = colors.violet },
+
         -- rainbow
         rainbowcol1          = { fg = colors.red },
         rainbowcol2          = { fg = colors.green },
