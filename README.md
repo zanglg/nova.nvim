@@ -8,8 +8,10 @@
 - [nvim-ts-rainbow](https://github.com/p00f/nvim-ts-rainbow)
 - [which-key.nvim](https://github.com/folke/which-key.nvim)
 - [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim), *WIP*
-- [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim), *YTS*
+- [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
 - [hop.nvim](https://github.com/phaazon/hop.nvim)
+- [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
+- [SmoothCursor.nvim](https://github.com/gen740/SmoothCursor.nvim)
 
 ## 📦 Instalation
 
