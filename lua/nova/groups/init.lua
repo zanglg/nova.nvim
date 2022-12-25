@@ -3,15 +3,19 @@ local M = {}
 M.setup = function()
     -- stylua: ignore
     local groups = {
+        -- neovim builtin highlight groups
         builtin      = require("nova.groups.builtin").get(),
+        standard     = require("nova.groups.syntax").get(),
+
+        -- external plugins related groups
         diagnostic   = require("nova.groups.diagnostic").get(),
         gitsigns     = require("nova.groups.gitsigns").get(),
         hop          = require("nova.groups.hop").get(),
-        standard     = require("nova.groups.syntax").get(),
+        misc         = require("nova.groups.misc").get(),
+        smoothcursor = require("nova.groups.smoothcursor").get(),
         telescope    = require("nova.groups.telescope").get(),
         treesitter   = require("nova.groups.treesitter").get(),
         whichkey     = require("nova.groups.whichkey").get(),
-        smoothcursor = require("nova.groups.smoothcursor").get(),
     }
 
     M.groups = groups
