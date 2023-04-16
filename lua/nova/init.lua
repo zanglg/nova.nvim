@@ -12,16 +12,8 @@ M.load = function()
     vim.o.termguicolors = true
     vim.g.colors_name = "nova"
 
-    -- make color palette
-    require("nova.colors").setup()
+    require("nova.groups")
 
-    -- generate highlight groups
-    require("nova.groups").setup()
-
-    -- finally end
-    require("nova.groups").load()
-
-    -- affects highlighting
     if vim.fn.exists("syntax_on") then
         vim.cmd("syntax reset")
     end
