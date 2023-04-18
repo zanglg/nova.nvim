@@ -2,6 +2,7 @@ local colors = require("nova.colors")
 
 local groups = {
     {
+        -- highlight-groups
         Normal = { fg = colors.foreground, bg = colors.background },
         NormalFloat = { fg = colors.foreground },
         NormalNC = { fg = colors.foreground },
@@ -82,7 +83,9 @@ local groups = {
         SpecialKey = { fg = colors.inconspicuous },
         Whitespace = { fg = colors.inconspicuous },
     },
+
     {
+        -- syntax-highlighting
         Comment = { fg = colors.comment },
 
         Constant = { fg = colors.yellow },
@@ -106,7 +109,7 @@ local groups = {
         PreProc = { fg = colors.violet },
         Include = { fg = colors.violet },
         Define = { fg = colors.violet },
-        Macro = { fg = colors.teal },
+        Macro = { fg = colors.brown },
         PreCondit = { fg = colors.violet },
 
         Type = { fg = colors.red },
@@ -128,16 +131,17 @@ local groups = {
     },
 
     {
+        -- lsp-semantic-highlight
         ["@lsp.type.class"] = { fg = colors.red },
         ["@lsp.type.decorator"] = { fg = colors.blue },
         ["@lsp.type.enum"] = { fg = colors.red },
         ["@lsp.type.enumMember"] = { fg = colors.yellow },
         ["@lsp.type.function"] = { fg = colors.blue },
         ["@lsp.type.interface"] = { fg = colors.lime },
-        ["@lsp.type.macro"] = { fg = colors.teal },
+        ["@lsp.type.macro"] = { fg = colors.brown },
         ["@lsp.type.method"] = { fg = colors.blue },
         ["@lsp.type.namespace"] = { fg = colors.violet },
-        ["@lsp.type.parameter"] = { fg = colors.brown },
+        ["@lsp.type.parameter"] = { fg = colors.teal },
         ["@lsp.type.property"] = { fg = colors.violet },
         ["@lsp.type.struct"] = { fg = colors.red },
         ["@lsp.type.type"] = { fg = colors.red },
@@ -145,11 +149,59 @@ local groups = {
         ["@lsp.type.variable"] = { fg = colors.foreground },
     },
 
-    -- external plugin hightlight groups
     {
+        -- diagnostics
+        DiagnosticError = { link = "ErrorMsg" },
+        DiagnosticWarn = { link = "WarningMsg" },
+        DiagnosticInfo = { link = "MoreMsg" },
+        DiagnosticHint = { link = "MoreMsg" },
+    },
+
+    -- treesitter
+    {
+        ["@parameter"] = { link = "@lsp.type.parameter" },
+        ["@field"] = { link = "@lsp.type.property" },
+        ["@property"] = { link = "@lsp.type.property" },
+        ["@namespace"] = { link = "@lsp.type.namespace" },
+        ["@text.title"] = { link = "Title" },
+        ["@text.literal"] = { link = "Title" },
+    },
+
+    {
+        -- gitsigns
         GitSignsAdd = { fg = colors.green },
         GitSignsChange = { fg = colors.blue },
         GitSignsDelete = { fg = colors.red },
+    },
+
+    {
+        -- Hop
+        HopNextKey = { fg = colors.red, bold = true },
+        HopNextKey1 = { fg = colors.green, bold = true },
+        HopNextKey2 = { fg = colors.blue, bold = true },
+        HopUnmatched = { link = "NonText" },
+        HopCursor = { link = "Cursor" },
+    },
+
+    {
+        -- nvim-treehopper
+        TSNodeKey = { link = "HopNextKey" },
+        TSNodeUnmatched = { link = "HopUnmatched" },
+    },
+
+    {
+        -- telescope
+        TelescopeBorder = { link = "FloatBorder" },
+    },
+
+    {
+        -- nvim-bqf
+        BqfPreviewFloat = { link = "NormalFloat" },
+        BqfPreviewBorder = { link = "FloatBorder" },
+        BqfPreviewCursor = { link = "Cursor" },
+        BqfPreviewCursorLine = { link = "CursorLine" },
+        BqfPreviewRange = { link = "IncSearch" },
+        BqfPreviewBufLabel = { link = "Label" },
     },
 }
 
