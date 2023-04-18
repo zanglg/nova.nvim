@@ -73,8 +73,8 @@ local groups = {
         WinBar = { bg = colors.popupmenu },
         WinBarNC = { bg = colors.popupmenu },
 
-        Conceal = { fg = colors.red },
-        Directory = { fg = colors.red },
+        Conceal = { fg = colors.brown },
+        Directory = { fg = colors.blue },
         Question = { fg = colors.red },
         Title = { fg = colors.red },
 
