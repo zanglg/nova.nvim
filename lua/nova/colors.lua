@@ -26,9 +26,9 @@ local colors = {
     },
 
     dark = {
-        foreground    = hsl2rgb(211, 0.43, 0.75),
-        comment       = hsl2rgb(211, 0.20, 0.50),
-        inconspicuous = hsl2rgb(211, 0.20, 0.41),
+        foreground    = hsl2rgb(211, 0.15, 0.75),
+        comment       = hsl2rgb(211, 0.15, 0.50),
+        inconspicuous = hsl2rgb(211, 0.15, 0.41),
         splitline     = hsl2rgb(211, 0.43, 0.27),
         selection     = hsl2rgb(211, 0.43, 0.24),
         popupmenu     = hsl2rgb(211, 0.43, 0.21),
