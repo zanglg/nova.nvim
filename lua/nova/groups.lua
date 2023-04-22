@@ -138,6 +138,7 @@ local groups = {
         ["@lsp.type.enumMember"] = { fg = colors.yellow },
         ["@lsp.type.function"] = { fg = colors.blue },
         ["@lsp.type.interface"] = { fg = colors.lime },
+        ["@lsp.type.Keyword"] = { fg = colors.purple },
         ["@lsp.type.macro"] = { fg = colors.brown },
         ["@lsp.type.method"] = { fg = colors.blue },
         ["@lsp.type.namespace"] = { fg = colors.violet },
@@ -147,6 +148,9 @@ local groups = {
         ["@lsp.type.type"] = { fg = colors.red },
         ["@lsp.type.typeParameter"] = { fg = colors.lime },
         ["@lsp.type.variable"] = { fg = colors.foreground },
+
+        -- language specific lsp semantic
+        ["@lsp.type.lifetime.rust"] = { fg = colors.yellow },
     },
 
     {
