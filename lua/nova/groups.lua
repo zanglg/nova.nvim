@@ -45,10 +45,10 @@ local groups = {
         ModeMsg = { fg = colors.foreground },
         MoreMsg = { fg = colors.green },
         MsgArea = { bg = colors.background },
-        MsgSeparator = { fg = colors.stripline },
+        MsgSeparator = { fg = colors.splitline },
 
-        WinSeparator = { fg = colors.stripline },
-        FloatBorder = { fg = colors.stripline },
+        WinSeparator = { fg = colors.splitline },
+        FloatBorder = { fg = colors.splitline },
 
         Pmenu = { bg = colors.popupmenu },
         PmenuSel = { bg = colors.selection },
