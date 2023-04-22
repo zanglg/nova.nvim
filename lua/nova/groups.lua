@@ -31,9 +31,9 @@ local groups = {
         TermCursor = { fg = colors.red },
         TermCursorNC = { fg = colors.inconspicuous },
 
-        DiffAdd = { fg = colors.green, reverse = true },
-        DiffChange = { fg = colors.blue, reverse = true },
-        DiffDelete = { fg = colors.red, reverse = true },
+        DiffAdd = { fg = colors.green },
+        DiffChange = { fg = colors.blue },
+        DiffDelete = { fg = colors.red },
         DiffText = { fg = colors.red },
 
         LineNr = { fg = colors.comment },
@@ -169,9 +169,9 @@ local groups = {
 
     {
         -- gitsigns
-        GitSignsAdd = { fg = colors.green },
-        GitSignsChange = { fg = colors.blue },
-        GitSignsDelete = { fg = colors.red },
+        GitSignsAdd = { link = "DiffAdd" },
+        GitSignsChange = { link = "DiffChange" },
+        GitSignsDelete = { link = "DiffDelete" },
     },
 
     {
@@ -202,6 +202,33 @@ local groups = {
         BqfPreviewCursorLine = { link = "CursorLine" },
         BqfPreviewRange = { link = "IncSearch" },
         BqfPreviewBufLabel = { link = "Label" },
+    },
+    {
+        CmpItemAbbr = { link = "Normal" },
+        CmpItemAbbrDeprecated = { link = "Ignore" },
+        CmpItemAbbrMatch = { fg = colors.green },
+        CmpItemAbbrMatchFuzzy = { fg = colors.violet },
+        CmpItemKind = { fg = colors.lime },
+
+        CmpItemKindDefault = { link = "Normal" },
+        CmpItemKindKeyword = { link = "Keyword" },
+
+        CmpItemKindClass = { link = "@lsp.type.class" },
+        CmpItemKindDecorator = { link = "@lsp.type.decorator" },
+        CmpItemKindEnum = { link = "@lsp.type.enum" },
+        CmpItemKindEnumMember = { link = "@lsp.type.enumMember" },
+        CmpItemKindFunction = { link = "@lsp.type.function" },
+        CmpItemKindInterface = { link = "@lsp.type.interface" },
+        CmpItemKindMacro = { link = "@lsp.type.macro" },
+        CmpItemKindMethod = { link = "@lsp.type.method" },
+        CmpItemKindNamespace = { link = "@lsp.type.namespace" },
+        CmpItemKindProperty = { link = "@lsp.type.property" },
+        CmpItemKindStruct = { link = "@lsp.type.struct" },
+        CmpItemKindType = { link = "@lsp.type.type" },
+        CmpItemKindVariable = { link = "@lsp.type.variable" },
+
+        CmpItemKindField = { link = "@lsp.type.property" },
+        CmpItemKindSnippet = { link = "@lsp.type.macro" },
     },
 }
 
