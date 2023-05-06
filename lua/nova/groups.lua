@@ -113,7 +113,7 @@ local groups = {
         PreCondit = { fg = colors.violet },
 
         Type = { fg = colors.red },
-        StorageClass = { fg = colors.purple },
+        StorageClass = { fg = colors.pink },
         Structure = { fg = colors.purple },
         Typedef = { fg = colors.red },
 
@@ -133,7 +133,7 @@ local groups = {
     {
         -- lsp-semantic-highlight
         ["@lsp.type.class"] = { fg = colors.red },
-        ["@lsp.type.decorator"] = { fg = colors.blue },
+        ["@lsp.type.decorator"] = { fg = colors.brown },
         ["@lsp.type.enum"] = { fg = colors.red },
         ["@lsp.type.enumMember"] = { fg = colors.yellow },
         ["@lsp.type.function"] = { fg = colors.blue },
@@ -146,19 +146,15 @@ local groups = {
         ["@lsp.type.property"] = { fg = colors.violet },
         ["@lsp.type.struct"] = { fg = colors.red },
         ["@lsp.type.type"] = { fg = colors.red },
-        ["@lsp.type.typeParameter"] = { fg = colors.lime },
+        ["@lsp.type.typeParameter"] = { fg = colors.red },
         ["@lsp.type.variable"] = { fg = colors.foreground },
 
         -- language specific lsp semantic
         ["@lsp.type.lifetime.rust"] = { fg = colors.yellow },
-    },
-
-    {
-        -- diagnostics
-        DiagnosticError = { link = "ErrorMsg" },
-        DiagnosticWarn = { link = "WarningMsg" },
-        DiagnosticInfo = { link = "MoreMsg" },
-        DiagnosticHint = { link = "MoreMsg" },
+        ["@lsp.type.selfTypeKeyword.rust"] = { fg = colors.pink },
+        ["@lsp.type.selfKeyword.rust"] = { fg = colors.pink },
+        ["@lsp.mod.async.rust"] = { fg = colors.pink },
+        ["@lsp.mod.constant.rust"] = { fg = colors.yellow },
     },
 
     -- treesitter
@@ -169,6 +165,14 @@ local groups = {
         ["@namespace"] = { link = "@lsp.type.namespace" },
         ["@text.title"] = { link = "Title" },
         ["@text.literal"] = { link = "Title" },
+    },
+
+    {
+        -- diagnostics
+        DiagnosticError = { link = "ErrorMsg" },
+        DiagnosticWarn = { link = "WarningMsg" },
+        DiagnosticInfo = { link = "MoreMsg" },
+        DiagnosticHint = { link = "MoreMsg" },
     },
 
     {
