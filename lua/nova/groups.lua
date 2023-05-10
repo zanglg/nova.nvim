@@ -20,7 +20,7 @@ local groups = {
         MatchParen = { fg = colors.lime, reverse = true },
         Substitute = { fg = colors.lime, reverse = true },
 
-        Folded = { fg = colors.cyan },
+        Folded = { fg = colors.inconspicuous },
         FoldColumn = { fg = colors.comment, bg = colors.background },
         CursorLineFold = { fg = colors.comment, bg = colors.stripline },
 
