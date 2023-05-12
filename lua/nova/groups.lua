@@ -102,7 +102,7 @@ local groups = {
         Conditional = { fg = colors.purple },
         Repeat = { fg = colors.purple },
         Label = { fg = colors.purple },
-        Operator = { fg = colors.cyan },
+        Operator = { fg = colors.teal },
         Keyword = { fg = colors.purple },
         Exception = { fg = colors.purple },
 
@@ -113,7 +113,7 @@ local groups = {
         PreCondit = { fg = colors.violet },
 
         Type = { fg = colors.red },
-        StorageClass = { fg = colors.pink },
+        StorageClass = { fg = colors.cyan },
         Structure = { fg = colors.purple },
         Typedef = { fg = colors.red },
 
@@ -137,28 +137,30 @@ local groups = {
         ["@lsp.type.enum"] = { fg = colors.red },
         ["@lsp.type.enumMember"] = { fg = colors.yellow },
         ["@lsp.type.function"] = { fg = colors.blue },
-        ["@lsp.type.interface"] = { fg = colors.teal },
+        ["@lsp.type.interface"] = { fg = colors.blue },
         ["@lsp.type.Keyword"] = { fg = colors.purple },
         ["@lsp.type.macro"] = { fg = colors.brown },
         ["@lsp.type.method"] = { fg = colors.blue },
         ["@lsp.type.namespace"] = { fg = colors.violet },
-        ["@lsp.type.parameter"] = { fg = colors.pink },
+        ["@lsp.type.parameter"] = { fg = colors.foreground },
         ["@lsp.type.property"] = { fg = colors.violet },
         ["@lsp.type.struct"] = { fg = colors.red },
         ["@lsp.type.type"] = { fg = colors.red },
         ["@lsp.type.typeParameter"] = { fg = colors.red },
         ["@lsp.type.variable"] = { fg = colors.foreground },
 
-        -- language specific lsp semantic
+        -- rust
         ["@lsp.type.lifetime.rust"] = { fg = colors.yellow },
-        ["@lsp.type.selfTypeKeyword.rust"] = { fg = colors.lgreen },
-        ["@lsp.type.selfKeyword.rust"] = { fg = colors.lgreen },
-        ["@lsp.mod.async.rust"] = { fg = colors.pink },
+        ["@lsp.type.selfKeyword.rust"] = { fg = colors.cyan },
+        ["@lsp.type.selfTypeKeyword.rust"] = { fg = colors.cyan },
+
+        ["@lsp.mod.async.rust"] = { fg = colors.cyan },
         ["@lsp.mod.constant.rust"] = { fg = colors.yellow },
+        ["@lsp.mod.static.rust"] = { fg = colors.yellow },
     },
 
-    -- treesitter
     {
+        -- treesitter
         ["@parameter"] = { link = "@lsp.type.parameter" },
         ["@field"] = { link = "@lsp.type.property" },
         ["@property"] = { link = "@lsp.type.property" },
@@ -183,7 +185,7 @@ local groups = {
     },
 
     {
-        -- Hop
+        -- hop
         HopNextKey = { fg = colors.red, bold = true },
         HopNextKey1 = { fg = colors.green, bold = true },
         HopNextKey2 = { fg = colors.blue, bold = true },
