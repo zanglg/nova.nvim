@@ -35,15 +35,15 @@ local colors = {
         stripline     = hsl2rgb(211, 0.43, 0.18),
         background    = hsl2rgb(211, 0.43, 0.15),
 
-        red           = hsl2rgb(350, 0.63, 0.63),
-        brown         = hsl2rgb(016, 0.60, 0.63),
+        red           = hsl2rgb(345, 0.63, 0.63),
+        brown         = hsl2rgb(010, 0.60, 0.63),
         yellow        = hsl2rgb(037, 0.60, 0.60),
         lime          = hsl2rgb(067, 0.50, 0.50),
         green         = hsl2rgb(123, 0.38, 0.57),
         teal          = hsl2rgb(160, 0.50, 0.50),
         cyan          = hsl2rgb(190, 0.71, 0.50),
         blue          = hsl2rgb(220, 0.80, 0.65),
-        violet        = hsl2rgb(262, 0.50, 0.65),
+        violet        = hsl2rgb(255, 0.50, 0.65),
         purple        = hsl2rgb(291, 0.65, 0.65),
     }
 }
