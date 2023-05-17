@@ -73,7 +73,7 @@ local groups = {
         WinBar = { bg = colors.popupmenu },
         WinBarNC = { bg = colors.popupmenu },
 
-        Conceal = { fg = colors.brown },
+        Conceal = { fg = colors.orange },
         Directory = { fg = colors.blue },
         Question = { fg = colors.red },
         Title = { fg = colors.red },
@@ -109,7 +109,7 @@ local groups = {
         PreProc = { fg = colors.violet },
         Include = { fg = colors.violet },
         Define = { fg = colors.violet },
-        Macro = { fg = colors.brown },
+        Macro = { fg = colors.orange },
         PreCondit = { fg = colors.violet },
 
         Type = { fg = colors.red },
@@ -117,9 +117,9 @@ local groups = {
         Structure = { fg = colors.purple },
         Typedef = { fg = colors.red },
 
-        Special = { fg = colors.brown },
-        SpecialChar = { fg = colors.brown },
-        Tag = { fg = colors.brown },
+        Special = { fg = colors.orange },
+        SpecialChar = { fg = colors.orange },
+        Tag = { fg = colors.orange },
         Delimiter = { fg = colors.foreground },
         SpecialComment = { fg = colors.red },
         Debug = { fg = colors.blue },
@@ -133,13 +133,13 @@ local groups = {
     {
         -- lsp-semantic-highlight
         ["@lsp.type.class"] = { fg = colors.red },
-        ["@lsp.type.decorator"] = { fg = colors.brown },
+        ["@lsp.type.decorator"] = { fg = colors.orange },
         ["@lsp.type.enum"] = { fg = colors.red },
         ["@lsp.type.enumMember"] = { fg = colors.yellow },
         ["@lsp.type.function"] = { fg = colors.blue },
         ["@lsp.type.interface"] = { fg = colors.blue },
         ["@lsp.type.Keyword"] = { fg = colors.purple },
-        ["@lsp.type.macro"] = { fg = colors.brown },
+        ["@lsp.type.macro"] = { fg = colors.orange },
         ["@lsp.type.method"] = { fg = colors.blue },
         ["@lsp.type.namespace"] = { fg = colors.violet },
         ["@lsp.type.parameter"] = { fg = colors.foreground },
