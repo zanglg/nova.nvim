@@ -5,7 +5,7 @@ local option = require("nova.option").option
 local colors = {
     light = {
         foreground    = hsl2rgb(200, 0.05, 0.40),
-        comment       = hsl2rgb(200, 0.05, 0.60),
+        comment       = hsl2rgb(200, 0.05, 0.65),
         inconspicuous = hsl2rgb(200, 0.05, 0.70),
         splitline     = hsl2rgb(200, 0.15, 0.80),
         selection     = hsl2rgb(200, 0.15, 0.85),
@@ -14,7 +14,7 @@ local colors = {
         background    = hsl2rgb(200, 0.15, 0.99),
 
         red           = hsl2rgb(350, 0.66, 0.47),
-        orange        = hsl2rgb(015, 0.40, 0.50),
+        brown         = hsl2rgb(015, 0.20, 0.50),
         yellow        = hsl2rgb(045, 0.75, 0.40),
         lime          = hsl2rgb(066, 0.50, 0.40),
         green         = hsl2rgb(123, 0.46, 0.34),
@@ -36,7 +36,7 @@ local colors = {
         background    = hsl2rgb(211, 0.43, 0.15),
 
         red           = hsl2rgb(345, 0.63, 0.63),
-        orange        = hsl2rgb(010, 0.60, 0.63),
+        brown         = hsl2rgb(015, 0.20, 0.50),
         yellow        = hsl2rgb(037, 0.60, 0.60),
         lime          = hsl2rgb(067, 0.50, 0.50),
         green         = hsl2rgb(123, 0.38, 0.57),
