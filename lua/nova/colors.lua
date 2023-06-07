@@ -26,14 +26,14 @@ local colors = {
     },
 
     dark = {
-        foreground    = hsl2rgb(211, 0.15, 0.75),
-        comment       = hsl2rgb(211, 0.15, 0.50),
-        inconspicuous = hsl2rgb(211, 0.15, 0.41),
-        splitline     = hsl2rgb(211, 0.43, 0.27),
-        selection     = hsl2rgb(211, 0.43, 0.24),
-        popupmenu     = hsl2rgb(211, 0.43, 0.21),
-        stripline     = hsl2rgb(211, 0.43, 0.18),
-        background    = hsl2rgb(211, 0.43, 0.15),
+        foreground    = hsl2rgb(225, 0.15, 0.75),
+        comment       = hsl2rgb(225, 0.15, 0.50),
+        inconspicuous = hsl2rgb(225, 0.15, 0.41),
+        splitline     = hsl2rgb(225, 0.27, 0.27),
+        selection     = hsl2rgb(225, 0.27, 0.24),
+        popupmenu     = hsl2rgb(225, 0.27, 0.21),
+        stripline     = hsl2rgb(225, 0.27, 0.18),
+        background    = hsl2rgb(225, 0.27, 0.15),
 
         red           = hsl2rgb(345, 0.63, 0.63),
         brown         = hsl2rgb(015, 0.20, 0.50),
