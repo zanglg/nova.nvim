@@ -165,8 +165,16 @@ local groups = {
         ["@field"] = { link = "@lsp.type.property" },
         ["@property"] = { link = "@lsp.type.property" },
         ["@namespace"] = { link = "@lsp.type.namespace" },
-        ["@text.title"] = { link = "Title" },
-        ["@text.literal"] = { link = "Title" },
+
+        -- markdown and plain text
+        ["@text.title"] = { fg = colors.blue },
+        ["@text.literal"] = { fg = colors.violet },
+        ["@text.reference"] = { fg = colors.green, gui = bold },
+        ["@text.uri"] = { fg = colors.brown, gui = underline },
+
+        ["@text.emphasis"] = { fg = colors.violet, gui = italic },
+        ["@text.strike"] = { fg = colors.violet, gui = strikethrough },
+        ["@text.strong"] = { fg = colors.violet, gui = bold },
     },
 
     {
