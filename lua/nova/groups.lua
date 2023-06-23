@@ -167,7 +167,7 @@ local groups = {
         ["@namespace"] = { link = "@lsp.type.namespace" },
 
         -- markdown and plain text
-        ["@text.title"] = { fg = colors.blue },
+        ["@text.title"] = { fg = colors.blue, gui = bold },
         ["@text.literal"] = { fg = colors.violet },
         ["@text.reference"] = { fg = colors.green, gui = bold },
         ["@text.uri"] = { fg = colors.brown, gui = underline },
