@@ -167,14 +167,14 @@ local groups = {
         ["@namespace"] = { link = "@lsp.type.namespace" },
 
         -- markdown and plain text
-        ["@text.title"] = { fg = colors.blue, gui = bold },
+        ["@text.title"] = { fg = colors.blue, bold = true },
         ["@text.literal"] = { fg = colors.violet },
-        ["@text.reference"] = { fg = colors.green, gui = bold },
-        ["@text.uri"] = { fg = colors.brown, gui = underline },
+        ["@text.reference"] = { fg = colors.green, bold = true },
+        ["@text.uri"] = { fg = colors.teal, underline = true },
 
-        ["@text.emphasis"] = { fg = colors.violet, gui = italic },
-        ["@text.strike"] = { fg = colors.violet, gui = strikethrough },
-        ["@text.strong"] = { fg = colors.violet, gui = bold },
+        ["@text.emphasis"] = { fg = colors.violet, italic = true },
+        ["@text.strike"] = { fg = colors.violet, strikethrough = true },
+        ["@text.strong"] = { fg = colors.violet, bold = true },
     },
 
     {
