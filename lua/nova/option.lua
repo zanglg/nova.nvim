@@ -2,7 +2,7 @@ local M = {}
 
 -- default nova option
 local DEFAULT_OPTIONS = {
-    theme = "dark",
+    theme = "nova",
 }
 
 M.option = DEFAULT_OPTIONS
