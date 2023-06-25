@@ -166,6 +166,12 @@ local groups = {
         ["@property"] = { link = "@lsp.type.property" },
         ["@namespace"] = { link = "@lsp.type.namespace" },
 
+        -- comment
+        ["@text.todo"] = { fg = colors.violet, bold = true },
+        ["@text.note"] = { fg = colors.green, bold = true },
+        ["@text.warning"] = { fg = colors.yellow, bold = true },
+        ["@text.danger"] = { fg = colors.red, bold = true },
+
         -- markdown and plain text
         ["@text.title"] = { fg = colors.blue, bold = true },
         ["@text.literal"] = { fg = colors.violet },
