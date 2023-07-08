@@ -83,7 +83,6 @@ local groups = {
         SpecialKey = { fg = colors.inconspicuous },
         Whitespace = { fg = colors.inconspicuous },
     },
-
     {
         -- syntax-highlighting
         Comment = { fg = colors.comment },
@@ -129,7 +128,6 @@ local groups = {
         Error = { fg = colors.red },
         Todo = { fg = colors.green },
     },
-
     {
         -- lsp-semantic-highlight
         ["@lsp.type.class"] = { fg = colors.red },
@@ -182,7 +180,6 @@ local groups = {
         ["@text.strike"] = { fg = colors.violet, strikethrough = true },
         ["@text.strong"] = { fg = colors.violet, bold = true },
     },
-
     {
         -- diagnostics
         DiagnosticError = { link = "ErrorMsg" },
@@ -190,14 +187,12 @@ local groups = {
         DiagnosticInfo = { link = "MoreMsg" },
         DiagnosticHint = { link = "MoreMsg" },
     },
-
     {
         -- gitsigns
         GitSignsAdd = { link = "DiffAdd" },
         GitSignsChange = { link = "DiffChange" },
         GitSignsDelete = { link = "DiffDelete" },
     },
-
     {
         -- hop
         HopNextKey = { fg = colors.red, bold = true },
@@ -206,18 +201,22 @@ local groups = {
         HopUnmatched = { link = "NonText" },
         HopCursor = { link = "Cursor" },
     },
-
     {
         -- nvim-treehopper
         TSNodeKey = { link = "HopNextKey" },
         TSNodeUnmatched = { link = "HopUnmatched" },
     },
-
+    {
+        -- flash.nvim
+        FlashBackdrop = { fg = colors.comment, bold = false },
+        FlashMatch = { fg = colors.red, bold = true },
+        FlashCurrent = { fg = colors.green, bold = true },
+        FlashLabel = { fg = colors.blue, bold = true },
+    },
     {
         -- telescope
         TelescopeBorder = { link = "FloatBorder" },
     },
-
     {
         -- nvim-bqf
         BqfPreviewFloat = { link = "NormalFloat" },
@@ -228,6 +227,7 @@ local groups = {
         BqfPreviewBufLabel = { link = "Label" },
     },
     {
+        -- nvim-cmp
         CmpItemAbbr = { link = "Normal" },
         CmpItemAbbrDeprecated = { link = "Ignore" },
         CmpItemAbbrMatch = { fg = colors.green },
