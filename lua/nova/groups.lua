@@ -254,6 +254,14 @@ local groups = {
         CmpItemKindField = { link = "@lsp.type.property" },
         CmpItemKindSnippet = { link = "@lsp.type.macro" },
     },
+    {
+        -- which-key.nvim
+        WhichKey = { fg = colors.blue },
+        WhichKeySeparator = { fg = colors.green },
+        WhichKeyDesc = { fg = colors.red },
+        WhichKeyGroup = { fg = colors.violet },
+        WhichKeyValue = { fg = colors.violet },
+    },
 }
 
 for _, group in ipairs(groups) do
