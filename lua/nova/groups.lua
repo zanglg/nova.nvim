@@ -264,8 +264,4 @@ local groups = {
     },
 }
 
-for _, group in ipairs(groups) do
-    for hl, col in pairs(group) do
-        vim.api.nvim_set_hl(0, hl, col)
-    end
-end
+return groups

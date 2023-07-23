@@ -12,10 +12,12 @@ M.load = function()
     vim.o.termguicolors = true
     vim.g.colors_name = "nova"
 
-    require("nova.groups")
+    local groups = require("nova.groups")
 
-    if vim.fn.exists("syntax_on") then
-        vim.cmd("syntax reset")
+    for _, group in ipairs(groups) do
+        for hl, col in pairs(group) do
+            vim.api.nvim_set_hl(0, hl, col)
+        end
     end
 end
 
