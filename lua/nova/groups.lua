@@ -147,6 +147,9 @@ local groups = {
         ["@lsp.type.typeParameter"] = { fg = colors.red },
         ["@lsp.type.variable"] = { fg = colors.foreground },
 
+        -- clang
+        ["@lsp.type.macro.c"] = { fg = colors.yellow },
+
         -- rust
         ["@lsp.type.lifetime.rust"] = { fg = colors.yellow },
         ["@lsp.type.selfKeyword.rust"] = { fg = colors.cyan },
