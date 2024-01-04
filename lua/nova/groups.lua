@@ -265,6 +265,16 @@ local groups = {
         WhichKeyGroup = { fg = colors.violet },
         WhichKeyValue = { fg = colors.violet },
     },
+    {
+        -- rainbow-delimiters.nvim
+        RainbowDelimiterRed = { fg = colors.red },
+        RainbowDelimiterYellow = { fg = colors.yellow },
+        RainbowDelimiterBlue = { fg = colors.blue },
+        RainbowDelimiterOrange = { fg = colors.brown },
+        RainbowDelimiterGreen = { fg = colors.green },
+        RainbowDelimiterViolet = { fg = colors.violet },
+        RainbowDelimiterCyan = { fg = colors.cyan },
+    },
 }
 
 return groups
