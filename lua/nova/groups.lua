@@ -214,7 +214,7 @@ local groups = {
         FlashBackdrop = { fg = colors.comment, bold = false },
         FlashMatch = { fg = colors.red, bold = true },
         FlashCurrent = { fg = colors.green, bold = true },
-        FlashLabel = { fg = colors.blue, bold = true },
+        FlashLabel = { fg = colors.lime, bold = true },
     },
     {
         -- telescope
