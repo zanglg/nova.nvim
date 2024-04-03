@@ -184,6 +184,10 @@ local groups = {
         ["@text.strong"] = { fg = colors.violet, bold = true },
     },
     {
+        -- lsp
+        LspInfoBorder = { link = "FloatBorder" },
+    },
+    {
         -- diagnostics
         DiagnosticError = { link = "ErrorMsg" },
         DiagnosticWarn = { link = "WarningMsg" },
