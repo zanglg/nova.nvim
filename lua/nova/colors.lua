@@ -43,7 +43,7 @@ local colors = {
         cyan          = hsl2rgb(187, 0.90, 0.30),
         blue          = hsl2rgb(212, 0.80, 0.42),
         violet        = hsl2rgb(240, 0.50, 0.60),
-        purple        = hsl2rgb(301, 0.63, 0.50),
+        purple        = hsl2rgb(301, 0.63, 0.43),
     }
 }
 
