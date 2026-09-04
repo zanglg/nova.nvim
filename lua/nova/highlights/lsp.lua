@@ -76,9 +76,9 @@ return function(colors)
 
         -- rust
         ["@lsp.type.lifetime.rust"] = { fg = colors.yellow },
-        ["@lsp.type.selfKeyword.rust"] = { fg = colors.cyan },
-        ["@lsp.type.selfTypeKeyword.rust"] = { fg = colors.cyan },
-        ["@lsp.mod.async.rust"] = { fg = colors.cyan },
+        ["@lsp.type.selfKeyword.rust"] = { fg = colors.teal },
+        ["@lsp.type.selfTypeKeyword.rust"] = { fg = colors.teal },
+        ["@lsp.mod.async.rust"] = { fg = colors.teal },
         ["@lsp.mod.constant.rust"] = { fg = colors.yellow },
         ["@lsp.mod.static.rust"] = { fg = colors.yellow },
     }
