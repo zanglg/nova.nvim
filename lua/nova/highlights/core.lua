@@ -6,7 +6,7 @@ return function(colors, opts)
         NormalFloat = { fg = colors.foreground },
         NormalNC = { fg = colors.foreground },
 
-        ColorColumn = { fg = colors.stripline },
+        ColorColumn = { bg = colors.stripline },
         CursorColumn = { bg = colors.stripline },
         CursorLine = { bg = colors.stripline },
         CursorLineNr = { fg = colors.yellow },
