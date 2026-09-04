@@ -14,10 +14,10 @@ return function(colors, opts)
         SignColumn = { fg = colors.comment, bg = background },
 
         CurSearch = { fg = colors.red, reverse = true },
-        IncSearch = { fg = colors.lime, reverse = true },
-        Search = { fg = colors.lime, reverse = true },
-        MatchParen = { fg = colors.lime, reverse = true },
-        Substitute = { fg = colors.lime, reverse = true },
+        IncSearch = { fg = colors.attention, reverse = true },
+        Search = { fg = colors.attention, reverse = true },
+        MatchParen = { fg = colors.attention, reverse = true },
+        Substitute = { fg = colors.attention, reverse = true },
 
         Folded = { fg = colors.inconspicuous },
         FoldColumn = { fg = colors.comment, bg = background },

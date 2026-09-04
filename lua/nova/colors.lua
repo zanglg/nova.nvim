@@ -16,12 +16,13 @@ local colors = {
         red           = hsl2rgb(345, 0.63, 0.63),
         orange        = hsl2rgb(020, 0.35, 0.52),
         yellow        = hsl2rgb(037, 0.60, 0.60),
-        lime          = hsl2rgb(067, 0.50, 0.50),
         green         = hsl2rgb(123, 0.38, 0.57),
         teal          = hsl2rgb(174, 0.63, 0.41),
         blue          = hsl2rgb(220, 0.80, 0.65),
         violet        = hsl2rgb(255, 0.50, 0.65),
         purple        = hsl2rgb(291, 0.65, 0.65),
+
+        attention     = hsl2rgb(067, 0.50, 0.50),
     },
     light = {
         foreground    = hsl2rgb(228, 0.08, 0.24),
@@ -36,12 +37,13 @@ local colors = {
         red           = hsl2rgb(350, 0.66, 0.47),
         orange        = hsl2rgb(020, 0.40, 0.45),
         yellow        = hsl2rgb(045, 0.75, 0.40),
-        lime          = hsl2rgb(066, 0.50, 0.40),
         green         = hsl2rgb(123, 0.46, 0.34),
         teal          = hsl2rgb(173, 0.95, 0.25),
         blue          = hsl2rgb(212, 0.80, 0.42),
         violet        = hsl2rgb(240, 0.50, 0.60),
         purple        = hsl2rgb(301, 0.63, 0.43),
+
+        attention     = hsl2rgb(066, 0.50, 0.40),
     }
 }
 

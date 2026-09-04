@@ -9,7 +9,7 @@ return function(colors)
         FlashBackdrop = { fg = colors.comment, bold = false },
         FlashMatch = { fg = colors.red, bold = true },
         FlashCurrent = { fg = colors.green, bold = true },
-        FlashLabel = { fg = colors.lime, bold = true },
+        FlashLabel = { fg = colors.attention, bold = true },
 
         -- telescope.nvim
         TelescopeBorder = { link = "FloatBorder" },
@@ -27,7 +27,7 @@ return function(colors)
         CmpItemAbbrDeprecated = { link = "Ignore" },
         CmpItemAbbrMatch = { fg = colors.green },
         CmpItemAbbrMatchFuzzy = { fg = colors.violet },
-        CmpItemKind = { fg = colors.lime },
+        CmpItemKind = { fg = colors.attention },
 
         CmpItemKindDefault = { link = "Normal" },
         CmpItemKindKeyword = { link = "Keyword" },
