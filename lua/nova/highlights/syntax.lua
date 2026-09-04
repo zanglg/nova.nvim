@@ -23,7 +23,7 @@ return function(colors)
         PreProc = { fg = colors.violet },
         Include = { fg = colors.violet },
         Define = { fg = colors.violet },
-        Macro = { fg = colors.brown },
+        Macro = { fg = colors.orange },
         PreCondit = { fg = colors.violet },
 
         Type = { fg = colors.red },
@@ -31,9 +31,9 @@ return function(colors)
         Structure = { fg = colors.purple },
         Typedef = { fg = colors.red },
 
-        Special = { fg = colors.brown },
-        SpecialChar = { fg = colors.brown },
-        Tag = { fg = colors.brown },
+        Special = { fg = colors.orange },
+        SpecialChar = { fg = colors.orange },
+        Tag = { fg = colors.orange },
         Delimiter = { fg = colors.foreground },
         SpecialComment = { fg = colors.red },
         Debug = { fg = colors.blue },

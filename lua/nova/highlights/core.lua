@@ -84,7 +84,7 @@ return function(colors, opts)
         WinBar = { bg = colors.popupmenu },
         WinBarNC = { bg = colors.popupmenu },
 
-        Conceal = { fg = colors.brown },
+        Conceal = { fg = colors.orange },
         Directory = { fg = colors.blue },
         Question = { fg = colors.red },
         Title = { fg = colors.red },

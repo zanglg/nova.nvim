@@ -62,7 +62,7 @@ return function(colors)
         RainbowDelimiterRed = { fg = colors.red },
         RainbowDelimiterYellow = { fg = colors.yellow },
         RainbowDelimiterBlue = { fg = colors.blue },
-        RainbowDelimiterOrange = { fg = colors.brown },
+        RainbowDelimiterOrange = { fg = colors.orange },
         RainbowDelimiterGreen = { fg = colors.green },
         RainbowDelimiterViolet = { fg = colors.violet },
         RainbowDelimiterCyan = { fg = colors.teal },

@@ -40,14 +40,14 @@ return function(colors)
 
         -- Standard semantic token types. Existing color assignments are retained.
         ["@lsp.type.class"] = { fg = colors.red },
-        ["@lsp.type.decorator"] = { fg = colors.brown },
+        ["@lsp.type.decorator"] = { fg = colors.orange },
         ["@lsp.type.enum"] = { fg = colors.red },
         ["@lsp.type.enumMember"] = { fg = colors.yellow },
         ["@lsp.type.event"] = { link = "Identifier" },
         ["@lsp.type.function"] = { fg = colors.blue },
         ["@lsp.type.interface"] = { fg = colors.blue },
         ["@lsp.type.keyword"] = { fg = colors.purple },
-        ["@lsp.type.macro"] = { fg = colors.brown },
+        ["@lsp.type.macro"] = { fg = colors.orange },
         ["@lsp.type.method"] = { fg = colors.blue },
         ["@lsp.type.modifier"] = { link = "StorageClass" },
         ["@lsp.type.namespace"] = { fg = colors.violet },

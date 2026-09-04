@@ -14,7 +14,7 @@ local colors = {
         background    = hsl2rgb(225, 0.27, 0.15),
 
         red           = hsl2rgb(345, 0.63, 0.63),
-        brown         = hsl2rgb(020, 0.35, 0.52),
+        orange        = hsl2rgb(020, 0.35, 0.52),
         yellow        = hsl2rgb(037, 0.60, 0.60),
         lime          = hsl2rgb(067, 0.50, 0.50),
         green         = hsl2rgb(123, 0.38, 0.57),
@@ -34,7 +34,7 @@ local colors = {
         background    = hsl2rgb(000, 0.00, 0.98),
 
         red           = hsl2rgb(350, 0.66, 0.47),
-        brown         = hsl2rgb(020, 0.40, 0.45),
+        orange        = hsl2rgb(020, 0.40, 0.45),
         yellow        = hsl2rgb(045, 0.75, 0.40),
         lime          = hsl2rgb(066, 0.50, 0.40),
         green         = hsl2rgb(123, 0.46, 0.34),
