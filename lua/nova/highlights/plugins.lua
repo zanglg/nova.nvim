@@ -21,7 +21,8 @@ return function(colors)
         BqfPreviewCursor = { link = "Cursor" },
         BqfPreviewCursorLine = { link = "CursorLine" },
         BqfPreviewRange = { link = "IncSearch" },
-        BqfPreviewBufLabel = { link = "Label" },
+        BqfPreviewBufLabel = { link = "Comment" },
+        BqfSign = { fg = colors.attention },
 
         -- nvim-cmp
         CmpItemAbbr = { fg = colors.foreground },
