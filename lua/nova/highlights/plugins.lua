@@ -99,8 +99,8 @@ return function(colors)
         WhichKeyValue = { link = "Comment" },
 
         -- nvim-treehopper
-        TSNodeKey = { fg = colors.red, bold = true },
-        TSNodeUnmatched = { link = "NonText" },
+        TSNodeKey = { fg = colors.attention, bold = true },
+        TSNodeUnmatched = { link = "Comment" },
 
         -- rainbow-delimiters.nvim
         RainbowDelimiterRed = { fg = colors.red },
