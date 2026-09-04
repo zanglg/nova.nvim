@@ -1,9 +1,9 @@
 return function(colors)
     return {
         -- gitsigns.nvim
-        GitSignsAdd = { link = "DiffAdd" },
-        GitSignsChange = { link = "DiffChange" },
-        GitSignsDelete = { link = "DiffDelete" },
+        GitSignsAdd = { fg = colors.green },
+        GitSignsChange = { fg = colors.blue },
+        GitSignsDelete = { fg = colors.red },
 
         -- flash.nvim
         FlashBackdrop = { fg = colors.comment, bold = false },
