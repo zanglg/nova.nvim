@@ -52,9 +52,11 @@ local colors = {
 local theme = colors[option.theme] and option.theme or "dark"
 local palette = colors[theme]
 local diff_alpha = theme == "light" and 0.08 or 0.12
+local diff_text_alpha = theme == "light" and 0.14 or 0.20
 
 palette.diff_add_bg = blend(palette.green, palette.background, diff_alpha)
 palette.diff_change_bg = blend(palette.blue, palette.background, diff_alpha)
 palette.diff_delete_bg = blend(palette.red, palette.background, diff_alpha)
+palette.diff_text_bg = blend(palette.blue, palette.background, diff_text_alpha)
 
 return palette

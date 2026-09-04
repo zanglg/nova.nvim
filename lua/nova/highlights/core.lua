@@ -33,7 +33,7 @@ return function(colors, opts)
         DiffAdd = { bg = colors.diff_add_bg },
         DiffChange = { bg = colors.diff_change_bg },
         DiffDelete = { bg = colors.diff_delete_bg },
-        DiffText = { fg = colors.red },
+        DiffText = { bg = colors.diff_text_bg },
         diffAdded = { fg = colors.green, bg = colors.diff_add_bg },
         diffChanged = { fg = colors.blue, bg = colors.diff_change_bg },
         diffRemoved = { fg = colors.red, bg = colors.diff_delete_bg },
