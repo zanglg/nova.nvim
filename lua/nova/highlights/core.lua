@@ -3,7 +3,7 @@ return function(colors, opts)
 
     return {
         Normal = { fg = colors.foreground, bg = background },
-        NormalFloat = { fg = colors.foreground },
+        NormalFloat = { fg = colors.foreground, bg = colors.popupmenu },
         NormalNC = { fg = colors.foreground },
 
         ColorColumn = { bg = colors.stripline },
