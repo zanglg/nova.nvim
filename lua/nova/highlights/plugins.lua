@@ -48,11 +48,11 @@ return function(colors)
         CmpItemKindSnippet = { link = "@lsp.type.macro" },
 
         -- which-key.nvim
-        WhichKey = { fg = colors.blue },
-        WhichKeySeparator = { fg = colors.green },
-        WhichKeyDesc = { fg = colors.red },
-        WhichKeyGroup = { fg = colors.violet },
-        WhichKeyValue = { fg = colors.violet },
+        WhichKey = { link = "Function" },
+        WhichKeySeparator = { link = "Comment" },
+        WhichKeyDesc = { link = "Identifier" },
+        WhichKeyGroup = { link = "Keyword" },
+        WhichKeyValue = { link = "Comment" },
 
         -- nvim-treehopper
         TSNodeKey = { fg = colors.red, bold = true },
