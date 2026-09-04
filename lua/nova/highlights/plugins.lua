@@ -13,9 +13,10 @@ return function(colors)
 
         -- telescope.nvim
         TelescopeBorder = { link = "FloatBorder" },
+        TelescopeMatching = { fg = colors.attention },
 
         -- nvim-bqf
-        BqfPreviewFloat = { link = "NormalFloat" },
+        BqfPreviewFloat = { link = "Normal" },
         BqfPreviewBorder = { link = "FloatBorder" },
         BqfPreviewCursor = { link = "Cursor" },
         BqfPreviewCursorLine = { link = "CursorLine" },
@@ -23,13 +24,14 @@ return function(colors)
         BqfPreviewBufLabel = { link = "Label" },
 
         -- nvim-cmp
-        CmpItemAbbr = { link = "Normal" },
+        CmpItemAbbr = { fg = colors.foreground },
         CmpItemAbbrDeprecated = { link = "Ignore" },
-        CmpItemAbbrMatch = { fg = colors.green },
-        CmpItemAbbrMatchFuzzy = { fg = colors.violet },
-        CmpItemKind = { link = "Normal" },
+        CmpItemAbbrMatch = { fg = colors.attention },
+        CmpItemAbbrMatchFuzzy = { fg = colors.attention },
+        CmpItemKind = { fg = colors.comment },
+        CmpItemMenu = { fg = colors.comment },
 
-        CmpItemKindDefault = { link = "Normal" },
+        CmpItemKindDefault = { link = "CmpItemKind" },
         CmpItemKindKeyword = { link = "Keyword" },
         CmpItemKindClass = { link = "@lsp.type.class" },
         CmpItemKindDecorator = { link = "@lsp.type.decorator" },
