@@ -10,11 +10,11 @@ return function(colors)
         LspInlayHint = { link = "Comment" },
 
         -- Diagnostics. Derived groups inherit the existing Nova diagnostic semantics.
-        DiagnosticError = { link = "ErrorMsg" },
-        DiagnosticWarn = { link = "WarningMsg" },
-        DiagnosticInfo = { link = "MoreMsg" },
-        DiagnosticHint = { link = "MoreMsg" },
-        DiagnosticOk = { link = "MoreMsg" },
+        DiagnosticError = { fg = colors.red },
+        DiagnosticWarn = { fg = colors.yellow },
+        DiagnosticInfo = { fg = colors.blue },
+        DiagnosticHint = { fg = colors.teal },
+        DiagnosticOk = { fg = colors.green },
 
         DiagnosticVirtualTextError = { link = "DiagnosticError" },
         DiagnosticVirtualTextWarn = { link = "DiagnosticWarn" },
@@ -33,8 +33,8 @@ return function(colors)
         DiagnosticSignOk = { link = "DiagnosticOk" },
         DiagnosticUnderlineError = { undercurl = true, sp = colors.red },
         DiagnosticUnderlineWarn = { undercurl = true, sp = colors.yellow },
-        DiagnosticUnderlineInfo = { undercurl = true, sp = colors.green },
-        DiagnosticUnderlineHint = { undercurl = true, sp = colors.green },
+        DiagnosticUnderlineInfo = { undercurl = true, sp = colors.blue },
+        DiagnosticUnderlineHint = { undercurl = true, sp = colors.teal },
         DiagnosticUnderlineOk = { undercurl = true, sp = colors.green },
         DiagnosticDeprecated = { strikethrough = true },
 
