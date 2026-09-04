@@ -42,5 +42,9 @@ return function(colors)
         Ignore = { fg = colors.inconspicuous },
         Error = { fg = colors.red },
         Todo = { fg = colors.green },
+
+        -- quickfix
+        qfSeparator1 = { link = "Comment" },
+        qfSeparator2 = { link = "Comment" },
     }
 end
