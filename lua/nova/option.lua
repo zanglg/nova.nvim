@@ -1,16 +1,16 @@
 local M = {}
 
--- default nova option
 local DEFAULT_OPTIONS = {
-    theme = "nova",
+    theme = "dark",
+    transparent = false,
+    overrides = {},
 }
 
-M.option = DEFAULT_OPTIONS
+M.option = vim.deepcopy(DEFAULT_OPTIONS)
 
-M.setup = function(opts)
-    opts = opts or {}
-
-    M.option = vim.tbl_deep_extend("force", M.option, opts)
+function M.setup(opts)
+    M.option = vim.tbl_deep_extend("force", vim.deepcopy(DEFAULT_OPTIONS), opts or {})
+    return M.option
 end
 
 return M
