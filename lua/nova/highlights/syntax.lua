@@ -27,7 +27,7 @@ return function(colors)
         PreCondit = { fg = colors.violet },
 
         Type = { fg = colors.red },
-        StorageClass = { fg = colors.cyan },
+        StorageClass = { fg = colors.teal },
         Structure = { fg = colors.purple },
         Typedef = { fg = colors.red },
 
