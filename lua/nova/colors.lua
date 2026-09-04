@@ -25,8 +25,8 @@ local colors = {
         purple        = hsl2rgb(291, 0.65, 0.65),
     },
     light = {
-        foreground    = hsl2rgb(030, 0.03, 0.35),
-        comment       = hsl2rgb(030, 0.03, 0.50),
+        foreground    = hsl2rgb(000, 0.00, 0.35),
+        comment       = hsl2rgb(000, 0.00, 0.50),
         inconspicuous = hsl2rgb(030, 0.03, 0.70),
         splitline     = hsl2rgb(030, 0.03, 0.80),
         selection     = hsl2rgb(030, 0.03, 0.85),
