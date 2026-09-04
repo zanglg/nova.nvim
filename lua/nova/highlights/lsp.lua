@@ -7,7 +7,7 @@ return function(colors)
         LspReferenceWrite = { link = "Visual" },
         LspCodeLens = { link = "Comment" },
         LspCodeLensSeparator = { link = "Comment" },
-        LspInlayHint = { link = "Comment" },
+        LspInlayHint = { fg = colors.inconspicuous },
 
         -- Diagnostics. Derived groups inherit the existing Nova diagnostic semantics.
         DiagnosticError = { fg = colors.red },
