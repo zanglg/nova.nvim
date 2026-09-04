@@ -30,9 +30,9 @@ return function(colors, opts)
         TermCursor = { fg = colors.red },
         TermCursorNC = { fg = colors.inconspicuous },
 
-        DiffAdd = { fg = colors.green },
-        DiffChange = { fg = colors.blue },
-        DiffDelete = { fg = colors.red },
+        DiffAdd = { fg = colors.green, bg = colors.diff_add_bg },
+        DiffChange = { fg = colors.blue, bg = colors.diff_change_bg },
+        DiffDelete = { fg = colors.red, bg = colors.diff_delete_bg },
         DiffText = { fg = colors.red },
         Added = { link = "DiffAdd" },
         Changed = { link = "DiffChange" },
