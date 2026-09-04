@@ -1,4 +1,6 @@
-local hsl2rgb = require("nova.utils").hsl2rgb
+local utils = require("nova.utils")
+local hsl2rgb = utils.hsl2rgb
+local blend = utils.blend
 local option = require("nova.option").option
 
 -- stylua: ignore
@@ -47,8 +49,12 @@ local colors = {
     }
 }
 
-if colors[option.theme] == nil then
-    return colors.dark
-end
+local theme = colors[option.theme] and option.theme or "dark"
+local palette = colors[theme]
+local diff_alpha = theme == "light" and 0.08 or 0.12
 
-return colors[option.theme]
+palette.diff_add_bg = blend(palette.green, palette.background, diff_alpha)
+palette.diff_change_bg = blend(palette.blue, palette.background, diff_alpha)
+palette.diff_delete_bg = blend(palette.red, palette.background, diff_alpha)
+
+return palette
