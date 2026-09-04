@@ -16,7 +16,7 @@ return function(colors)
         Conditional = { fg = colors.purple },
         Repeat = { fg = colors.purple },
         Label = { fg = colors.purple },
-        Operator = { fg = colors.teal },
+        Operator = { fg = colors.foreground },
         Keyword = { fg = colors.purple },
         Exception = { fg = colors.purple },
 

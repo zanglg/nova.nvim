@@ -48,7 +48,7 @@ return function(colors)
         ["@keyword"] = { link = "Keyword" },
         ["@keyword.coroutine"] = { link = "Keyword" },
         ["@keyword.function"] = { link = "Keyword" },
-        ["@keyword.operator"] = { link = "Keyword" },
+        ["@keyword.operator"] = { fg = colors.teal },
         ["@keyword.import"] = { link = "Include" },
         ["@keyword.type"] = { link = "Keyword" },
         ["@keyword.modifier"] = { link = "StorageClass" },
