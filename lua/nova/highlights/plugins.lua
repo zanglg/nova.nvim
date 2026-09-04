@@ -7,8 +7,8 @@ return function(colors)
 
         -- flash.nvim
         FlashBackdrop = { fg = colors.comment, bold = false },
-        FlashMatch = { bg = colors.attention_bg },
-        FlashCurrent = { bg = colors.attention_current_bg },
+        FlashMatch = { fg = colors.teal, bold = true },
+        FlashCurrent = { fg = colors.orange, bold = true },
         FlashLabel = { fg = colors.attention, bold = true },
 
         -- telescope.nvim
