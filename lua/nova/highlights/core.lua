@@ -66,8 +66,8 @@ return function(colors, opts)
         PmenuKindSel = { link = "PmenuSel" },
         PmenuExtra = { link = "Pmenu" },
         PmenuExtraSel = { link = "PmenuSel" },
-        PmenuMatch = { link = "Pmenu" },
-        PmenuMatchSel = { link = "PmenuSel" },
+        PmenuMatch = { fg = colors.attention, bg = colors.popupmenu },
+        PmenuMatchSel = { fg = colors.attention, bg = colors.selection },
 
         WildMenu = { bg = colors.selection },
         QuickFixLine = { bg = colors.selection },
