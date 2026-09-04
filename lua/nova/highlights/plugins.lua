@@ -27,7 +27,7 @@ return function(colors)
         CmpItemAbbrDeprecated = { link = "Ignore" },
         CmpItemAbbrMatch = { fg = colors.green },
         CmpItemAbbrMatchFuzzy = { fg = colors.violet },
-        CmpItemKind = { fg = colors.attention },
+        CmpItemKind = { link = "Normal" },
 
         CmpItemKindDefault = { link = "Normal" },
         CmpItemKindKeyword = { link = "Keyword" },
