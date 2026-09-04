@@ -4,6 +4,11 @@ local function round(value)
     return math.floor(value + 0.5)
 end
 
+local function hex_to_rgb(color)
+    local value = color:gsub("#", "")
+    return tonumber(value:sub(1, 2), 16), tonumber(value:sub(3, 4), 16), tonumber(value:sub(5, 6), 16)
+end
+
 function M.hsl2rgb(h, s, l)
     h = h % 360
 
@@ -29,6 +34,17 @@ function M.hsl2rgb(h, s, l)
     r = round((r + m) * 255)
     g = round((g + m) * 255)
     b = round((b + m) * 255)
+
+    return string.format("#%02x%02x%02x", r, g, b)
+end
+
+function M.blend(foreground, background, alpha)
+    local fr, fg, fb = hex_to_rgb(foreground)
+    local br, bg, bb = hex_to_rgb(background)
+
+    local r = round(fr * alpha + br * (1 - alpha))
+    local g = round(fg * alpha + bg * (1 - alpha))
+    local b = round(fb * alpha + bb * (1 - alpha))
 
     return string.format("#%02x%02x%02x", r, g, b)
 end
