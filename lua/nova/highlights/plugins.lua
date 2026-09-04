@@ -54,6 +54,10 @@ return function(colors)
         WhichKeyGroup = { fg = colors.violet },
         WhichKeyValue = { fg = colors.violet },
 
+        -- nvim-treehopper
+        TSNodeKey = { fg = colors.red, bold = true },
+        TSNodeUnmatched = { link = "NonText" },
+
         -- rainbow-delimiters.nvim
         RainbowDelimiterRed = { fg = colors.red },
         RainbowDelimiterYellow = { fg = colors.yellow },
