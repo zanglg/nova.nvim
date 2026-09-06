@@ -73,9 +73,9 @@ local colors = {
         violet        = hsl2rgb(240, 0.50, 0.60),
         purple        = hsl2rgb(301, 0.63, 0.43),
 
-        match         = hsl2rgb(076, 0.58, 0.38),
-        current_match = hsl2rgb(032, 0.62, 0.42),
-        target        = hsl2rgb(188, 0.62, 0.36),
+        match         = hsl2rgb(076, 0.58, 0.27),
+        current_match = hsl2rgb(032, 0.62, 0.35),
+        target        = hsl2rgb(188, 0.62, 0.30),
         attention     = hsl2rgb(066, 0.50, 0.40),
     },
 }
