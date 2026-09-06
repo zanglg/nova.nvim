@@ -47,6 +47,7 @@ return function(colors, opts)
 
         ErrorMsg = { fg = colors.red },
         WarningMsg = { fg = colors.yellow },
+        OkMsg = { fg = colors.green },
         ModeMsg = { fg = colors.foreground },
         MoreMsg = { fg = colors.green },
         MsgArea = { bg = background },
