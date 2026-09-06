@@ -25,7 +25,7 @@ return function(colors)
         BqfSign = { fg = colors.attention },
 
         -- blink.cmp
-        BlinkCmpLabelMatch = { fg = colors.match, bold = true },
+        BlinkCmpLabelMatch = { fg = colors.match },
 
         -- nvim-cmp
         CmpItemAbbr = { fg = colors.foreground },
