@@ -1,5 +1,5 @@
-local config = require("nova.option")
-local colors = require("nova.colors").setup(config.option, config.resolve_theme())
+local config = require("nova.config")
+local colors = require("nova.colors").setup(config.options, config.resolve_theme())
 local nova = {}
 
 nova.normal = {

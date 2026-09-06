@@ -1,6 +1,6 @@
 local M = {}
 
-local DEFAULT_OPTIONS = {
+M.defaults = {
     theme = "auto",
     transparent = false,
     colors = {},
@@ -31,21 +31,21 @@ local function validate(opts)
     end
 end
 
-M.option = vim.deepcopy(DEFAULT_OPTIONS)
+M.options = vim.deepcopy(M.defaults)
 
 function M.setup(opts)
-    local option = vim.tbl_deep_extend("force", vim.deepcopy(DEFAULT_OPTIONS), opts or {})
-    validate(option)
-    M.option = option
-    return option
+    local options = vim.tbl_deep_extend("force", vim.deepcopy(M.defaults), opts or {})
+    validate(options)
+    M.options = options
+    return options
 end
 
 function M.resolve_theme()
-    if M.option.theme == "auto" then
+    if M.options.theme == "auto" then
         return vim.o.background == "light" and "light" or "dark"
     end
 
-    return M.option.theme
+    return M.options.theme
 end
 
 return M

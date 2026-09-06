@@ -1,12 +1,12 @@
 local M = {}
 
 function M.setup(opts)
-    return require("nova.option").setup(opts)
+    return require("nova.config").setup(opts)
 end
 
 function M.load()
-    local config = require("nova.option")
-    local opts = config.option
+    local config = require("nova.config")
+    local opts = config.options
     local theme = config.resolve_theme()
 
     if opts.theme ~= "auto" and vim.o.background ~= theme then
