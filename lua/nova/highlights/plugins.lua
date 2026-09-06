@@ -192,15 +192,6 @@ return function(colors)
         SnacksPickerDir = { fg = colors.comment },
         SnacksPickerFile = { fg = colors.foreground },
 
-        -- nvim-bqf
-        BqfPreviewFloat = { link = "Normal" },
-        BqfPreviewBorder = { link = "FloatBorder" },
-        BqfPreviewCursor = { link = "Cursor" },
-        BqfPreviewCursorLine = { link = "CursorLine" },
-        BqfPreviewRange = { link = "IncSearch" },
-        BqfPreviewBufLabel = { link = "Comment" },
-        BqfSign = { fg = colors.attention },
-
         -- blink.cmp
         BlinkCmpDoc = { link = "NormalFloat" },
         BlinkCmpDocBorder = { link = "FloatBorder" },
@@ -317,10 +308,6 @@ return function(colors)
         WhichKeyDesc = { link = "Identifier" },
         WhichKeyGroup = { link = "Keyword" },
         WhichKeyValue = { link = "Comment" },
-
-        -- nvim-treehopper
-        TSNodeKey = { fg = colors.target, bold = true },
-        TSNodeUnmatched = { link = "Comment" },
 
         -- rainbow-delimiters.nvim
         RainbowDelimiterRed = { fg = colors.red },
