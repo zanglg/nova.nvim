@@ -13,9 +13,8 @@ function M.load()
         vim.o.background = theme
     end
 
-    vim.cmd("highlight clear")
-    if vim.fn.exists("syntax_on") == 1 then
-        vim.cmd("syntax reset")
+    if vim.g.colors_name then
+        vim.cmd("highlight clear")
     end
 
     vim.o.termguicolors = true
@@ -27,6 +26,8 @@ function M.load()
     for name, highlight in pairs(groups) do
         vim.api.nvim_set_hl(0, name, highlight)
     end
+
+    return colors, groups, opts
 end
 
 return M
