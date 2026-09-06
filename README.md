@@ -1,10 +1,10 @@
 # nova colorscheme for neovim
 
-*A (very) WIP colorscheme for Neovim.*
+*A (very) WIP colorscheme for neovim.*
 
 ## 🎨 Preview
 
-The palette and highlight groups are still evolving, so screenshots may change.
+**The color and group was not fixed finally, so screenshot may have a big change.**
 
 - **dark mode:**
 
@@ -16,99 +16,34 @@ The palette and highlight groups are still evolving, so screenshots may change.
 
 ## 📦 Installation
 
-Use your preferred plugin manager. With lazy.nvim:
+You can use your favorite plugin manager for this. Here is an example with
+lazy.nvim:
 
 ```lua
 {
     "zanglg/nova.nvim",
-    priority = 1000,
     opts = {
         theme = "auto",
     },
-    config = function(_, opts)
-        require("nova").setup(opts)
-        vim.cmd.colorscheme("nova")
-    end,
 }
 ```
 
-`setup()` is optional. Without it, Nova uses its defaults and follows
-`vim.o.background`.
-
-## 🔧 Configuration
+## 🚀 Usage
 
 ```lua
 require("nova").setup({
-    -- "auto" follows vim.o.background. "dark" and "light" explicitly select
-    -- a variant and keep vim.o.background in sync with it.
-    theme = "auto",
-
-    -- Keep the main editor background transparent. Floating and popup surfaces
-    -- retain their own backgrounds.
+    theme = "auto", -- "auto", "dark", or "light"
     transparent = false,
-
-    -- Override colors in the resolved palette.
-    colors = {},
-
-    -- Override final highlight groups. This can be a table or a function that
-    -- receives the resolved palette and returns a table.
-    overrides = {},
 })
+
+vim.cmd.colorscheme("nova")
 ```
 
-### Color overrides
+`theme = "auto"` follows `vim.o.background`. Explicit `"dark"` or `"light"`
+values also synchronize `vim.o.background` so Neovim and plugin defaults use
+the same background mode as Nova.
 
-```lua
-require("nova").setup({
-    colors = {
-        match = "#b8d75f",
-        target = "#66c7d4",
-    },
-})
-```
-
-Diff backgrounds are derived from the active semantic colors and background.
-If a derived color such as `diff_add_bg` is provided explicitly, Nova keeps the
-explicit value instead.
-
-### Highlight overrides
-
-```lua
-require("nova").setup({
-    overrides = function(colors)
-        return {
-            Comment = { fg = colors.comment, italic = true },
-            CursorLineNr = { fg = colors.target, bold = true },
-        }
-    end,
-})
-```
-
-A plain table can be used when access to the palette is not needed:
-
-```lua
-require("nova").setup({
-    overrides = {
-        NormalFloat = { link = "Normal" },
-    },
-})
-```
-
-## Floating-window model
-
-Nova keeps window surfaces and borders as separate primitives instead of
-forcing one global float style:
-
-- `NormalFloat` uses the popup surface.
-- `FloatBorder` uses the structural separator color.
-- `PmenuSel` uses the explicit selection surface.
-
-Plugins can therefore choose their own composition: a surface-only float can
-use `NormalFloat` without a border, while a border-only float can keep `Normal`
-and use `FloatBorder`. Nova's plugin integrations preserve that choice unless a
-plugin-specific highlight has a semantic reason to differ.
-
-## Lualine
+### Lualine
 
 ```lua
 require("lualine").setup({
@@ -117,3 +52,88 @@ require("lualine").setup({
     },
 })
 ```
+
+## 🔧 Configuration
+
+Nova intentionally keeps its public configuration small:
+
+```lua
+require("nova").setup({
+    theme = "auto",
+    transparent = false,
+    colors = {},
+    overrides = {},
+})
+```
+
+- `theme`: `"auto"`, `"dark"`, or `"light"`.
+- `transparent`: removes Nova's main editor background when `true`.
+- `colors`: overrides palette entries before highlights are built.
+- `overrides`: a table of highlight overrides or a function receiving the
+  resolved Nova palette.
+
+Unknown top-level options are rejected so stale or misspelled configuration is
+not silently ignored.
+
+### Color overrides
+
+```lua
+require("nova").setup({
+    colors = {
+        blue = "#80aaff",
+        popupmenu = "#20263a",
+    },
+})
+```
+
+Derived diff backgrounds are recomputed from overridden source colors unless a
+derived value is explicitly supplied.
+
+### Highlight overrides
+
+Table form:
+
+```lua
+require("nova").setup({
+    overrides = {
+        CursorLineNr = { fg = "#ffffff", bold = true },
+    },
+})
+```
+
+Function form:
+
+```lua
+require("nova").setup({
+    overrides = function(colors)
+        return {
+            CursorLineNr = { fg = colors.target, bold = true },
+        }
+    end,
+})
+```
+
+## Floating-window primitives
+
+Nova provides separate primitives rather than forcing one global float style:
+
+- `NormalFloat` provides the popup surface.
+- `FloatBorder` provides structural separation.
+- `PmenuSel` provides the selected-item surface.
+
+Plugins remain responsible for choosing whether a window is surface-only,
+border-only, or combines both.
+
+## Plugin integrations
+
+Nova prefers plugin defaults whenever they already link to standard Neovim
+highlight groups. Plugin-specific overrides are kept only when Nova has a
+meaningful semantic or presentation difference to express.
+
+The maintained integration set targets mainstream Neovim plugins plus plugins
+used by the author's dotconfig. Integrations do not require the corresponding
+plugin to be installed in order for Nova to load.
+
+## Requirements
+
+Nova currently targets Neovim **0.12.5**.
