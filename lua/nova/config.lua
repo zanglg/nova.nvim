@@ -13,6 +13,27 @@ local VALID_THEMES = {
     light = true,
 }
 
+local VALID_OPTIONS = {}
+for name in pairs(M.defaults) do
+    VALID_OPTIONS[name] = true
+end
+
+local function validate_user_options(opts)
+    if opts == nil then
+        return
+    end
+
+    if type(opts) ~= "table" then
+        error("nova: setup options must be a table")
+    end
+
+    for name in pairs(opts) do
+        if not VALID_OPTIONS[name] then
+            error(string.format("nova: unknown option %q", tostring(name)))
+        end
+    end
+end
+
 local function validate(opts)
     if not VALID_THEMES[opts.theme] then
         error(string.format("nova: invalid theme %q (expected 'auto', 'dark', or 'light')", tostring(opts.theme)))
@@ -34,6 +55,7 @@ end
 M.options = vim.deepcopy(M.defaults)
 
 function M.setup(opts)
+    validate_user_options(opts)
     local options = vim.tbl_deep_extend("force", vim.deepcopy(M.defaults), opts or {})
     validate(options)
     M.options = options
