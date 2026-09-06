@@ -22,7 +22,7 @@ return function(t)
         t.eq(missing, {})
     end)
 
-    t.test("stale integration references stay removed", function()
+    t.test("unsupported and stale references stay removed", function()
         local files = vim.fn.glob(root .. "/lua/**/*.lua", false, true)
         table.insert(files, root .. "/README.md")
 
@@ -32,6 +32,7 @@ return function(t)
             "codex/soft-palette",
             "nvim-bqf",
             "treehopper",
+            "terminal_color_",
         }
 
         local found = {}
