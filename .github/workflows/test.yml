@@ -9,6 +9,17 @@ on:
   pull_request:
 
 jobs:
+  format:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check Lua formatting
+        uses: JohnnyMorganz/stylua-action@v5
+        with:
+          version: latest
+          args: --check .
+
   headless:
     runs-on: ubuntu-latest
     steps:
