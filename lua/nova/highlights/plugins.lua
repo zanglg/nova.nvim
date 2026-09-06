@@ -24,6 +24,9 @@ return function(colors)
         BqfPreviewBufLabel = { link = "Comment" },
         BqfSign = { fg = colors.attention },
 
+        -- blink.cmp
+        BlinkCmpLabelMatch = { fg = colors.match, bold = true },
+
         -- nvim-cmp
         CmpItemAbbr = { fg = colors.foreground },
         CmpItemAbbrDeprecated = { link = "Ignore" },
