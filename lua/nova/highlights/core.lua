@@ -68,6 +68,10 @@ return function(colors, opts)
         PmenuExtraSel = { fg = colors.comment, bg = colors.selection },
         PmenuMatch = { fg = colors.attention, bg = colors.popupmenu },
         PmenuMatchSel = { fg = colors.attention, bg = colors.selection },
+        PreInsert = { fg = colors.inconspicuous },
+        ComplMatchIns = { fg = colors.inconspicuous },
+        ComplHint = { fg = colors.inconspicuous },
+        ComplHintMore = { fg = colors.inconspicuous },
 
         WildMenu = { bg = colors.selection },
         QuickFixLine = { bg = colors.selection },
