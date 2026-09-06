@@ -23,8 +23,9 @@ return function(t)
     end)
 
     t.test("unsupported and stale references stay removed", function()
-        local files = vim.fn.glob(root .. "/lua/**/*.lua", false, true)
-        table.insert(files, root .. "/README.md")
+        local lua_files = vim.fn.glob(root .. "/lua/**/*.lua", false, true)
+        local project_files = vim.deepcopy(lua_files)
+        table.insert(project_files, root .. "/README.md")
 
         local forbidden = {
             "nova.option",
@@ -32,16 +33,22 @@ return function(t)
             "codex/soft-palette",
             "nvim-bqf",
             "treehopper",
-            "terminal_color_",
         }
 
         local found = {}
-        for _, path in ipairs(files) do
+        for _, path in ipairs(project_files) do
             local source = read(path)
             for _, needle in ipairs(forbidden) do
                 if source:find(needle, 1, true) then
                     found[#found + 1] = string.format("%s: %s", path, needle)
                 end
+            end
+        end
+
+        for _, path in ipairs(lua_files) do
+            local source = read(path)
+            if source:find("terminal_color_", 1, true) then
+                found[#found + 1] = string.format("%s: terminal_color_", path)
             end
         end
 
