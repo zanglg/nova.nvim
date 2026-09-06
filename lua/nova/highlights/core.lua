@@ -13,9 +13,9 @@ return function(colors, opts)
         CursorLineSign = { fg = colors.comment },
         SignColumn = { fg = colors.comment, bg = background },
 
-        CurSearch = { fg = colors.red, reverse = true },
-        IncSearch = { fg = colors.attention, reverse = true },
-        Search = { fg = colors.attention, reverse = true },
+        CurSearch = { fg = colors.current_match, reverse = true },
+        IncSearch = { fg = colors.current_match, reverse = true },
+        Search = { fg = colors.match, reverse = true },
         MatchParen = { fg = colors.attention, reverse = true },
         Substitute = { fg = colors.attention, reverse = true },
 
