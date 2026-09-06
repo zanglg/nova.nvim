@@ -1,9 +1,14 @@
 local M = {}
 
+---@param opts? NovaConfig
+---@return NovaConfig
 function M.setup(opts)
     return require("nova.config").setup(opts)
 end
 
+---@return NovaColors colors
+---@return NovaHighlights groups
+---@return NovaConfig opts
 function M.load()
     local config = require("nova.config")
     local opts = config.options

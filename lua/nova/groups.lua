@@ -6,6 +6,9 @@ local builders = {
     require("nova.highlights.plugins"),
 }
 
+---@param colors NovaColors
+---@param opts NovaConfig
+---@return NovaHighlights
 return function(colors, opts)
     local groups = {}
 

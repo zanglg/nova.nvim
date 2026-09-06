@@ -2,6 +2,32 @@ local utils = require("nova.utils")
 local hsl2rgb = utils.hsl2rgb
 local blend = utils.blend
 
+---@class NovaColors
+---@field foreground string
+---@field comment string
+---@field inconspicuous string
+---@field splitline string
+---@field selection string
+---@field popupmenu string
+---@field stripline string
+---@field background string
+---@field red string
+---@field orange string
+---@field yellow string
+---@field green string
+---@field teal string
+---@field blue string
+---@field violet string
+---@field purple string
+---@field match string
+---@field current_match string
+---@field target string
+---@field attention string
+---@field diff_add_bg string
+---@field diff_change_bg string
+---@field diff_delete_bg string
+---@field diff_text_bg string
+
 -- stylua: ignore
 local colors = {
     dark = {
@@ -56,6 +82,9 @@ local colors = {
 
 local M = {}
 
+---@param opts NovaConfig
+---@param theme "dark"|"light"
+---@return NovaColors
 function M.setup(opts, theme)
     local palette = vim.tbl_extend("force", vim.deepcopy(colors[theme]), opts.colors or {})
     local diff_alpha = theme == "light" and 0.08 or 0.12
@@ -74,7 +103,7 @@ function M.setup(opts, theme)
         palette.diff_text_bg = blend(palette.blue, palette.background, diff_text_alpha)
     end
 
-    return palette
+    return palette --[[@as NovaColors]]
 end
 
 return M

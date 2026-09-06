@@ -1,5 +1,15 @@
+---@alias NovaTheme "auto"|"dark"|"light"
+---@alias NovaHighlights table<string, vim.api.keyset.highlight>
+
+---@class NovaConfig
+---@field theme? NovaTheme
+---@field transparent? boolean
+---@field colors? table<string, string>
+---@field overrides? NovaHighlights|fun(colors: NovaColors): NovaHighlights
+
 local M = {}
 
+---@type NovaConfig
 M.defaults = {
     theme = "auto",
     transparent = false,
@@ -18,6 +28,7 @@ for name in pairs(M.defaults) do
     VALID_OPTIONS[name] = true
 end
 
+---@param opts? NovaConfig
 local function validate_user_options(opts)
     if opts == nil then
         return
@@ -34,6 +45,7 @@ local function validate_user_options(opts)
     end
 end
 
+---@param opts NovaConfig
 local function validate(opts)
     if not VALID_THEMES[opts.theme] then
         error(string.format("nova: invalid theme %q (expected 'auto', 'dark', or 'light')", tostring(opts.theme)))
@@ -52,8 +64,11 @@ local function validate(opts)
     end
 end
 
+---@type NovaConfig
 M.options = vim.deepcopy(M.defaults)
 
+---@param opts? NovaConfig
+---@return NovaConfig
 function M.setup(opts)
     validate_user_options(opts)
     local options = vim.tbl_deep_extend("force", vim.deepcopy(M.defaults), opts or {})
@@ -62,12 +77,13 @@ function M.setup(opts)
     return options
 end
 
+---@return "dark"|"light"
 function M.resolve_theme()
     if M.options.theme == "auto" then
         return vim.o.background == "light" and "light" or "dark"
     end
 
-    return M.options.theme
+    return M.options.theme --[[@as "dark"|"light"]]
 end
 
 return M
