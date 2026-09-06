@@ -24,9 +24,9 @@ local colors = {
         violet        = hsl2rgb(255, 0.50, 0.65),
         purple        = hsl2rgb(291, 0.65, 0.65),
 
-        match         = hsl2rgb(188, 0.50, 0.60),
+        match         = hsl2rgb(076, 0.55, 0.58),
         current_match = hsl2rgb(032, 0.58, 0.60),
-        target        = hsl2rgb(076, 0.55, 0.58),
+        target        = hsl2rgb(188, 0.50, 0.60),
         attention     = hsl2rgb(067, 0.50, 0.50),
     },
     light = {
@@ -48,9 +48,9 @@ local colors = {
         violet        = hsl2rgb(240, 0.50, 0.60),
         purple        = hsl2rgb(301, 0.63, 0.43),
 
-        match         = hsl2rgb(188, 0.62, 0.36),
+        match         = hsl2rgb(076, 0.58, 0.38),
         current_match = hsl2rgb(032, 0.62, 0.42),
-        target        = hsl2rgb(076, 0.58, 0.38),
+        target        = hsl2rgb(188, 0.62, 0.36),
         attention     = hsl2rgb(066, 0.50, 0.40),
     }
 }
