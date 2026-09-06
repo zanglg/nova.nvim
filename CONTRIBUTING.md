@@ -2,6 +2,20 @@
 
 Development currently targets the `dev` branch and Neovim 0.12.5.
 
+## Branch workflow
+
+`dev` is Nova's long-lived active integration branch.
+
+For future feature work:
+
+1. Create a feature branch from the current `dev` head.
+2. Keep the feature branch focused on one coherent change.
+3. Squash-merge the feature branch back into `dev` after review and verification.
+4. Continue integrating completed work on `dev`.
+5. After the full theme audit and release verification are complete, merge `dev` directly into `master`.
+
+`master` is the stable/release branch. Nova does not use `main` as part of the current branch workflow.
+
 ## Plugin integration scope
 
 Nova keeps a plugin integration when at least one of these is true:
@@ -32,11 +46,23 @@ Nova has eight semantic accent colors available for rainbow use:
 
 When an integration exposes eight rainbow slots, use all eight colors. When it exposes seven slots, omit `orange` and use the other seven colors.
 
+## Terminal color policy
+
+Nova targets true-color Neovim UIs. Do not add or maintain `terminal_color_0` through `terminal_color_15` mappings as part of the theme.
+
+Terminal ANSI palettes are intentionally left to the terminal emulator or user configuration. Nova's palette and highlight design should be evaluated in true color rather than constrained to a secondary fixed 16-color approximation.
+
 ## Changes and verification
 
-Keep commits focused on one conceptual change. Palette changes, highlight semantics, plugin coverage, and structural refactors should remain separate when possible.
+Keep commits focused on one conceptual change. Palette changes, highlight semantics, plugin coverage, structural refactors, and documentation changes should remain separate when possible.
 
-Run the headless suite before considering a change complete:
+Before considering a change complete, check formatting:
+
+```sh
+stylua --check .
+```
+
+Then run the headless suite:
 
 ```sh
 nvim --headless -u NONE --cmd "set rtp+=$PWD" -l tests/run.lua
