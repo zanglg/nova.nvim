@@ -16,8 +16,8 @@ return function(colors, opts)
         CurSearch = { fg = colors.current_match, reverse = true },
         IncSearch = { fg = colors.current_match, reverse = true },
         Search = { fg = colors.match, reverse = true },
-        MatchParen = { fg = colors.attention, bold = true },
-        Substitute = { fg = colors.attention, reverse = true },
+        MatchParen = { fg = colors.orange, bold = true },
+        Substitute = { fg = colors.red, reverse = true },
 
         Folded = { fg = colors.inconspicuous },
         FoldColumn = { fg = colors.comment, bg = background },

@@ -27,7 +27,6 @@ return function(t)
             "match",
             "current_match",
             "target",
-            "attention",
             "diff_add_bg",
             "diff_change_bg",
             "diff_delete_bg",

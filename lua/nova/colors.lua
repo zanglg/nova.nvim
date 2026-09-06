@@ -22,7 +22,6 @@ local blend = utils.blend
 ---@field match string
 ---@field current_match string
 ---@field target string
----@field attention string
 ---@field diff_add_bg string
 ---@field diff_change_bg string
 ---@field diff_delete_bg string
@@ -52,7 +51,6 @@ local colors = {
         match         = hsl2rgb(076, 0.55, 0.58),
         current_match = hsl2rgb(032, 0.58, 0.60),
         target        = hsl2rgb(188, 0.50, 0.60),
-        attention     = hsl2rgb(067, 0.50, 0.50),
     },
     light = {
         foreground    = hsl2rgb(228, 0.08, 0.24),
@@ -76,7 +74,6 @@ local colors = {
         match         = hsl2rgb(076, 0.58, 0.27),
         current_match = hsl2rgb(032, 0.62, 0.35),
         target        = hsl2rgb(188, 0.62, 0.30),
-        attention     = hsl2rgb(066, 0.50, 0.40),
     },
 }
 
