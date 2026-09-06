@@ -1,11 +1,17 @@
 local M = {}
 
 function M.setup(opts)
-    require("nova.option").setup(opts)
+    return require("nova.option").setup(opts)
 end
 
 function M.load()
-    local opts = require("nova.option").option
+    local config = require("nova.option")
+    local opts = config.option
+    local theme = config.resolve_theme()
+
+    if opts.theme ~= "auto" and vim.o.background ~= theme then
+        vim.o.background = theme
+    end
 
     vim.cmd("highlight clear")
     if vim.fn.exists("syntax_on") == 1 then
@@ -15,8 +21,7 @@ function M.load()
     vim.o.termguicolors = true
     vim.g.colors_name = "nova"
 
-    package.loaded["nova.colors"] = nil
-    local colors = require("nova.colors")
+    local colors = require("nova.colors").setup(opts, theme)
     local groups = require("nova.groups")(colors, opts)
 
     for name, highlight in pairs(groups) do

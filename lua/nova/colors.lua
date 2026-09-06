@@ -1,7 +1,6 @@
 local utils = require("nova.utils")
 local hsl2rgb = utils.hsl2rgb
 local blend = utils.blend
-local option = require("nova.option").option
 
 -- stylua: ignore
 local colors = {
@@ -52,17 +51,30 @@ local colors = {
         current_match = hsl2rgb(032, 0.62, 0.42),
         target        = hsl2rgb(188, 0.62, 0.36),
         attention     = hsl2rgb(066, 0.50, 0.40),
-    }
+    },
 }
 
-local theme = colors[option.theme] and option.theme or "dark"
-local palette = colors[theme]
-local diff_alpha = theme == "light" and 0.08 or 0.12
-local diff_text_alpha = theme == "light" and 0.14 or 0.20
+local M = {}
 
-palette.diff_add_bg = blend(palette.green, palette.background, diff_alpha)
-palette.diff_change_bg = blend(palette.blue, palette.background, diff_alpha)
-palette.diff_delete_bg = blend(palette.red, palette.background, diff_alpha)
-palette.diff_text_bg = blend(palette.blue, palette.background, diff_text_alpha)
+function M.setup(opts, theme)
+    local palette = vim.tbl_extend("force", vim.deepcopy(colors[theme]), opts.colors or {})
+    local diff_alpha = theme == "light" and 0.08 or 0.12
+    local diff_text_alpha = theme == "light" and 0.14 or 0.20
 
-return palette
+    if opts.colors.diff_add_bg == nil then
+        palette.diff_add_bg = blend(palette.green, palette.background, diff_alpha)
+    end
+    if opts.colors.diff_change_bg == nil then
+        palette.diff_change_bg = blend(palette.blue, palette.background, diff_alpha)
+    end
+    if opts.colors.diff_delete_bg == nil then
+        palette.diff_delete_bg = blend(palette.red, palette.background, diff_alpha)
+    end
+    if opts.colors.diff_text_bg == nil then
+        palette.diff_text_bg = blend(palette.blue, palette.background, diff_text_alpha)
+    end
+
+    return palette
+end
+
+return M
