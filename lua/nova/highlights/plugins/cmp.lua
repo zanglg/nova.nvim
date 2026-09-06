@@ -1,5 +1,7 @@
+local kinds = require("nova.highlights.plugins.completion_kinds")
+
 return function(colors)
-    return {
+    local groups = {
         CmpItemAbbr = { fg = colors.foreground },
         CmpItemAbbrDeprecated = { link = "Ignore" },
         CmpItemAbbrMatch = { fg = colors.match },
@@ -9,61 +11,12 @@ return function(colors)
         CmpItemMenu = { fg = colors.comment },
 
         CmpItemKindDefault = { link = "CmpItemKind" },
-        CmpItemKindText = { link = "Identifier" },
-        CmpItemKindMethod = { link = "@lsp.type.method" },
-        CmpItemKindFunction = { link = "@lsp.type.function" },
-        CmpItemKindConstructor = { link = "@lsp.type.function" },
-        CmpItemKindField = { link = "@lsp.type.property" },
-        CmpItemKindVariable = { link = "@lsp.type.variable" },
-        CmpItemKindClass = { link = "@lsp.type.class" },
-        CmpItemKindInterface = { link = "@lsp.type.interface" },
-        CmpItemKindModule = { link = "@lsp.type.namespace" },
-        CmpItemKindProperty = { link = "@lsp.type.property" },
-        CmpItemKindUnit = { link = "Constant" },
-        CmpItemKindValue = { link = "Constant" },
-        CmpItemKindEnum = { link = "@lsp.type.enum" },
-        CmpItemKindKeyword = { link = "Keyword" },
-        CmpItemKindSnippet = { link = "@lsp.type.macro" },
-        CmpItemKindColor = { link = "Constant" },
-        CmpItemKindFile = { link = "Directory" },
-        CmpItemKindReference = { link = "Identifier" },
-        CmpItemKindFolder = { link = "Directory" },
-        CmpItemKindEnumMember = { link = "@lsp.type.enumMember" },
-        CmpItemKindConstant = { link = "Constant" },
-        CmpItemKindStruct = { link = "@lsp.type.struct" },
-        CmpItemKindEvent = { link = "@lsp.type.event" },
-        CmpItemKindOperator = { link = "Operator" },
-        CmpItemKindTypeParameter = { link = "@lsp.type.typeParameter" },
-
         CmpItemKindDecorator = { link = "@lsp.type.decorator" },
         CmpItemKindMacro = { link = "@lsp.type.macro" },
         CmpItemKindNamespace = { link = "@lsp.type.namespace" },
         CmpItemKindType = { link = "@lsp.type.type" },
-
-        CmpItemKindTextIcon = { link = "CmpItemKindText" },
-        CmpItemKindMethodIcon = { link = "CmpItemKindMethod" },
-        CmpItemKindFunctionIcon = { link = "CmpItemKindFunction" },
-        CmpItemKindConstructorIcon = { link = "CmpItemKindConstructor" },
-        CmpItemKindFieldIcon = { link = "CmpItemKindField" },
-        CmpItemKindVariableIcon = { link = "CmpItemKindVariable" },
-        CmpItemKindClassIcon = { link = "CmpItemKindClass" },
-        CmpItemKindInterfaceIcon = { link = "CmpItemKindInterface" },
-        CmpItemKindModuleIcon = { link = "CmpItemKindModule" },
-        CmpItemKindPropertyIcon = { link = "CmpItemKindProperty" },
-        CmpItemKindUnitIcon = { link = "CmpItemKindUnit" },
-        CmpItemKindValueIcon = { link = "CmpItemKindValue" },
-        CmpItemKindEnumIcon = { link = "CmpItemKindEnum" },
-        CmpItemKindKeywordIcon = { link = "CmpItemKindKeyword" },
-        CmpItemKindSnippetIcon = { link = "CmpItemKindSnippet" },
-        CmpItemKindColorIcon = { link = "CmpItemKindColor" },
-        CmpItemKindFileIcon = { link = "CmpItemKindFile" },
-        CmpItemKindReferenceIcon = { link = "CmpItemKindReference" },
-        CmpItemKindFolderIcon = { link = "CmpItemKindFolder" },
-        CmpItemKindEnumMemberIcon = { link = "CmpItemKindEnumMember" },
-        CmpItemKindConstantIcon = { link = "CmpItemKindConstant" },
-        CmpItemKindStructIcon = { link = "CmpItemKindStruct" },
-        CmpItemKindEventIcon = { link = "CmpItemKindEvent" },
-        CmpItemKindOperatorIcon = { link = "CmpItemKindOperator" },
-        CmpItemKindTypeParameterIcon = { link = "CmpItemKindTypeParameter" },
     }
+
+    groups = vim.tbl_extend("force", groups, kinds.groups("CmpItemKind"))
+    return vim.tbl_extend("force", groups, kinds.icons("CmpItemKind"))
 end

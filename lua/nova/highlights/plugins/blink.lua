@@ -1,37 +1,16 @@
+local kinds = require("nova.highlights.plugins.completion_kinds")
+
 return function(colors)
-    return {
+    local groups = {
         BlinkCmpDocBorder = { link = "FloatBorder" },
         BlinkCmpLabelDeprecated = { fg = colors.inconspicuous, strikethrough = true },
         BlinkCmpMenuBorder = { link = "FloatBorder" },
         BlinkCmpSignatureHelpBorder = { link = "FloatBorder" },
-        BlinkCmpKindText = { link = "Identifier" },
-        BlinkCmpKindMethod = { link = "@lsp.type.method" },
-        BlinkCmpKindFunction = { link = "@lsp.type.function" },
-        BlinkCmpKindConstructor = { link = "@lsp.type.function" },
-        BlinkCmpKindField = { link = "@lsp.type.property" },
-        BlinkCmpKindVariable = { link = "@lsp.type.variable" },
-        BlinkCmpKindClass = { link = "@lsp.type.class" },
-        BlinkCmpKindInterface = { link = "@lsp.type.interface" },
-        BlinkCmpKindModule = { link = "@lsp.type.namespace" },
-        BlinkCmpKindProperty = { link = "@lsp.type.property" },
-        BlinkCmpKindUnit = { link = "Constant" },
-        BlinkCmpKindValue = { link = "Constant" },
-        BlinkCmpKindEnum = { link = "@lsp.type.enum" },
-        BlinkCmpKindKeyword = { link = "Keyword" },
-        BlinkCmpKindSnippet = { link = "@lsp.type.macro" },
-        BlinkCmpKindColor = { link = "Constant" },
-        BlinkCmpKindFile = { link = "Directory" },
-        BlinkCmpKindReference = { link = "Identifier" },
-        BlinkCmpKindFolder = { link = "Directory" },
-        BlinkCmpKindEnumMember = { link = "@lsp.type.enumMember" },
-        BlinkCmpKindConstant = { link = "Constant" },
-        BlinkCmpKindStruct = { link = "@lsp.type.struct" },
-        BlinkCmpKindEvent = { link = "@lsp.type.event" },
-        BlinkCmpKindOperator = { link = "Operator" },
-        BlinkCmpKindTypeParameter = { link = "@lsp.type.typeParameter" },
         BlinkCmpKindCopilot = { fg = colors.teal },
         BlinkCmpKindCodeium = { fg = colors.teal },
         BlinkCmpKindSupermaven = { fg = colors.teal },
         BlinkCmpKindTabNine = { fg = colors.teal },
     }
+
+    return vim.tbl_extend("force", groups, kinds.groups("BlinkCmpKind"))
 end
