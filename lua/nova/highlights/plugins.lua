@@ -310,10 +310,12 @@ return function(colors)
         WhichKeyValue = { link = "Comment" },
 
         -- rainbow-delimiters.nvim
+        -- The plugin currently exposes seven default slots. Nova intentionally
+        -- omits orange in the seven-color cycle and uses purple in that slot.
         RainbowDelimiterRed = { fg = colors.red },
         RainbowDelimiterYellow = { fg = colors.yellow },
         RainbowDelimiterBlue = { fg = colors.blue },
-        RainbowDelimiterOrange = { fg = colors.orange },
+        RainbowDelimiterOrange = { fg = colors.purple },
         RainbowDelimiterGreen = { fg = colors.green },
         RainbowDelimiterViolet = { fg = colors.violet },
         RainbowDelimiterCyan = { fg = colors.teal },
