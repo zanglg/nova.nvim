@@ -7,13 +7,13 @@ return function(colors)
 
         -- flash.nvim
         FlashBackdrop = { fg = colors.comment, bold = false },
-        FlashMatch = { fg = colors.teal, bold = true },
-        FlashCurrent = { fg = colors.orange, bold = true },
-        FlashLabel = { fg = colors.attention, bold = true },
+        FlashMatch = { fg = colors.match, bold = true },
+        FlashCurrent = { fg = colors.current_match, bold = true },
+        FlashLabel = { fg = colors.target, bold = true },
 
         -- telescope.nvim
         TelescopeBorder = { link = "FloatBorder" },
-        TelescopeMatching = { fg = colors.attention },
+        TelescopeMatching = { fg = colors.match },
 
         -- nvim-bqf
         BqfPreviewFloat = { link = "Normal" },
@@ -27,8 +27,8 @@ return function(colors)
         -- nvim-cmp
         CmpItemAbbr = { fg = colors.foreground },
         CmpItemAbbrDeprecated = { link = "Ignore" },
-        CmpItemAbbrMatch = { fg = colors.attention },
-        CmpItemAbbrMatchFuzzy = { fg = colors.attention },
+        CmpItemAbbrMatch = { fg = colors.match },
+        CmpItemAbbrMatchFuzzy = { fg = colors.match },
         CmpItemKind = { fg = colors.comment },
         CmpItemKindIcon = { link = "CmpItemKind" },
         CmpItemMenu = { fg = colors.comment },
@@ -100,7 +100,7 @@ return function(colors)
         WhichKeyValue = { link = "Comment" },
 
         -- nvim-treehopper
-        TSNodeKey = { fg = colors.attention, bold = true },
+        TSNodeKey = { fg = colors.target, bold = true },
         TSNodeUnmatched = { link = "Comment" },
 
         -- rainbow-delimiters.nvim
