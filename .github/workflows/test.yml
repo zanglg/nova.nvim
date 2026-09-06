@@ -1,0 +1,25 @@
+name: test
+
+on:
+  push:
+    branches:
+      - dev
+      - main
+      - master
+  pull_request:
+
+jobs:
+  headless:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Neovim 0.12.5
+        run: |
+          curl -fsSL https://github.com/neovim/neovim/releases/download/v0.12.5/nvim-linux-x86_64.tar.gz | tar xz
+          echo "$PWD/nvim-linux-x86_64/bin" >> "$GITHUB_PATH"
+
+      - name: Run headless tests
+        run: |
+          nvim --version | head -n 1
+          nvim --headless -u NONE --cmd "set rtp+=$PWD" -l tests/run.lua
