@@ -74,10 +74,10 @@ return function(colors, opts)
         Visual = { bg = colors.selection },
         VisualNOS = { bg = colors.selection },
 
-        SpellBad = { fg = colors.red, underline = true },
-        SpellCap = { fg = colors.red, underline = true },
-        SpellLocal = { fg = colors.red, underline = true },
-        SpellRare = { fg = colors.red, underline = true },
+        SpellBad = { undercurl = true, sp = colors.red },
+        SpellCap = { undercurl = true, sp = colors.yellow },
+        SpellLocal = { undercurl = true, sp = colors.green },
+        SpellRare = { undercurl = true, sp = colors.teal },
 
         StatusLine = { fg = colors.blue, bg = background },
         StatusLineNC = { bg = colors.popupmenu },
