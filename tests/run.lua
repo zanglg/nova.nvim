@@ -11,6 +11,7 @@ for _, spec in ipairs({
     "colors_spec",
     "groups_spec",
     "load_spec",
+    "static_spec",
 }) do
     require(spec)(t)
 end
