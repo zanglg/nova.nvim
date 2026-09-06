@@ -1,16 +1,9 @@
 return function(colors)
     return {
-        BlinkCmpDoc = { link = "NormalFloat" },
         BlinkCmpDocBorder = { link = "FloatBorder" },
-        BlinkCmpGhostText = { fg = colors.inconspicuous },
-        BlinkCmpLabel = { fg = colors.foreground },
         BlinkCmpLabelDeprecated = { fg = colors.inconspicuous, strikethrough = true },
-        BlinkCmpLabelMatch = { fg = colors.match },
-        BlinkCmpMenu = { link = "NormalFloat" },
         BlinkCmpMenuBorder = { link = "FloatBorder" },
-        BlinkCmpSignatureHelp = { link = "NormalFloat" },
         BlinkCmpSignatureHelpBorder = { link = "FloatBorder" },
-        BlinkCmpKindDefault = { fg = colors.comment },
         BlinkCmpKindText = { link = "Identifier" },
         BlinkCmpKindMethod = { link = "@lsp.type.method" },
         BlinkCmpKindFunction = { link = "@lsp.type.function" },

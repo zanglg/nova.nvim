@@ -9,13 +9,11 @@ local builders = {
     require("nova.highlights.plugins.mason"),
     require("nova.highlights.plugins.luasnip"),
     require("nova.highlights.plugins.trouble"),
-    require("nova.highlights.plugins.todo_comments"),
     require("nova.highlights.plugins.ibl"),
     require("nova.highlights.plugins.dap"),
     require("nova.highlights.plugins.snacks"),
     require("nova.highlights.plugins.blink"),
     require("nova.highlights.plugins.cmp"),
-    require("nova.highlights.plugins.which_key"),
     require("nova.highlights.plugins.rainbow"),
 }
 
