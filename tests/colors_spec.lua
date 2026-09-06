@@ -56,6 +56,36 @@ return function(t)
         t.eq(custom.diff_add_bg, "#123456")
     end)
 
+    t.test("color override functions receive palette and theme", function()
+        local seen_theme
+        local seen_background
+        local custom = colors.setup(opts(function(base, theme)
+            seen_theme = theme
+            seen_background = base.background
+            return { blue = "#123456" }
+        end), "light")
+
+        t.eq(seen_theme, "light")
+        t.truthy(seen_background)
+        t.eq(custom.blue, "#123456")
+    end)
+
+    t.test("color override functions recompute derived colors", function()
+        local base = colors.setup(opts(), "dark")
+        local custom = colors.setup(opts(function()
+            return { green = "#000000" }
+        end), "dark")
+        t.ne(custom.diff_add_bg, base.diff_add_bg)
+    end)
+
+    t.test("color override functions validate their return value", function()
+        t.raises(function()
+            colors.setup(opts(function()
+                return true
+            end), "dark")
+        end, "colors function must return a table or nil")
+    end)
+
     t.test("palette setup does not mutate source palettes", function()
         local first = colors.setup(opts(), "dark")
         first.foreground = "#000000"

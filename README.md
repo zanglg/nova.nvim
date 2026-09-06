@@ -1,10 +1,10 @@
 # nova colorscheme for neovim
 
-*A (very) WIP colorscheme for neovim.*
+A focused Lua colorscheme for Neovim.
 
 ## 🎨 Preview
 
-**The color and group was not fixed finally, so screenshot may have a big change.**
+Screenshots may evolve while the palette and highlight coverage are refined.
 
 - **dark mode:**
 
@@ -68,7 +68,8 @@ require("nova").setup({
 
 - `theme`: `"auto"`, `"dark"`, or `"light"`.
 - `transparent`: removes Nova's main editor background when `true`.
-- `colors`: overrides palette entries before highlights are built.
+- `colors`: a palette override table or a function receiving the base palette
+  and resolved `"dark"`/`"light"` theme and returning an override table.
 - `overrides`: a table of highlight overrides or a function receiving the
   resolved Nova palette.
 
@@ -77,12 +78,27 @@ not silently ignored.
 
 ### Color overrides
 
+Table form:
+
 ```lua
 require("nova").setup({
     colors = {
         blue = "#80aaff",
         popupmenu = "#20263a",
     },
+})
+```
+
+Function form is useful with `theme = "auto"`:
+
+```lua
+require("nova").setup({
+    colors = function(colors, theme)
+        return {
+            blue = theme == "light" and "#356ac3" or "#80aaff",
+            target = colors.teal,
+        }
+    end,
 })
 ```
 

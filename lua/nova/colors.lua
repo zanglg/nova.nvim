@@ -86,20 +86,30 @@ local M = {}
 ---@param theme "dark"|"light"
 ---@return NovaColors
 function M.setup(opts, theme)
-    local palette = vim.tbl_extend("force", vim.deepcopy(colors[theme]), opts.colors or {})
+    local palette = vim.deepcopy(colors[theme])
+    local overrides = opts.colors or {}
+
+    if type(overrides) == "function" then
+        overrides = overrides(vim.deepcopy(palette), theme) or {}
+        if type(overrides) ~= "table" then
+            error("nova: colors function must return a table or nil")
+        end
+    end
+
+    palette = vim.tbl_extend("force", palette, overrides)
     local diff_alpha = theme == "light" and 0.08 or 0.12
     local diff_text_alpha = theme == "light" and 0.14 or 0.20
 
-    if opts.colors.diff_add_bg == nil then
+    if palette.diff_add_bg == nil then
         palette.diff_add_bg = blend(palette.green, palette.background, diff_alpha)
     end
-    if opts.colors.diff_change_bg == nil then
+    if palette.diff_change_bg == nil then
         palette.diff_change_bg = blend(palette.blue, palette.background, diff_alpha)
     end
-    if opts.colors.diff_delete_bg == nil then
+    if palette.diff_delete_bg == nil then
         palette.diff_delete_bg = blend(palette.red, palette.background, diff_alpha)
     end
-    if opts.colors.diff_text_bg == nil then
+    if palette.diff_text_bg == nil then
         palette.diff_text_bg = blend(palette.blue, palette.background, diff_text_alpha)
     end
 

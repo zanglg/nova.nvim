@@ -1,10 +1,11 @@
 ---@alias NovaTheme "auto"|"dark"|"light"
 ---@alias NovaHighlights table<string, vim.api.keyset.highlight>
+---@alias NovaColorOverrides table<string, string>
 
 ---@class NovaConfig
 ---@field theme? NovaTheme
 ---@field transparent? boolean
----@field colors? table<string, string>
+---@field colors? NovaColorOverrides|fun(colors: table<string, string>, theme: "dark"|"light"): NovaColorOverrides?
 ---@field overrides? NovaHighlights|fun(colors: NovaColors): NovaHighlights
 
 local M = {}
@@ -55,8 +56,8 @@ local function validate(opts)
         error("nova: transparent must be a boolean")
     end
 
-    if type(opts.colors) ~= "table" then
-        error("nova: colors must be a table")
+    if type(opts.colors) ~= "table" and type(opts.colors) ~= "function" then
+        error("nova: colors must be a table or function")
     end
 
     if type(opts.overrides) ~= "table" and type(opts.overrides) ~= "function" then

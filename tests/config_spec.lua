@@ -38,20 +38,27 @@ return function(t)
         end, "transparent must be a boolean")
 
         t.raises(function()
-            config.setup({ colors = function() end })
-        end, "colors must be a table")
+            config.setup({ colors = true })
+        end, "colors must be a table or function")
 
         t.raises(function()
             config.setup({ overrides = true })
         end, "overrides must be a table or function")
     end)
 
-    t.test("config accepts highlight override functions", function()
-        local override = function()
+    t.test("config accepts color and highlight override functions", function()
+        local color_override = function()
             return {}
         end
-        local opts = config.setup({ overrides = override })
-        t.eq(opts.overrides, override)
+        local highlight_override = function()
+            return {}
+        end
+        local opts = config.setup({
+            colors = color_override,
+            overrides = highlight_override,
+        })
+        t.eq(opts.colors, color_override)
+        t.eq(opts.overrides, highlight_override)
     end)
 
     t.test("auto theme follows background", function()
