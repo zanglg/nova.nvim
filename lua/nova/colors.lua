@@ -94,8 +94,8 @@ function M.setup(opts, theme)
     end
 
     palette = vim.tbl_extend("force", palette, overrides)
-    local diff_alpha = theme == "light" and 0.08 or 0.12
-    local diff_text_alpha = theme == "light" and 0.14 or 0.20
+    local diff_alpha = theme == "light" and 0.08 or 0.20
+    local diff_text_alpha = theme == "light" and 0.14 or 0.35
 
     if palette.diff_add_bg == nil then
         palette.diff_add_bg = blend(palette.green, palette.background, diff_alpha)
