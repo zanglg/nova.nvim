@@ -45,6 +45,7 @@ With lazy.nvim:
 ```lua
 require("nova").setup({
     theme = "auto", -- "auto", "dark", or "light"
+    variant = "default", -- "default" or "soft"
     transparent = false,
 })
 
@@ -52,6 +53,8 @@ vim.cmd.colorscheme("nova")
 ```
 
 `theme = "auto"` follows `vim.o.background`. Explicit `"dark"` or `"light"` values also synchronize `vim.o.background` so Neovim and plugin defaults use the same background mode as Nova.
+
+`variant = "soft"` keeps Nova's semantic color mapping while using lower-chroma, lower-contrast dark and light palettes. The default remains `"default"`.
 
 ### Lualine
 
@@ -70,6 +73,7 @@ Nova intentionally keeps its public configuration small:
 ```lua
 require("nova").setup({
     theme = "auto",
+    variant = "default",
     transparent = false,
     colors = {},
     overrides = {},
@@ -77,11 +81,25 @@ require("nova").setup({
 ```
 
 - `theme`: `"auto"`, `"dark"`, or `"light"`.
+- `variant`: `"default"` or `"soft"`. The soft variant reduces chroma and compresses contrast without changing Nova's highlight semantics.
 - `transparent`: removes Nova's main editor background when `true`.
-- `colors`: a palette override table or a function receiving the base palette and resolved `"dark"`/`"light"` theme and returning an override table.
+- `colors`: a palette override table or a function receiving the selected base palette and resolved `"dark"`/`"light"` theme and returning an override table.
 - `overrides`: a table of highlight overrides or a function receiving the resolved Nova palette.
 
 Unknown top-level options are rejected so stale or misspelled configuration is not silently ignored.
+
+### Soft variant
+
+The soft variant is intended for lower-stimulation editing while preserving Nova's existing semantic roles:
+
+```lua
+require("nova").setup({
+    theme = "dark",
+    variant = "soft",
+})
+```
+
+The variant only changes the palette. Core, Tree-sitter, LSP, and plugin highlight mappings remain shared with the default variant.
 
 ### Color overrides
 
