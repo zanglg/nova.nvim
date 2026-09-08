@@ -5,6 +5,29 @@ return function(t)
         return { colors = overrides or {}, variant = variant or "default" }
     end
 
+    local function relative_luminance(color)
+        local value = color:gsub("#", "")
+        local channels = {
+            tonumber(value:sub(1, 2), 16) / 255,
+            tonumber(value:sub(3, 4), 16) / 255,
+            tonumber(value:sub(5, 6), 16) / 255,
+        }
+
+        for index, channel in ipairs(channels) do
+            channels[index] = channel <= 0.04045 and channel / 12.92 or ((channel + 0.055) / 1.055) ^ 2.4
+        end
+
+        return channels[1] * 0.2126 + channels[2] * 0.7152 + channels[3] * 0.0722
+    end
+
+    local function contrast_ratio(foreground, background)
+        local foreground_luminance = relative_luminance(foreground)
+        local background_luminance = relative_luminance(background)
+        local lighter = math.max(foreground_luminance, background_luminance)
+        local darker = math.min(foreground_luminance, background_luminance)
+        return (lighter + 0.05) / (darker + 0.05)
+    end
+
     local required = {
         "foreground",
         "background",
@@ -38,6 +61,27 @@ return function(t)
                 for _, name in ipairs(required) do
                     t.truthy(palette[name], string.format("missing palette key: %s/%s/%s", variant, theme, name))
                 end
+            end
+        end
+    end)
+
+    t.test("muted palette hierarchy keeps comments above inconspicuous text", function()
+        for _, variant in ipairs({ "default", "dim", "soft" }) do
+            for _, theme in ipairs({ "dark", "light" }) do
+                local palette = colors.setup(opts(nil, variant), theme)
+                local comment_contrast = contrast_ratio(palette.comment, palette.background)
+                local inconspicuous_contrast = contrast_ratio(palette.inconspicuous, palette.background)
+
+                t.truthy(
+                    comment_contrast > inconspicuous_contrast,
+                    string.format(
+                        "expected comment contrast to exceed inconspicuous contrast: %s/%s (%.2f <= %.2f)",
+                        variant,
+                        theme,
+                        comment_contrast,
+                        inconspicuous_contrast
+                    )
+                )
             end
         end
     end)
