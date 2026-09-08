@@ -103,7 +103,7 @@ local colors = {
         },
         light = {
             foreground    = hsl2rgb(228, 0.07, 0.27),
-            comment       = hsl2rgb(228, 0.04, 0.56),
+            comment       = hsl2rgb(228, 0.04, 0.60),
             inconspicuous = hsl2rgb(225, 0.02, 0.68),
             splitline     = hsl2rgb(225, 0.04, 0.80),
             selection     = hsl2rgb(225, 0.04, 0.85),
@@ -151,7 +151,7 @@ local colors = {
         },
         light = {
             foreground    = hsl2rgb(228, 0.05, 0.27),
-            comment       = hsl2rgb(228, 0.04, 0.50),
+            comment       = hsl2rgb(228, 0.04, 0.62),
             inconspicuous = hsl2rgb(225, 0.02, 0.64),
             splitline     = hsl2rgb(225, 0.03, 0.80),
             selection     = hsl2rgb(225, 0.03, 0.86),
