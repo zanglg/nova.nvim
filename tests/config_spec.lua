@@ -4,6 +4,7 @@ return function(t)
     t.test("config uses stable defaults", function()
         local opts = config.setup()
         t.eq(opts.theme, "auto")
+        t.eq(opts.variant, "default")
         t.eq(opts.transparent, false)
         t.eq(opts.colors, {})
         t.eq(opts.overrides, {})
@@ -13,6 +14,13 @@ return function(t)
         for _, theme in ipairs({ "auto", "dark", "light" }) do
             local opts = config.setup({ theme = theme })
             t.eq(opts.theme, theme)
+        end
+    end)
+
+    t.test("config accepts supported variants", function()
+        for _, variant in ipairs({ "default", "dim", "soft" }) do
+            local opts = config.setup({ variant = variant })
+            t.eq(opts.variant, variant)
         end
     end)
 
@@ -26,6 +34,12 @@ return function(t)
         t.raises(function()
             config.setup({ theme = "sepia" })
         end, "invalid theme")
+    end)
+
+    t.test("config rejects invalid variant", function()
+        t.raises(function()
+            config.setup({ variant = "muted" })
+        end, "invalid variant")
     end)
 
     t.test("config validates option types", function()

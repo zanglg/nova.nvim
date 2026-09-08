@@ -45,6 +45,7 @@ With lazy.nvim:
 ```lua
 require("nova").setup({
     theme = "auto", -- "auto", "dark", or "light"
+    variant = "default", -- "default", "dim", or "soft"
     transparent = false,
 })
 
@@ -52,6 +53,14 @@ vim.cmd.colorscheme("nova")
 ```
 
 `theme = "auto"` follows `vim.o.background`. Explicit `"dark"` or `"light"` values also synchronize `vim.o.background` so Neovim and plugin defaults use the same background mode as Nova.
+
+Variants keep Nova's semantic color mapping while changing palette intensity. Dark and light variants intentionally do not apply the same transformation:
+
+- `"default"`: Nova's original higher-chroma palette.
+- `"dim"`: a middle palette. Dark reduces chroma and overall contrast; light primarily reduces chroma while preserving strong text contrast.
+- `"soft"`: the lowest-chroma palette. Dark further lowers visual energy and compresses contrast; light keeps foreground/background contrast high and mainly softens syntax chroma.
+
+All variants support both dark and light themes.
 
 ### Lualine
 
@@ -70,6 +79,7 @@ Nova intentionally keeps its public configuration small:
 ```lua
 require("nova").setup({
     theme = "auto",
+    variant = "default",
     transparent = false,
     colors = {},
     overrides = {},
@@ -77,11 +87,36 @@ require("nova").setup({
 ```
 
 - `theme`: `"auto"`, `"dark"`, or `"light"`.
+- `variant`: `"default"`, `"dim"`, or `"soft"`. Variants change palette intensity without changing Nova's highlight semantics.
 - `transparent`: removes Nova's main editor background when `true`.
-- `colors`: a palette override table or a function receiving the base palette and resolved `"dark"`/`"light"` theme and returning an override table.
+- `colors`: a palette override table or a function receiving the selected base palette and resolved `"dark"`/`"light"` theme and returning an override table.
 - `overrides`: a table of highlight overrides or a function receiving the resolved Nova palette.
 
 Unknown top-level options are rejected so stale or misspelled configuration is not silently ignored.
+
+### Variants
+
+Use `dim` for a middle-ground palette between `default` and `soft`:
+
+```lua
+require("nova").setup({
+    theme = "dark",
+    variant = "dim",
+})
+```
+
+Use `soft` for the lowest-chroma palette:
+
+```lua
+require("nova").setup({
+    theme = "dark",
+    variant = "soft",
+})
+```
+
+In dark mode, `dim` and `soft` progressively reduce chroma, overall contrast, and visual energy. In light mode, they primarily reduce syntax chroma while keeping foreground/background contrast strong for readability. The two appearance modes are tuned independently rather than forced into a mathematically symmetric transformation.
+
+Variants only change the palette. Core, Tree-sitter, LSP, and plugin highlight mappings remain shared.
 
 ### Color overrides
 
