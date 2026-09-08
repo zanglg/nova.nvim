@@ -29,51 +29,101 @@ local blend = utils.blend
 
 -- stylua: ignore
 local colors = {
-    dark = {
-        foreground    = hsl2rgb(225, 0.15, 0.75),
-        comment       = hsl2rgb(225, 0.15, 0.50),
-        inconspicuous = hsl2rgb(225, 0.15, 0.41),
-        splitline     = hsl2rgb(225, 0.27, 0.27),
-        selection     = hsl2rgb(225, 0.27, 0.24),
-        popupmenu     = hsl2rgb(225, 0.27, 0.21),
-        stripline     = hsl2rgb(225, 0.27, 0.18),
-        background    = hsl2rgb(225, 0.27, 0.15),
+    default = {
+        dark = {
+            foreground    = hsl2rgb(225, 0.15, 0.75),
+            comment       = hsl2rgb(225, 0.15, 0.50),
+            inconspicuous = hsl2rgb(225, 0.15, 0.41),
+            splitline     = hsl2rgb(225, 0.27, 0.27),
+            selection     = hsl2rgb(225, 0.27, 0.24),
+            popupmenu     = hsl2rgb(225, 0.27, 0.21),
+            stripline     = hsl2rgb(225, 0.27, 0.18),
+            background    = hsl2rgb(225, 0.27, 0.15),
 
-        red           = hsl2rgb(345, 0.63, 0.63),
-        orange        = hsl2rgb(020, 0.35, 0.52),
-        yellow        = hsl2rgb(037, 0.60, 0.60),
-        green         = hsl2rgb(123, 0.38, 0.57),
-        teal          = hsl2rgb(187, 0.47, 0.55),
-        blue          = hsl2rgb(220, 0.80, 0.65),
-        violet        = hsl2rgb(255, 0.50, 0.65),
-        purple        = hsl2rgb(291, 0.65, 0.65),
+            red           = hsl2rgb(345, 0.63, 0.63),
+            orange        = hsl2rgb(020, 0.35, 0.52),
+            yellow        = hsl2rgb(037, 0.60, 0.60),
+            green         = hsl2rgb(123, 0.38, 0.57),
+            teal          = hsl2rgb(187, 0.47, 0.55),
+            blue          = hsl2rgb(220, 0.80, 0.65),
+            violet        = hsl2rgb(255, 0.50, 0.65),
+            purple        = hsl2rgb(291, 0.65, 0.65),
 
-        match         = hsl2rgb(076, 0.55, 0.58),
-        current_match = hsl2rgb(032, 0.58, 0.60),
-        target        = hsl2rgb(188, 0.50, 0.60),
+            match         = hsl2rgb(076, 0.55, 0.58),
+            current_match = hsl2rgb(032, 0.58, 0.60),
+            target        = hsl2rgb(188, 0.50, 0.60),
+        },
+        light = {
+            foreground    = hsl2rgb(228, 0.08, 0.24),
+            comment       = hsl2rgb(228, 0.04, 0.58),
+            inconspicuous = hsl2rgb(000, 0.00, 0.70),
+            splitline     = hsl2rgb(000, 0.00, 0.80),
+            selection     = hsl2rgb(000, 0.00, 0.85),
+            popupmenu     = hsl2rgb(000, 0.00, 0.90),
+            stripline     = hsl2rgb(000, 0.00, 0.95),
+            background    = hsl2rgb(000, 0.00, 0.98),
+
+            red           = hsl2rgb(350, 0.66, 0.47),
+            orange        = hsl2rgb(020, 0.40, 0.45),
+            yellow        = hsl2rgb(045, 0.75, 0.40),
+            green         = hsl2rgb(123, 0.46, 0.34),
+            teal          = hsl2rgb(173, 0.95, 0.25),
+            blue          = hsl2rgb(212, 0.80, 0.42),
+            violet        = hsl2rgb(240, 0.50, 0.60),
+            purple        = hsl2rgb(301, 0.63, 0.43),
+
+            match         = hsl2rgb(076, 0.58, 0.27),
+            current_match = hsl2rgb(032, 0.62, 0.35),
+            target        = hsl2rgb(188, 0.62, 0.30),
+        },
     },
-    light = {
-        foreground    = hsl2rgb(228, 0.08, 0.24),
-        comment       = hsl2rgb(228, 0.04, 0.58),
-        inconspicuous = hsl2rgb(000, 0.00, 0.70),
-        splitline     = hsl2rgb(000, 0.00, 0.80),
-        selection     = hsl2rgb(000, 0.00, 0.85),
-        popupmenu     = hsl2rgb(000, 0.00, 0.90),
-        stripline     = hsl2rgb(000, 0.00, 0.95),
-        background    = hsl2rgb(000, 0.00, 0.98),
+    soft = {
+        dark = {
+            foreground    = hsl2rgb(225, 0.10, 0.70),
+            comment       = hsl2rgb(225, 0.10, 0.49),
+            inconspicuous = hsl2rgb(225, 0.09, 0.40),
+            splitline     = hsl2rgb(225, 0.15, 0.30),
+            selection     = hsl2rgb(225, 0.15, 0.27),
+            popupmenu     = hsl2rgb(225, 0.15, 0.23),
+            stripline     = hsl2rgb(225, 0.15, 0.205),
+            background    = hsl2rgb(225, 0.16, 0.18),
 
-        red           = hsl2rgb(350, 0.66, 0.47),
-        orange        = hsl2rgb(020, 0.40, 0.45),
-        yellow        = hsl2rgb(045, 0.75, 0.40),
-        green         = hsl2rgb(123, 0.46, 0.34),
-        teal          = hsl2rgb(173, 0.95, 0.25),
-        blue          = hsl2rgb(212, 0.80, 0.42),
-        violet        = hsl2rgb(240, 0.50, 0.60),
-        purple        = hsl2rgb(301, 0.63, 0.43),
+            red           = hsl2rgb(350, 0.34, 0.60),
+            orange        = hsl2rgb(020, 0.24, 0.54),
+            yellow        = hsl2rgb(040, 0.32, 0.56),
+            green         = hsl2rgb(125, 0.26, 0.55),
+            teal          = hsl2rgb(185, 0.28, 0.56),
+            blue          = hsl2rgb(215, 0.38, 0.62),
+            violet        = hsl2rgb(255, 0.28, 0.62),
+            purple        = hsl2rgb(290, 0.30, 0.62),
 
-        match         = hsl2rgb(076, 0.58, 0.27),
-        current_match = hsl2rgb(032, 0.62, 0.35),
-        target        = hsl2rgb(188, 0.62, 0.30),
+            match         = hsl2rgb(076, 0.30, 0.55),
+            current_match = hsl2rgb(032, 0.32, 0.57),
+            target        = hsl2rgb(188, 0.30, 0.57),
+        },
+        light = {
+            foreground    = hsl2rgb(228, 0.06, 0.30),
+            comment       = hsl2rgb(228, 0.04, 0.55),
+            inconspicuous = hsl2rgb(225, 0.03, 0.66),
+            splitline     = hsl2rgb(225, 0.07, 0.80),
+            selection     = hsl2rgb(225, 0.07, 0.85),
+            popupmenu     = hsl2rgb(225, 0.07, 0.90),
+            stripline     = hsl2rgb(225, 0.07, 0.935),
+            background    = hsl2rgb(225, 0.08, 0.96),
+
+            red           = hsl2rgb(350, 0.36, 0.45),
+            orange        = hsl2rgb(020, 0.28, 0.43),
+            yellow        = hsl2rgb(043, 0.38, 0.40),
+            green         = hsl2rgb(123, 0.30, 0.36),
+            teal          = hsl2rgb(183, 0.34, 0.36),
+            blue          = hsl2rgb(212, 0.40, 0.43),
+            violet        = hsl2rgb(248, 0.28, 0.48),
+            purple        = hsl2rgb(296, 0.30, 0.44),
+
+            match         = hsl2rgb(076, 0.34, 0.34),
+            current_match = hsl2rgb(032, 0.36, 0.38),
+            target        = hsl2rgb(188, 0.34, 0.36),
+        },
     },
 }
 
@@ -83,7 +133,8 @@ local M = {}
 ---@param theme "dark"|"light"
 ---@return NovaColors
 function M.setup(opts, theme)
-    local palette = vim.deepcopy(colors[theme])
+    local variant = opts.variant or "default"
+    local palette = vim.deepcopy(colors[variant][theme])
     local overrides = opts.colors or {}
 
     if type(overrides) == "function" then
