@@ -54,11 +54,11 @@ vim.cmd.colorscheme("nova")
 
 `theme = "auto"` follows `vim.o.background`. Explicit `"dark"` or `"light"` values also synchronize `vim.o.background` so Neovim and plugin defaults use the same background mode as Nova.
 
-Variants keep Nova's semantic color mapping while changing palette intensity:
+Variants keep Nova's semantic color mapping while changing palette intensity. Dark and light variants intentionally do not apply the same transformation:
 
 - `"default"`: Nova's original higher-chroma palette.
-- `"dim"`: a middle palette with restrained chroma and stronger syntax luminance separation.
-- `"soft"`: the lowest-chroma, narrowest-dynamic-range palette for lower-stimulation editing.
+- `"dim"`: a middle palette. Dark reduces chroma and overall contrast; light primarily reduces chroma while preserving strong text contrast.
+- `"soft"`: the lowest-chroma palette. Dark further lowers visual energy and compresses contrast; light keeps foreground/background contrast high and mainly softens syntax chroma.
 
 All variants support both dark and light themes.
 
@@ -96,7 +96,7 @@ Unknown top-level options are rejected so stale or misspelled configuration is n
 
 ### Variants
 
-Use `dim` for a middle-ground dark or light palette with more syntax articulation than `soft` and less visual intensity than `default`:
+Use `dim` for a middle-ground palette between `default` and `soft`:
 
 ```lua
 require("nova").setup({
@@ -105,7 +105,7 @@ require("nova").setup({
 })
 ```
 
-Use `soft` for lower-stimulation editing with compressed syntax contrast:
+Use `soft` for the lowest-chroma palette:
 
 ```lua
 require("nova").setup({
@@ -113,6 +113,8 @@ require("nova").setup({
     variant = "soft",
 })
 ```
+
+In dark mode, `dim` and `soft` progressively reduce chroma, overall contrast, and visual energy. In light mode, they primarily reduce syntax chroma while keeping foreground/background contrast strong for readability. The two appearance modes are tuned independently rather than forced into a mathematically symmetric transformation.
 
 Variants only change the palette. Core, Tree-sitter, LSP, and plugin highlight mappings remain shared.
 
