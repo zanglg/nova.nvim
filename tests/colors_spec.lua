@@ -1,8 +1,8 @@
 return function(t)
     local colors = require("nova.colors")
 
-    local function opts(overrides)
-        return { colors = overrides or {} }
+    local function opts(overrides, variant)
+        return { colors = overrides or {}, variant = variant or "default" }
     end
 
     t.test("dark palette exposes required primitives", function()
@@ -43,6 +43,18 @@ return function(t)
         t.ne(dark.foreground, light.foreground)
     end)
 
+    t.test("soft palette differs from default palette", function()
+        local default_dark = colors.setup(opts(nil, "default"), "dark")
+        local soft_dark = colors.setup(opts(nil, "soft"), "dark")
+        local default_light = colors.setup(opts(nil, "default"), "light")
+        local soft_light = colors.setup(opts(nil, "soft"), "light")
+
+        t.ne(default_dark.background, soft_dark.background)
+        t.ne(default_dark.blue, soft_dark.blue)
+        t.ne(default_light.background, soft_light.background)
+        t.ne(default_light.blue, soft_light.blue)
+    end)
+
     t.test("source color overrides recompute derived diff colors", function()
         local base = colors.setup(opts(), "dark")
         local custom = colors.setup(opts({ green = "#000000" }), "dark")
@@ -70,6 +82,19 @@ return function(t)
         t.eq(seen_theme, "light")
         t.truthy(seen_background)
         t.eq(custom.blue, "#123456")
+    end)
+
+    t.test("color override functions receive the selected variant palette", function()
+        local seen_background
+        local soft = colors.setup(
+            opts(function(base)
+                seen_background = base.background
+                return {}
+            end, "soft"),
+            "dark"
+        )
+
+        t.eq(seen_background, soft.background)
     end)
 
     t.test("color override functions recompute derived colors", function()
