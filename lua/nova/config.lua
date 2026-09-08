@@ -1,5 +1,5 @@
 ---@alias NovaTheme "auto"|"dark"|"light"
----@alias NovaVariant "default"|"soft"
+---@alias NovaVariant "default"|"dim"|"soft"
 ---@alias NovaHighlights table<string, vim.api.keyset.highlight>
 ---@alias NovaColorOverrides table<string, string>
 
@@ -29,6 +29,7 @@ local VALID_THEMES = {
 
 local VALID_VARIANTS = {
     default = true,
+    dim = true,
     soft = true,
 }
 
@@ -61,7 +62,7 @@ local function validate(opts)
     end
 
     if not VALID_VARIANTS[opts.variant] then
-        error(string.format("nova: invalid variant %q (expected 'default' or 'soft')", tostring(opts.variant)))
+        error(string.format("nova: invalid variant %q (expected 'default', 'dim', or 'soft')", tostring(opts.variant)))
     end
 
     if type(opts.transparent) ~= "boolean" then
