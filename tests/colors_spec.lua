@@ -5,34 +5,40 @@ return function(t)
         return { colors = overrides or {}, variant = variant or "default" }
     end
 
-    t.test("dark palette exposes required primitives", function()
-        local palette = colors.setup(opts(), "dark")
-        for _, name in ipairs({
-            "foreground",
-            "background",
-            "comment",
-            "inconspicuous",
-            "splitline",
-            "selection",
-            "popupmenu",
-            "stripline",
-            "red",
-            "orange",
-            "yellow",
-            "green",
-            "teal",
-            "blue",
-            "violet",
-            "purple",
-            "match",
-            "current_match",
-            "target",
-            "diff_add_bg",
-            "diff_change_bg",
-            "diff_delete_bg",
-            "diff_text_bg",
-        }) do
-            t.truthy(palette[name], "missing palette key: " .. name)
+    local required = {
+        "foreground",
+        "background",
+        "comment",
+        "inconspicuous",
+        "splitline",
+        "selection",
+        "popupmenu",
+        "stripline",
+        "red",
+        "orange",
+        "yellow",
+        "green",
+        "teal",
+        "blue",
+        "violet",
+        "purple",
+        "match",
+        "current_match",
+        "target",
+        "diff_add_bg",
+        "diff_change_bg",
+        "diff_delete_bg",
+        "diff_text_bg",
+    }
+
+    t.test("all palettes expose required primitives", function()
+        for _, variant in ipairs({ "default", "dim", "soft" }) do
+            for _, theme in ipairs({ "dark", "light" }) do
+                local palette = colors.setup(opts(nil, variant), theme)
+                for _, name in ipairs(required) do
+                    t.truthy(palette[name], string.format("missing palette key: %s/%s/%s", variant, theme, name))
+                end
+            end
         end
     end)
 
@@ -43,16 +49,17 @@ return function(t)
         t.ne(dark.foreground, light.foreground)
     end)
 
-    t.test("soft palette differs from default palette", function()
-        local default_dark = colors.setup(opts(nil, "default"), "dark")
-        local soft_dark = colors.setup(opts(nil, "soft"), "dark")
-        local default_light = colors.setup(opts(nil, "default"), "light")
-        local soft_light = colors.setup(opts(nil, "soft"), "light")
+    t.test("variants provide distinct palettes", function()
+        for _, theme in ipairs({ "dark", "light" }) do
+            local default = colors.setup(opts(nil, "default"), theme)
+            local dim = colors.setup(opts(nil, "dim"), theme)
+            local soft = colors.setup(opts(nil, "soft"), theme)
 
-        t.ne(default_dark.background, soft_dark.background)
-        t.ne(default_dark.blue, soft_dark.blue)
-        t.ne(default_light.background, soft_light.background)
-        t.ne(default_light.blue, soft_light.blue)
+            t.ne(default.background, dim.background)
+            t.ne(dim.background, soft.background)
+            t.ne(default.blue, dim.blue)
+            t.ne(dim.blue, soft.blue)
+        end
     end)
 
     t.test("source color overrides recompute derived diff colors", function()
@@ -85,16 +92,18 @@ return function(t)
     end)
 
     t.test("color override functions receive the selected variant palette", function()
-        local seen_background
-        local soft = colors.setup(
-            opts(function(base)
-                seen_background = base.background
-                return {}
-            end, "soft"),
-            "dark"
-        )
+        for _, variant in ipairs({ "default", "dim", "soft" }) do
+            local seen_background
+            local selected = colors.setup(
+                opts(function(base)
+                    seen_background = base.background
+                    return {}
+                end, variant),
+                "dark"
+            )
 
-        t.eq(seen_background, soft.background)
+            t.eq(seen_background, selected.background)
+        end
     end)
 
     t.test("color override functions recompute derived colors", function()
