@@ -1,9 +1,11 @@
 ---@alias NovaTheme "auto"|"dark"|"light"
+---@alias NovaVariant "default"|"soft"
 ---@alias NovaHighlights table<string, vim.api.keyset.highlight>
 ---@alias NovaColorOverrides table<string, string>
 
 ---@class NovaConfig
 ---@field theme? NovaTheme
+---@field variant? NovaVariant
 ---@field transparent? boolean
 ---@field colors? NovaColorOverrides|fun(colors: table<string, string>, theme: "dark"|"light"): NovaColorOverrides?
 ---@field overrides? NovaHighlights|fun(colors: NovaColors): NovaHighlights
@@ -13,6 +15,7 @@ local M = {}
 ---@type NovaConfig
 M.defaults = {
     theme = "auto",
+    variant = "default",
     transparent = false,
     colors = {},
     overrides = {},
@@ -22,6 +25,11 @@ local VALID_THEMES = {
     auto = true,
     dark = true,
     light = true,
+}
+
+local VALID_VARIANTS = {
+    default = true,
+    soft = true,
 }
 
 local VALID_OPTIONS = {}
@@ -50,6 +58,10 @@ end
 local function validate(opts)
     if not VALID_THEMES[opts.theme] then
         error(string.format("nova: invalid theme %q (expected 'auto', 'dark', or 'light')", tostring(opts.theme)))
+    end
+
+    if not VALID_VARIANTS[opts.variant] then
+        error(string.format("nova: invalid variant %q (expected 'default' or 'soft')", tostring(opts.variant)))
     end
 
     if type(opts.transparent) ~= "boolean" then
