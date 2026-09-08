@@ -18,7 +18,7 @@ return function(t)
     end)
 
     t.test("config accepts supported variants", function()
-        for _, variant in ipairs({ "default", "soft" }) do
+        for _, variant in ipairs({ "default", "dim", "soft" }) do
             local opts = config.setup({ variant = variant })
             t.eq(opts.variant, variant)
         end
