@@ -62,11 +62,11 @@ return function(colors)
         ["@lsp.type.typeParameter"] = { fg = colors.red },
         ["@lsp.type.variable"] = { fg = colors.foreground },
 
-        -- Keep modifiers style-only unless Nova already had a language-specific color.
+        -- Modifiers are style-only unless they carry a distinct semantic signal.
         ["@lsp.mod.deprecated"] = { strikethrough = true },
         ["@lsp.mod.readonly"] = {},
         ["@lsp.mod.defaultLibrary"] = {},
-        ["@lsp.mod.async"] = {},
+        ["@lsp.mod.async"] = { fg = colors.teal },
         ["@lsp.mod.static"] = {},
         ["@lsp.mod.declaration"] = {},
         ["@lsp.mod.definition"] = {},

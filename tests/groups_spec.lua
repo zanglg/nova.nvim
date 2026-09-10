@@ -22,6 +22,17 @@ return function(t)
         end
     end)
 
+    t.test("special semantic keywords use teal without recoloring generic operators", function()
+        local groups = build_groups(palette, { transparent = false, overrides = {} })
+
+        t.eq(groups["@keyword.coroutine"], { fg = palette.teal })
+        t.eq(groups["@keyword.operator"], { fg = palette.teal })
+        t.eq(groups["@keyword.modifier"], { link = "StorageClass" })
+        t.eq(groups["@lsp.mod.async"], { fg = palette.teal })
+        t.eq(groups["@operator"], { link = "Operator" })
+        t.eq(groups.Operator, { fg = palette.foreground })
+    end)
+
     t.test("plugin builders load without installed plugins", function()
         local groups = build_plugins(palette)
         t.eq(type(groups), "table")
