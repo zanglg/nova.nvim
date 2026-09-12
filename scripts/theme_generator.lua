@@ -291,6 +291,44 @@ local function ghostty(theme)
     return join(lines)
 end
 
+local function herdr(theme)
+    local mappings = {
+        { "accent", "blue" },
+        { "panel_bg", "background" },
+        { "sidebar_bg", "stripline" },
+        { "active_row_bg", "popupmenu" },
+        { "selection_bg", "selection" },
+        { "surface0", "popupmenu" },
+        { "surface1", "selection" },
+        { "surface_dim", "stripline" },
+        { "overlay0", "inconspicuous" },
+        { "overlay1", "comment" },
+        { "text", "foreground" },
+        { "subtext0", "comment" },
+        { "mauve", "purple" },
+        { "green", "green" },
+        { "yellow", "yellow" },
+        { "red", "red" },
+        { "blue", "blue" },
+        { "teal", "teal" },
+        { "peach", "orange" },
+    }
+    local lines = {
+        header("#"):gsub("\n$", ""),
+        "# Merge this fragment into ~/.config/herdr/config.toml.",
+        "[theme]",
+        'name = "terminal"',
+        "",
+        "[theme.custom]",
+    }
+
+    for _, mapping in ipairs(mappings) do
+        lines[#lines + 1] = string.format("%s = %q", mapping[1], theme.colors[mapping[2]])
+    end
+
+    return join(lines)
+end
+
 local function fzf(theme)
     local c = theme.colors
     local values = {
@@ -920,6 +958,7 @@ function M.generate(output)
         write(output, "alacritty/" .. theme.slug .. ".toml", alacritty(theme), files)
         write(output, "kitty/" .. theme.slug .. ".conf", kitty(theme), files)
         write(output, "ghostty/" .. theme.slug, ghostty(theme), files)
+        write(output, "herdr/" .. theme.slug .. ".toml", herdr(theme), files)
         write(output, "fzf/" .. theme.slug .. ".sh", fzf(theme), files)
         write(output, "helix/" .. theme.slug:gsub("-", "_") .. ".toml", helix(theme), files)
         write(output, "pi/" .. theme.slug .. ".json", pi_theme(theme), files)

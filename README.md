@@ -207,7 +207,7 @@ Nova also generates matching themes for terminal emulators and command-line
 tools from the same six Lua palettes:
 
 - Terminals: Windows Terminal, WezTerm, Alacritty, kitty, and Ghostty.
-- Interactive tools: fzf, Helix, Pi coding agent, and eza.
+- Interactive tools: Herdr, fzf, Helix, Pi coding agent, and eza.
 - Additional integrations: bat, delta, Starship, Zellij, and Lazygit.
 
 Generated files and installation examples are in [extras](extras/README.md).

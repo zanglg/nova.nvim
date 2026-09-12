@@ -11,7 +11,7 @@ return function(t)
         local output = vim.fn.tempname()
         local ok, err = xpcall(function()
             local files = generator.generate(output)
-            t.eq(#files, 80)
+            t.eq(#files, 86)
 
             for _, relative in ipairs(files) do
                 local generated = vim.fn.readfile(output .. "/" .. relative, "b")
@@ -32,6 +32,7 @@ return function(t)
             "alacritty",
             "kitty",
             "ghostty",
+            "herdr",
             "fzf",
             "helix",
             "pi",
@@ -112,6 +113,45 @@ return function(t)
                         true
                     )
                 )
+            end
+        end
+    end)
+
+    t.test("Herdr themes map Nova semantic palettes", function()
+        local mappings = {
+            accent = "blue",
+            panel_bg = "background",
+            sidebar_bg = "stripline",
+            active_row_bg = "popupmenu",
+            selection_bg = "selection",
+            surface0 = "popupmenu",
+            surface1 = "selection",
+            surface_dim = "stripline",
+            overlay0 = "inconspicuous",
+            overlay1 = "comment",
+            text = "foreground",
+            subtext0 = "comment",
+            mauve = "purple",
+            green = "green",
+            yellow = "yellow",
+            red = "red",
+            blue = "blue",
+            teal = "teal",
+            peach = "orange",
+        }
+
+        for _, variant in ipairs({ "default", "dim", "soft" }) do
+            local suffix = variant == "default" and "" or "-" .. variant
+            for _, appearance in ipairs({ "dark", "light" }) do
+                local palette = require("nova.colors").setup({ colors = {}, variant = variant }, appearance)
+                local content = read("herdr/nova-" .. appearance .. suffix .. ".toml")
+                t.truthy(content:find("[theme.custom]", 1, true))
+                for herdr_name, nova_name in pairs(mappings) do
+                    t.truthy(
+                        content:find(herdr_name .. ' = "' .. palette[nova_name] .. '"', 1, true),
+                        string.format("missing Herdr mapping %s/%s/%s", variant, appearance, herdr_name)
+                    )
+                end
             end
         end
     end)

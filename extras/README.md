@@ -87,6 +87,22 @@ light/dark pair:
 theme = dark:nova-dark,light:nova-light
 ```
 
+### Herdr
+
+Herdr themes are configuration fragments because Herdr reads custom colors
+from its main `config.toml`. Merge the dark or light file for the chosen variant
+from `herdr/` into `~/.config/herdr/config.toml`.
+
+Each fragment keeps Herdr's terminal base theme for pane ANSI colors while
+applying Nova's exact semantic colors to the surrounding tabs, sidebar,
+selections, borders, and status UI. Herdr 0.8.2 applies custom overrides as one
+palette, so switch fragments when changing appearance. Reload a running server
+after changing the configuration:
+
+```sh
+herdr server reload-config
+```
+
 ## Editors, agents, and interactive tools
 
 ### fzf
