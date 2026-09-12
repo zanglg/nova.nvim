@@ -69,8 +69,8 @@
 "ui.menu.scroll" = { fg = "comment", bg = "stripline" }
 "ui.selection" = { bg = "selection" }
 "ui.selection.primary" = { bg = "selection" }
-"ui.cursor" = { fg = "background", bg = "red" }
-"ui.cursor.primary" = { fg = "background", bg = "red" }
+"ui.cursor" = { fg = "background", bg = "cursor" }
+"ui.cursor.primary" = { fg = "background", bg = "cursor" }
 "ui.cursor.insert" = { fg = "background", bg = "green" }
 "ui.cursor.select" = { fg = "background", bg = "purple" }
 "ui.cursor.match" = { fg = "background", bg = "current_match" }
@@ -110,5 +110,6 @@ blue = "#416b9b"
 violet = "#6e6ea6"
 purple = "#995698"
 match = "#5d6841"
+cursor = "#5d6841"
 current_match = "#7f6548"
 target = "#476b71"

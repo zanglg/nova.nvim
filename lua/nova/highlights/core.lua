@@ -23,11 +23,11 @@ return function(colors, opts)
         FoldColumn = { fg = colors.comment, bg = background },
         CursorLineFold = { fg = colors.comment, bg = colors.stripline },
 
-        Cursor = { fg = colors.red },
-        lCursor = { fg = colors.red },
-        CursorIM = { fg = colors.red },
+        Cursor = { fg = colors.cursor },
+        lCursor = { fg = colors.cursor },
+        CursorIM = { fg = colors.cursor },
 
-        TermCursor = { fg = colors.red },
+        TermCursor = { fg = colors.cursor },
         TermCursorNC = { fg = colors.inconspicuous },
 
         DiffAdd = { bg = colors.diff_add_bg },

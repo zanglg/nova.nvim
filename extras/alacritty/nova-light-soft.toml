@@ -5,7 +5,7 @@ foreground = "#414348"
 dim_foreground = "#9a9ca2"
 
 [colors.cursor]
-cursor = "#a35461"
+cursor = "#5d6841"
 text = "#efeff0"
 
 [colors.vi_mode_cursor]

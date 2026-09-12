@@ -49,6 +49,11 @@ config.color_scheme = appearance:find("Dark") and "Nova Dark" or "Nova Light"
 return config
 ```
 
+The generated schemes style active tabs with Nova blue and keep inactive,
+hovered, and new tabs within the neutral surface hierarchy. With the default
+fancy tab bar, the surrounding titlebar remains controlled by `window_frame` in
+`wezterm.lua`.
+
 ### Alacritty
 
 Copy the files to your Alacritty configuration directory and import one from

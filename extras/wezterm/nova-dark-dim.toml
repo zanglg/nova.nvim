@@ -2,8 +2,8 @@
 [colors]
 foreground = "#b0b5c1"
 background = "#202635"
-cursor_bg = "#cd7082"
-cursor_border = "#cd7082"
+cursor_bg = "#a7bf63"
+cursor_border = "#a7bf63"
 cursor_fg = "#202635"
 selection_bg = "#333b50"
 selection_fg = "#b0b5c1"
@@ -11,6 +11,31 @@ scrollbar_thumb = "#6e768e"
 split = "#3a4156"
 ansi = ["#202635", "#cd7082", "#6bb370", "#c5a567", "#7196d6", "#be76cb", "#5ea8b0", "#b0b5c1"]
 brights = ["#6e768e", "#d38191", "#7dbc81", "#ccb079", "#82a3db", "#c686d1", "#71b2b9", "#b9bec8"]
+
+[colors.tab_bar]
+background = "#272c3b"
+inactive_tab_edge = "#3a4156"
+
+[colors.tab_bar.active_tab]
+bg_color = "#7196d6"
+fg_color = "#202635"
+intensity = "Bold"
+
+[colors.tab_bar.inactive_tab]
+bg_color = "#2d3244"
+fg_color = "#6e768e"
+
+[colors.tab_bar.inactive_tab_hover]
+bg_color = "#333b50"
+fg_color = "#b0b5c1"
+
+[colors.tab_bar.new_tab]
+bg_color = "#2d3244"
+fg_color = "#6e768e"
+
+[colors.tab_bar.new_tab_hover]
+bg_color = "#333b50"
+fg_color = "#b0b5c1"
 
 [metadata]
 name = "Nova Dark Dim"

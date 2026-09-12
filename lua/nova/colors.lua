@@ -20,6 +20,7 @@ local blend = utils.blend
 ---@field violet string
 ---@field purple string
 ---@field match string
+---@field cursor string
 ---@field current_match string
 ---@field target string
 ---@field diff_add_bg string
@@ -198,6 +199,9 @@ function M.setup(opts, theme)
     local diff_alpha = theme == "light" and 0.08 or 0.20
     local diff_text_alpha = theme == "light" and 0.14 or 0.35
 
+    if palette.cursor == nil then
+        palette.cursor = palette.match
+    end
     if palette.diff_add_bg == nil then
         palette.diff_add_bg = blend(palette.green, palette.background, diff_alpha)
     end

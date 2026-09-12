@@ -33,6 +33,15 @@ return function(t)
         t.eq(groups.Operator, { fg = palette.foreground })
     end)
 
+    t.test("cursor groups use the semantic cursor color", function()
+        local groups = build_groups(palette, { transparent = false, overrides = {} })
+
+        t.eq(groups.Cursor, { fg = palette.cursor })
+        t.eq(groups.lCursor, { fg = palette.cursor })
+        t.eq(groups.CursorIM, { fg = palette.cursor })
+        t.eq(groups.TermCursor, { fg = palette.cursor })
+    end)
+
     t.test("plugin builders load without installed plugins", function()
         local groups = build_plugins(palette)
         t.eq(type(groups), "table")

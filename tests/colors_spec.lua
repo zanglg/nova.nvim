@@ -46,6 +46,7 @@ return function(t)
         "violet",
         "purple",
         "match",
+        "cursor",
         "current_match",
         "target",
         "diff_add_bg",
@@ -111,6 +112,14 @@ return function(t)
         local custom = colors.setup(opts({ green = "#000000" }), "dark")
         t.eq(custom.green, "#000000")
         t.ne(custom.diff_add_bg, base.diff_add_bg)
+    end)
+
+    t.test("cursor follows match unless explicitly overridden", function()
+        local matched = colors.setup(opts({ match = "#123456" }), "dark")
+        local explicit = colors.setup(opts({ match = "#123456", cursor = "#abcdef" }), "dark")
+
+        t.eq(matched.cursor, "#123456")
+        t.eq(explicit.cursor, "#abcdef")
     end)
 
     t.test("derived color overrides are preserved", function()

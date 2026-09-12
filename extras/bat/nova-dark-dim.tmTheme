@@ -13,7 +13,7 @@
       <dict>
         <key>background</key><string>#202635</string>
         <key>foreground</key><string>#b0b5c1</string>
-        <key>caret</key><string>#cd7082</string>
+        <key>caret</key><string>#a7bf63</string>
         <key>selection</key><string>#333b50</string>
         <key>lineHighlight</key><string>#272c3b</string>
         <key>invisibles</key><string>#5b6174</string>
