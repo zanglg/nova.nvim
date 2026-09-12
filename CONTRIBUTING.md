@@ -1,20 +1,20 @@
 # Contributing to Nova
 
-Development currently targets the `dev` branch and Neovim 0.12.5.
+Development targets the `master` branch and Neovim 0.12.5.
 
 ## Branch workflow
 
-`dev` is Nova's long-lived active integration branch.
+`master` is Nova's primary development and release branch.
 
 For future feature work:
 
-1. Create a feature branch from the current `dev` head.
+1. Create a short-lived feature branch from the current `master` head.
 2. Keep the feature branch focused on one coherent change.
-3. Squash-merge the feature branch back into `dev` after review and verification.
-4. Continue integrating completed work on `dev`.
-5. After the full theme audit and release verification are complete, merge `dev` directly into `master`.
+3. Merge the feature branch back into `master` after review and verification.
+4. Delete the feature branch after it has been merged.
 
-`master` is the stable/release branch. Nova does not use `main` as part of the current branch workflow.
+Nova does not maintain a separate long-lived development branch and does not
+use `main` as part of the current branch workflow.
 
 ## Plugin integration scope
 

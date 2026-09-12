@@ -42,7 +42,7 @@ Nova enables `termguicolors` when the colorscheme loads.
 
 ## Installation
 
-`master` is the stable/release branch and is the recommended installation target. Active development continues on `dev`.
+`master` is the primary development and release branch.
 
 ### Neovim packages
 
@@ -72,8 +72,6 @@ vim.cmd.colorscheme("nova")
     end,
 }
 ```
-
-To follow active development instead, explicitly select the `dev` branch with `version = "dev"` for `vim.pack` or `branch = "dev"` for lazy.nvim.
 
 `setup()` is optional when the defaults are sufficient; `vim.cmd.colorscheme("nova")` can be used on its own.
 
@@ -258,7 +256,7 @@ available under [extras](extras/README.md).
 
 ## Development
 
-Active development happens on `dev`; `master` is the stable/release branch. See [CONTRIBUTING.md](CONTRIBUTING.md) for the branch workflow, palette and integration policies, and review expectations.
+Active development happens on `master`. See [CONTRIBUTING.md](CONTRIBUTING.md) for the branch workflow, palette and integration policies, and review expectations.
 
 Check formatting:
 
