@@ -1,0 +1,4 @@
+.DS_Store
+
+# Keep the full-size screenshot sources local; README uses optimized WebP copies.
+/final/*.png

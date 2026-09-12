@@ -1,24 +1,52 @@
 # Nova
 
-A focused true-color colorscheme for Neovim, written in Lua.
+Nova is a focused true-color colorscheme for Neovim, written in Lua. It pairs a cool, restrained interface with semantic syntax colors, independently tuned dark and light palettes, and three levels of visual intensity.
 
-Nova keeps its palette, configuration, and plugin integrations deliberately small: standard Neovim highlight groups provide the foundation, while plugin-specific overrides are added only when Nova has a meaningful semantic or presentation difference to express.
+![Nova light and dark themes](final/hero.webp)
 
-## Preview
+## Highlights
 
-The current screenshots are retained while the active `dev` palette pass is being visually verified. They will be refreshed after the current dark/light review is complete.
+- Dark and light themes, each available in `default`, `dim`, and `soft` variants.
+- Coverage for the built-in UI, classic syntax groups, modern Tree-sitter captures, LSP semantic tokens, and diagnostics.
+- A small semantic palette with separate roles for surfaces, syntax, search matches, navigation targets, and diffs.
+- Optional transparent editor background.
+- Palette and highlight overrides as either tables or functions.
+- Focused integrations for commonly used Neovim plugins, plus a matching lualine theme.
+- No runtime dependencies and no need to install supported plugins before loading Nova.
+
+## Variants
+
+Variants change the palette without changing highlight semantics. Dark and light palettes are tuned independently instead of applying one symmetric transformation to both modes.
+
+| Variant | Character |
+| --- | --- |
+| `default` | Highest chroma and strongest visual separation. |
+| `dim` | A quieter middle palette with reduced chroma. |
+| `soft` | Lowest visual intensity; dark mode also compresses contrast, while light mode keeps text contrast strong. |
 
 ### Dark
 
-<img width="2025" alt="dark" src="https://github.com/zanglg/nova.nvim/assets/4172061/8039f577-231b-46bf-babc-5e057396d4ec">
+![Nova default, dim, and soft dark variants](final/dark.webp)
 
 ### Light
 
-<img width="2025" alt="light" src="https://github.com/zanglg/nova.nvim/assets/4172061/ef1428b0-1c2d-4cc2-a74c-ec0b134ce55e">
+![Nova default, dim, and soft light variants](final/light.webp)
+
+## Requirements
+
+- Neovim 0.12.5.
+- A UI or terminal with true-color support.
+- Git when installing through Neovim's native package manager.
+
+Nova enables `termguicolors` when the colorscheme loads.
 
 ## Installation
 
-Nova currently develops on the `dev` branch. With Neovim 0.12's native package manager:
+Nova is currently developed on the `dev` branch. The examples below follow that branch so the documented palettes and configuration API are available. `master` remains the stable branch.
+
+### Neovim packages
+
+Neovim 0.12 includes a native package manager:
 
 ```lua
 vim.pack.add({
@@ -27,9 +55,12 @@ vim.pack.add({
         version = "dev",
     },
 })
+
+require("nova").setup()
+vim.cmd.colorscheme("nova")
 ```
 
-With lazy.nvim:
+### lazy.nvim
 
 ```lua
 {
@@ -37,44 +68,16 @@ With lazy.nvim:
     branch = "dev",
     lazy = false,
     priority = 1000,
+    config = function()
+        require("nova").setup()
+        vim.cmd.colorscheme("nova")
+    end,
 }
 ```
 
-## Usage
-
-```lua
-require("nova").setup({
-    theme = "auto", -- "auto", "dark", or "light"
-    variant = "default", -- "default", "dim", or "soft"
-    transparent = false,
-})
-
-vim.cmd.colorscheme("nova")
-```
-
-`theme = "auto"` follows `vim.o.background`. Explicit `"dark"` or `"light"` values also synchronize `vim.o.background` so Neovim and plugin defaults use the same background mode as Nova.
-
-Variants keep Nova's semantic color mapping while changing palette intensity. Dark and light variants intentionally do not apply the same transformation:
-
-- `"default"`: Nova's original higher-chroma palette.
-- `"dim"`: a middle palette. Dark reduces chroma and overall contrast; light primarily reduces chroma while preserving strong text contrast.
-- `"soft"`: the lowest-chroma palette. Dark further lowers visual energy and compresses contrast; light keeps foreground/background contrast high and mainly softens syntax chroma.
-
-All variants support both dark and light themes.
-
-### Lualine
-
-```lua
-require("lualine").setup({
-    options = {
-        theme = "nova",
-    },
-})
-```
+`setup()` is optional when the defaults are sufficient; `vim.cmd.colorscheme("nova")` can be used on its own.
 
 ## Configuration
-
-Nova intentionally keeps its public configuration small:
 
 ```lua
 require("nova").setup({
@@ -84,57 +87,57 @@ require("nova").setup({
     colors = {},
     overrides = {},
 })
+
+vim.cmd.colorscheme("nova")
 ```
 
-- `theme`: `"auto"`, `"dark"`, or `"light"`.
-- `variant`: `"default"`, `"dim"`, or `"soft"`. Variants change palette intensity without changing Nova's highlight semantics.
-- `transparent`: removes Nova's main editor background when `true`.
-- `colors`: a palette override table or a function receiving the selected base palette and resolved `"dark"`/`"light"` theme and returning an override table.
-- `overrides`: a table of highlight overrides or a function receiving the resolved Nova palette.
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| `theme` | `"auto" \| "dark" \| "light"` | `"auto"` | Selects the appearance mode. |
+| `variant` | `"default" \| "dim" \| "soft"` | `"default"` | Selects the palette intensity. |
+| `transparent` | `boolean` | `false` | Removes the main editor background while keeping floats and menus styled. |
+| `colors` | `table \| function` | `{}` | Overrides semantic palette values. |
+| `overrides` | `table \| function` | `{}` | Replaces highlight definitions after all built-in groups are assembled. |
 
-Unknown top-level options are rejected so stale or misspelled configuration is not silently ignored.
+Nova validates all top-level options. Unknown keys, unsupported values, and invalid option types raise an error instead of being silently ignored.
 
-### Variants
-
-Use `dim` for a middle-ground palette between `default` and `soft`:
+Calling `setup()` updates Nova's configuration; reload the colorscheme to apply the new settings:
 
 ```lua
-require("nova").setup({
-    theme = "dark",
-    variant = "dim",
-})
+require("nova").setup({ variant = "soft" })
+vim.cmd.colorscheme("nova")
 ```
 
-Use `soft` for the lowest-chroma palette:
+### Theme selection
+
+With `theme = "auto"`, Nova reads the current value of `vim.o.background` every time the colorscheme loads:
 
 ```lua
-require("nova").setup({
-    theme = "dark",
-    variant = "soft",
-})
+vim.o.background = "light"
+vim.cmd.colorscheme("nova")
 ```
 
-In dark mode, `dim` and `soft` progressively reduce chroma, overall contrast, and visual energy. In light mode, they primarily reduce syntax chroma while keeping foreground/background contrast strong for readability. The two appearance modes are tuned independently rather than forced into a mathematically symmetric transformation.
+An explicit `"dark"` or `"light"` theme also synchronizes `vim.o.background` when Nova loads, keeping Neovim and plugin defaults on the same appearance mode.
 
-Variants only change the palette. Core, Tree-sitter, LSP, and plugin highlight mappings remain shared.
+### Palette overrides
 
-### Color overrides
-
-Table form:
+`colors` may be a table containing only the values you want to replace:
 
 ```lua
 require("nova").setup({
     colors = {
         blue = "#80aaff",
         popupmenu = "#20263a",
+        target = "#67e8f9",
     },
 })
 ```
 
-Function form is useful with `theme = "auto"`:
+It may also be a function. The function receives a copy of the selected variant's base palette and the resolved `"dark"` or `"light"` theme, then returns an override table:
 
 ```lua
 require("nova").setup({
+    theme = "auto",
     colors = function(colors, theme)
         return {
             blue = theme == "light" and "#356ac3" or "#80aaff",
@@ -144,60 +147,114 @@ require("nova").setup({
 })
 ```
 
-Derived diff backgrounds are recomputed from overridden source colors unless a derived value is explicitly supplied.
+Available palette roles are:
+
+- Surfaces and text: `foreground`, `comment`, `inconspicuous`, `splitline`, `selection`, `popupmenu`, `stripline`, `background`.
+- Syntax accents: `red`, `orange`, `yellow`, `green`, `teal`, `blue`, `violet`, `purple`.
+- Search and navigation: `match`, `current_match`, `target`.
+- Diff surfaces: `diff_add_bg`, `diff_change_bg`, `diff_delete_bg`, `diff_text_bg`.
+
+Diff surfaces are derived after palette overrides are applied. Changing `green`, `blue`, `red`, or `background` therefore recomputes the related diff colors; explicitly overriding a `diff_*` value preserves that value.
 
 ### Highlight overrides
 
-Table form:
+`overrides` are applied last and may replace any built-in, Tree-sitter, LSP, or plugin highlight group:
 
 ```lua
 require("nova").setup({
     overrides = {
         CursorLineNr = { fg = "#ffffff", bold = true },
+        ["@comment.todo"] = { fg = "#ffcc66", bold = true },
     },
 })
 ```
 
-Function form:
+A function receives Nova's final resolved palette, including color overrides and generated diff colors:
 
 ```lua
 require("nova").setup({
     overrides = function(colors)
         return {
             CursorLineNr = { fg = colors.target, bold = true },
+            Visual = { bg = colors.popupmenu },
         }
     end,
 })
 ```
 
-## Floating-window primitives
+Each supplied highlight definition replaces the corresponding Nova definition; highlight fields are not merged individually.
 
-Nova provides separate primitives rather than forcing one global float style:
+## Lualine
 
-- `NormalFloat` provides the popup surface.
-- `FloatBorder` provides structural separation.
-- `PmenuSel` provides the selected-item surface.
+Nova ships a lualine theme that follows the resolved Nova theme, variant, and palette overrides. Configure Nova before lualine loads its theme:
 
-Plugins remain responsible for choosing whether a window is surface-only, border-only, or combines both.
+```lua
+require("nova").setup({
+    theme = "auto",
+    variant = "dim",
+})
+vim.cmd.colorscheme("nova")
 
-## Terminal colors
-
-Nova targets true-color Neovim UIs and enables `termguicolors`. It intentionally does **not** define `terminal_color_0` through `terminal_color_15`.
-
-ANSI colors for terminal buffers remain the responsibility of the terminal emulator or user configuration. Nova does not maintain a second reduced terminal palette because it cannot reliably preserve the theme's color relationships within a fixed 16-color mapping.
+require("lualine").setup({
+    options = {
+        theme = "nova",
+    },
+})
+```
 
 ## Plugin integrations
 
-Nova prefers plugin defaults whenever they already link to standard Neovim highlight groups. Plugin-specific overrides are kept only when Nova has a meaningful semantic or presentation difference to express.
+Nova prefers plugin defaults when they already link to standard Neovim groups. Dedicated overrides are limited to places where Nova has a meaningful semantic or presentation choice.
 
-The maintained integration set targets mainstream Neovim plugins plus plugins used by the author's dotconfig. Integrations do not require the corresponding plugin to be installed in order for Nova to load.
+Current integrations include:
+
+- `blink.cmp`
+- `flash.nvim`
+- `gitsigns.nvim`
+- `indent-blankline.nvim`
+- `lazy.nvim`
+- `LuaSnip`
+- `mason.nvim`
+- `noice.nvim`
+- `nvim-cmp`
+- `nvim-dap` and `nvim-dap-ui`
+- `nvim-tree.lua`
+- `outline.nvim`
+- `rainbow-delimiters.nvim`
+- `snacks.nvim`
+- `telescope.nvim`
+- `trouble.nvim`
+
+These integrations only define highlight groups. They neither load plugins nor require the plugins to be installed.
+
+## UI and terminal behavior
+
+Nova keeps floating-window primitives separate so each plugin can choose the presentation appropriate for its UI:
+
+- `NormalFloat` defines the popup surface.
+- `FloatBorder` defines structural separation.
+- `PmenuSel` defines the selected completion-menu item.
+
+Nova targets true-color Neovim interfaces and intentionally does not define `terminal_color_0` through `terminal_color_15`. ANSI colors inside terminal buffers remain the responsibility of the terminal emulator or user configuration.
 
 ## Development
 
-Active development happens on `dev`. Future feature work branches from `dev`, is squash-merged back into `dev`, and release-ready `dev` is promoted directly to `master` after final verification.
+Active development happens on `dev`; `master` is the stable/release branch. See [CONTRIBUTING.md](CONTRIBUTING.md) for the branch workflow, palette and integration policies, and review expectations.
 
-See [`CONTRIBUTING.md`](CONTRIBUTING.md) for the maintenance and verification policy.
+Check formatting:
 
-## Requirements
+```sh
+stylua --check .
+```
 
-Nova currently targets Neovim **0.12.5**.
+Run the headless test suite:
+
+```sh
+nvim --headless -u NONE --cmd "set rtp+=$PWD" -l tests/run.lua
+```
+
+The suite covers configuration validation, all six palettes, highlight construction, repeated colorscheme loading, lualine integration, and stale-reference checks. Palette and presentation changes should also be reviewed in a real Neovim UI.
+
+## License
+
+[MIT](LICENSE) © 2022 Zang Leigang
