@@ -42,7 +42,7 @@ Nova enables `termguicolors` when the colorscheme loads.
 
 ## Installation
 
-Nova is currently developed on the `dev` branch. The examples below follow that branch so the documented palettes and configuration API are available. `master` remains the stable branch.
+`master` is the stable/release branch and is the recommended installation target. Active development continues on `dev`.
 
 ### Neovim packages
 
@@ -52,7 +52,6 @@ Neovim 0.12 includes a native package manager:
 vim.pack.add({
     {
         src = "https://github.com/zanglg/nova.nvim",
-        version = "dev",
     },
 })
 
@@ -65,7 +64,6 @@ vim.cmd.colorscheme("nova")
 ```lua
 {
     "zanglg/nova.nvim",
-    branch = "dev",
     lazy = false,
     priority = 1000,
     config = function()
@@ -74,6 +72,8 @@ vim.cmd.colorscheme("nova")
     end,
 }
 ```
+
+To follow active development instead, explicitly select the `dev` branch with `version = "dev"` for `vim.pack` or `branch = "dev"` for lazy.nvim.
 
 `setup()` is optional when the defaults are sufficient; `vim.cmd.colorscheme("nova")` can be used on its own.
 
