@@ -12,6 +12,7 @@ Nova is a focused true-color colorscheme for Neovim, written in Lua. It pairs a 
 - Optional transparent editor background.
 - Palette and highlight overrides as either tables or functions.
 - Focused integrations for commonly used Neovim plugins, plus a matching lualine theme.
+- Generated matching themes for popular terminal emulators, editors, agents, and CLI tools under [extras](extras/README.md).
 - No runtime dependencies and no need to install supported plugins before loading Nova.
 
 ## Variants
