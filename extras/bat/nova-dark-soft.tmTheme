@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>name</key>
+  <string>nova-dark-soft</string>
+  <key>author</key>
+  <string>Nova theme generator</string>
+  <key>settings</key>
+  <array>
+    <dict>
+      <key>settings</key>
+      <dict>
+        <key>background</key><string>#272a35</string>
+        <key>foreground</key><string>#abafba</string>
+        <key>caret</key><string>#c1818b</string>
+        <key>selection</key><string>#3b404f</string>
+        <key>lineHighlight</key><string>#2c303c</string>
+        <key>invisibles</key><string>#5d616f</string>
+      </dict>
+    </dict>
+    <dict>
+      <key>name</key><string>Comment</string>
+      <key>scope</key><string>comment, punctuation.definition.comment</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key><string>#707789</string>
+        <key>fontStyle</key><string>italic</string>
+      </dict>
+    </dict>
+    <dict>
+      <key>name</key><string>String</string>
+      <key>scope</key><string>string</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key><string>#68a66d</string>
+      </dict>
+    </dict>
+    <dict>
+      <key>name</key><string>Number and constant</string>
+      <key>scope</key><string>constant.numeric, constant.language, constant.character</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key><string>#b39b6b</string>
+      </dict>
+    </dict>
+    <dict>
+      <key>name</key><string>Escape and special</string>
+      <key>scope</key><string>constant.character.escape, string.regexp</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key><string>#a6806e</string>
+      </dict>
+    </dict>
+    <dict>
+      <key>name</key><string>Keyword</string>
+      <key>scope</key><string>keyword, storage.modifier</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key><string>#b181bb</string>
+      </dict>
+    </dict>
+    <dict>
+      <key>name</key><string>Type</string>
+      <key>scope</key><string>storage.type, entity.name.type, entity.name.class, support.type</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key><string>#c1818b</string>
+      </dict>
+    </dict>
+    <dict>
+      <key>name</key><string>Function</string>
+      <key>scope</key><string>entity.name.function, support.function, meta.function-call</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key><string>#7998c3</string>
+      </dict>
+    </dict>
+    <dict>
+      <key>name</key><string>Property</string>
+      <key>scope</key><string>variable.other.member, support.variable.property</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key><string>#9183b9</string>
+      </dict>
+    </dict>
+    <dict>
+      <key>name</key><string>Tag</string>
+      <key>scope</key><string>entity.name.tag</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key><string>#a6806e</string>
+      </dict>
+    </dict>
+    <dict>
+      <key>name</key><string>Markup heading</string>
+      <key>scope</key><string>markup.heading</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key><string>#7998c3</string>
+        <key>fontStyle</key><string>bold</string>
+      </dict>
+    </dict>
+    <dict>
+      <key>name</key><string>Markup link</string>
+      <key>scope</key><string>markup.underline.link</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key><string>#68a1a6</string>
+        <key>fontStyle</key><string>underline</string>
+      </dict>
+    </dict>
+    <dict>
+      <key>name</key><string>Markup inserted</string>
+      <key>scope</key><string>markup.inserted</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key><string>#68a66d</string>
+      </dict>
+    </dict>
+    <dict>
+      <key>name</key><string>Markup deleted</string>
+      <key>scope</key><string>markup.deleted</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key><string>#c1818b</string>
+      </dict>
+    </dict>
+    <dict>
+      <key>name</key><string>Invalid</string>
+      <key>scope</key><string>invalid, invalid.illegal</string>
+      <key>settings</key>
+      <dict>
+        <key>foreground</key><string>#c1818b</string>
+        <key>fontStyle</key><string>bold</string>
+      </dict>
+    </dict>
+  </array>
+</dict>
+</plist>

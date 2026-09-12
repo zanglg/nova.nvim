@@ -48,13 +48,27 @@ When an integration exposes eight rainbow slots, use all eight colors. When it e
 
 ## Terminal color policy
 
-Nova targets true-color Neovim UIs. Do not add or maintain `terminal_color_0` through `terminal_color_15` mappings as part of the theme.
+Nova targets true-color Neovim UIs. Do not add `terminal_color_0` through
+`terminal_color_15` mappings to the Neovim colorscheme.
 
-Terminal ANSI palettes are intentionally left to the terminal emulator or user configuration. Nova's palette and highlight design should be evaluated in true color rather than constrained to a secondary fixed 16-color approximation.
+The generated terminal themes under `extras/` contain a derived ANSI palette
+for external terminal emulators. Keep that mapping in the generator so the
+secondary 16-color approximation does not constrain Nova's semantic palette or
+Neovim highlight design.
 
 ## Changes and verification
 
 Keep commits focused on one conceptual change. Palette changes, highlight semantics, plugin coverage, structural refactors, and documentation changes should remain separate when possible.
+
+When changing a palette, regenerate the cross-tool themes before running the
+test suite:
+
+```sh
+NVIM_LOG_FILE=/tmp/nova.nvim.log nvim --headless -u NONE -l scripts/generate_themes.lua
+```
+
+Generated files live under `extras/` and must remain synchronized with
+`lua/nova/colors.lua` and `scripts/theme_generator.lua`.
 
 Before considering a change complete, check formatting:
 

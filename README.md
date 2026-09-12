@@ -202,6 +202,22 @@ require("lualine").setup({
 })
 ```
 
+## Themes for other tools
+
+Nova also generates matching themes for terminal emulators and command-line
+tools from the same six Lua palettes:
+
+- Terminals: Windows Terminal, WezTerm, Alacritty, kitty, and Ghostty.
+- Interactive tools: fzf, Helix, Pi coding agent, and eza.
+- Additional integrations: bat, delta, Starship, Zellij, and Lazygit.
+
+Generated files and installation examples are in [extras](extras/README.md).
+Run the generator after changing a palette:
+
+```sh
+NVIM_LOG_FILE=/tmp/nova.nvim.log nvim --headless -u NONE -l scripts/generate_themes.lua
+```
+
 ## Plugin integrations
 
 Nova prefers plugin defaults when they already link to standard Neovim groups. Dedicated overrides are limited to places where Nova has a meaningful semantic or presentation choice.
@@ -235,7 +251,10 @@ Nova keeps floating-window primitives separate so each plugin can choose the pre
 - `FloatBorder` defines structural separation.
 - `PmenuSel` defines the selected completion-menu item.
 
-Nova targets true-color Neovim interfaces and intentionally does not define `terminal_color_0` through `terminal_color_15`. ANSI colors inside terminal buffers remain the responsibility of the terminal emulator or user configuration.
+Nova targets true-color Neovim interfaces and intentionally does not define
+`terminal_color_0` through `terminal_color_15`. ANSI colors inside terminal
+buffers follow the terminal emulator; matching generated terminal palettes are
+available under [extras](extras/README.md).
 
 ## Development
 
