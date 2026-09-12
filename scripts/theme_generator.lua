@@ -51,12 +51,8 @@ local function json_encode(value, level)
 
     local encoded = {}
     for _, key in ipairs(keys) do
-        encoded[#encoded + 1] = string.format(
-            "%s%s: %s",
-            child_indent,
-            vim.json.encode(key),
-            json_encode(value[key], level + 1)
-        )
+        encoded[#encoded + 1] =
+            string.format("%s%s: %s", child_indent, vim.json.encode(key), json_encode(value[key], level + 1))
     end
     return "{\n" .. table.concat(encoded, ",\n") .. "\n" .. indent .. "}"
 end
@@ -137,24 +133,25 @@ end
 
 local function wezterm(theme)
     local c = theme.colors
-    return header("#") .. join({
-        "[colors]",
-        string.format("foreground = %q", c.foreground),
-        string.format("background = %q", c.background),
-        string.format("cursor_bg = %q", c.red),
-        string.format("cursor_border = %q", c.red),
-        string.format("cursor_fg = %q", c.background),
-        string.format("selection_bg = %q", c.selection),
-        string.format("selection_fg = %q", c.foreground),
-        string.format("scrollbar_thumb = %q", c.comment),
-        string.format("split = %q", c.splitline),
-        "ansi = " .. toml_array(theme.ansi),
-        "brights = " .. toml_array(theme.brights),
-        "",
-        "[metadata]",
-        string.format("name = %q", theme.name),
-        'origin_url = "https://github.com/zanglg/nova.nvim"',
-    })
+    return header("#")
+        .. join({
+            "[colors]",
+            string.format("foreground = %q", c.foreground),
+            string.format("background = %q", c.background),
+            string.format("cursor_bg = %q", c.red),
+            string.format("cursor_border = %q", c.red),
+            string.format("cursor_fg = %q", c.background),
+            string.format("selection_bg = %q", c.selection),
+            string.format("selection_fg = %q", c.foreground),
+            string.format("scrollbar_thumb = %q", c.comment),
+            string.format("split = %q", c.splitline),
+            "ansi = " .. toml_array(theme.ansi),
+            "brights = " .. toml_array(theme.brights),
+            "",
+            "[metadata]",
+            string.format("name = %q", theme.name),
+            'origin_url = "https://github.com/zanglg/nova.nvim"',
+        })
 end
 
 local ansi_names = { "black", "red", "green", "yellow", "blue", "magenta", "cyan", "white" }
@@ -294,7 +291,10 @@ local function fzf(theme)
         "header-border:" .. c.splitline,
     }
     return header("#")
-        .. string.format("export FZF_DEFAULT_OPTS=\"${FZF_DEFAULT_OPTS:+$FZF_DEFAULT_OPTS }--color=%s\"\n", table.concat(values, ","))
+        .. string.format(
+            'export FZF_DEFAULT_OPTS="${FZF_DEFAULT_OPTS:+$FZF_DEFAULT_OPTS }--color=%s"\n',
+            table.concat(values, ",")
+        )
 end
 
 local function helix(theme)
@@ -691,24 +691,25 @@ local function delta(theme)
     local blend = require("nova.utils").blend
     local plus_emph = blend(c.green, c.background, theme.appearance == "light" and 0.16 or 0.35)
     local minus_emph = blend(c.red, c.background, theme.appearance == "light" and 0.16 or 0.35)
-    return header("#") .. join({
-        string.format('[delta "%s"]', theme.slug),
-        "    dark = " .. tostring(theme.appearance == "dark"),
-        "    syntax-theme = " .. theme.slug,
-        string.format('    minus-style = syntax "%s"', c.diff_delete_bg),
-        string.format('    minus-emph-style = syntax "%s"', minus_emph),
-        string.format('    plus-style = syntax "%s"', c.diff_add_bg),
-        string.format('    plus-emph-style = syntax "%s"', plus_emph),
-        "    zero-style = syntax",
-        string.format('    commit-style = bold "%s"', c.violet),
-        string.format('    file-style = bold "%s"', c.blue),
-        string.format('    file-decoration-style = "%s"', c.splitline),
-        string.format('    hunk-header-style = syntax "%s"', c.popupmenu),
-        string.format('    hunk-header-decoration-style = "%s" box', c.splitline),
-        string.format('    line-numbers-minus-style = "%s"', c.red),
-        string.format('    line-numbers-zero-style = "%s"', c.inconspicuous),
-        string.format('    line-numbers-plus-style = "%s"', c.green),
-    })
+    return header("#")
+        .. join({
+            string.format('[delta "%s"]', theme.slug),
+            "    dark = " .. tostring(theme.appearance == "dark"),
+            "    syntax-theme = " .. theme.slug,
+            string.format('    minus-style = syntax "%s"', c.diff_delete_bg),
+            string.format('    minus-emph-style = syntax "%s"', minus_emph),
+            string.format('    plus-style = syntax "%s"', c.diff_add_bg),
+            string.format('    plus-emph-style = syntax "%s"', plus_emph),
+            "    zero-style = syntax",
+            string.format('    commit-style = bold "%s"', c.violet),
+            string.format('    file-style = bold "%s"', c.blue),
+            string.format('    file-decoration-style = "%s"', c.splitline),
+            string.format('    hunk-header-style = syntax "%s"', c.popupmenu),
+            string.format('    hunk-header-decoration-style = "%s" box', c.splitline),
+            string.format('    line-numbers-minus-style = "%s"', c.red),
+            string.format('    line-numbers-zero-style = "%s"', c.inconspicuous),
+            string.format('    line-numbers-plus-style = "%s"', c.green),
+        })
 end
 
 local function starship(theme)
@@ -817,36 +818,37 @@ local function lazygit(theme)
     local function item(value)
         return "      - '" .. value .. "'"
     end
-    return header("#") .. join({
-        "gui:",
-        "  theme:",
-        "    activeBorderColor:",
-        item(c.target),
-        "      - bold",
-        "    inactiveBorderColor:",
-        item(c.splitline),
-        "    searchingActiveBorderColor:",
-        item(c.current_match),
-        "      - bold",
-        "    optionsTextColor:",
-        item(c.blue),
-        "    selectedLineBgColor:",
-        item(c.selection),
-        "    inactiveViewSelectedLineBgColor:",
-        item(c.stripline),
-        "    cherryPickedCommitFgColor:",
-        item(c.blue),
-        "    cherryPickedCommitBgColor:",
-        item(c.popupmenu),
-        "    markedBaseCommitFgColor:",
-        item(c.background),
-        "    markedBaseCommitBgColor:",
-        item(c.yellow),
-        "    unstagedChangesColor:",
-        item(c.red),
-        "    defaultFgColor:",
-        item(c.foreground),
-    })
+    return header("#")
+        .. join({
+            "gui:",
+            "  theme:",
+            "    activeBorderColor:",
+            item(c.target),
+            "      - bold",
+            "    inactiveBorderColor:",
+            item(c.splitline),
+            "    searchingActiveBorderColor:",
+            item(c.current_match),
+            "      - bold",
+            "    optionsTextColor:",
+            item(c.blue),
+            "    selectedLineBgColor:",
+            item(c.selection),
+            "    inactiveViewSelectedLineBgColor:",
+            item(c.stripline),
+            "    cherryPickedCommitFgColor:",
+            item(c.blue),
+            "    cherryPickedCommitBgColor:",
+            item(c.popupmenu),
+            "    markedBaseCommitFgColor:",
+            item(c.background),
+            "    markedBaseCommitBgColor:",
+            item(c.yellow),
+            "    unstagedChangesColor:",
+            item(c.red),
+            "    defaultFgColor:",
+            item(c.foreground),
+        })
 end
 
 local function palette_export(theme)
