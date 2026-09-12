@@ -2,7 +2,7 @@
 
 Nova is a focused true-color colorscheme for Neovim, written in Lua. It pairs a cool, restrained interface with semantic syntax colors, independently tuned dark and light palettes, and three levels of visual intensity.
 
-![Nova light and dark themes](final/hero.webp)
+![Nova light and dark themes](assets/screenshots/hero.webp)
 
 ## Highlights
 
@@ -26,11 +26,11 @@ Variants change the palette without changing highlight semantics. Dark and light
 
 ### Dark
 
-![Nova default, dim, and soft dark variants](final/dark.webp)
+![Nova default, dim, and soft dark variants](assets/screenshots/dark.webp)
 
 ### Light
 
-![Nova default, dim, and soft light variants](final/light.webp)
+![Nova default, dim, and soft light variants](assets/screenshots/light.webp)
 
 ## Requirements
 

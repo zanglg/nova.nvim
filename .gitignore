@@ -1,4 +1,7 @@
 .DS_Store
 
-# Keep the full-size screenshot sources local; README uses optimized WebP copies.
-/final/*.png
+# Local editor and screenshot-generation artifacts.
+/nvim.log
+/tmp/
+/screenshot/
+/assets/screenshots/*.png
