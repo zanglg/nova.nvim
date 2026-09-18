@@ -209,7 +209,7 @@ Apply it immediately without reloading unrelated settings:
 tmux source-file /path/to/nova.nvim/extras/tmux/nova-dark.conf
 ```
 
-The top status bar mirrors Nova lualine's **normal** mode: the session and time
+The status bar mirrors Nova lualine's **normal** mode: the session and time
 use section `a` (blue background, selection-colored bold text), the current
 window uses section `b` (stripline background, blue text), and other windows
 use section `c` (selection background, foreground text). Powerline separators
@@ -225,8 +225,22 @@ Choose the same appearance and variant as Neovim, such as `nova-light-soft.conf`
 Switching Neovim's palette does not automatically reload tmux. These fragments
 set global presentation defaults, not key bindings, terminal capabilities,
 window numbering, or application output colors. Existing session/window-local
-overrides may take precedence. You can override layout options after sourcing
-(e.g. `set -g status-position bottom` or a longer `status-left-length`).
+overrides may take precedence.
+
+The theme preserves status bar visibility, position, alignment, and section
+length limits. Configure these separately to taste. For example, to pair a top
+bar with lualine at the bottom and give the session name and time enough room:
+
+```tmux
+# Optional personal layout settings; not part of the theme.
+set -g status on
+set -g status-position top
+set -g status-justify left
+set -g status-left-length 16
+set -g status-right-length 32
+```
+
+Increase the length limits for longer session names or custom status content.
 
 ### Zellij
 

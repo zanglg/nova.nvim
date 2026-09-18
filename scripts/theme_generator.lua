@@ -816,14 +816,9 @@ local function tmux(theme)
     -- Keep the status bar paired with lualine's normal a/b/c sections.
     -- Named placeholders leave tmux's #{} formats and strftime % tokens intact.
     local template = [[# Status bar: normal.a = ends, normal.b = current window, normal.c = rest.
-set -g status on
-set -g status-position top
-set -g status-justify left
 set -g status-style "bg=${selection},fg=${foreground}"
 set -g status-left-style none
 set -g status-right-style none
-set -g status-left-length 16
-set -g status-right-length 32
 set -g status-left "#[fg=${selection},bg=${blue},bold] #S #[fg=${blue},bg=${selection},nobold]"
 set -g status-right "#[fg=${blue},bg=${selection},nobold]#[fg=${selection},bg=${blue},bold] %Y-%m-%d %H:%M "
 setw -g window-status-style "fg=${foreground},bg=${selection},none"

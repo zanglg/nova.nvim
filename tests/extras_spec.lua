@@ -153,6 +153,15 @@ return function(t)
                 contains('setw -g pane-border-style "fg=' .. c.splitline .. '"')
                 contains('set -g menu-selected-style "fg=' .. c.blue .. ",bg=" .. c.selection .. '"')
                 contains('set -g popup-style "fg=' .. c.foreground .. ",bg=" .. c.popupmenu .. '"')
+                for _, option in ipairs({
+                    "status",
+                    "status-position",
+                    "status-justify",
+                    "status-left-length",
+                    "status-right-length",
+                }) do
+                    t.eq(content:find("set -g " .. option .. " ", 1, true), nil, "theme must not set " .. option)
+                end
                 t.eq(content:find("${", 1, true), nil, "unresolved tmux palette placeholder")
                 t.eq(content:find("bind ", 1, true), nil, "theme must not change key bindings")
                 t.eq(content:find("default-terminal", 1, true), nil, "theme must not change terminal capabilities")

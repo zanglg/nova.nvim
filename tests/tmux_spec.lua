@@ -30,6 +30,16 @@ return function(t)
 
         local ok, err = xpcall(function()
             tmux("new-session", "-d", "-s", "nova", "-x", "80", "-y", "24", "sleep 120")
+            local layout = {
+                status = "off",
+                ["status-position"] = "bottom",
+                ["status-justify"] = "right",
+                ["status-left-length"] = "48",
+                ["status-right-length"] = "64",
+            }
+            for option, value in pairs(layout) do
+                tmux("set-option", "-g", option, value)
+            end
             for _, variant in ipairs({ "default", "dim", "soft" }) do
                 for _, appearance in ipairs({ "dark", "light" }) do
                     local c = require("nova.colors").setup({ colors = {}, variant = variant }, appearance)
@@ -38,6 +48,9 @@ return function(t)
                     -- Switching/reloading a theme must replace the previous palette.
                     tmux("source-file", path)
                     tmux("source-file", path)
+                    for option, value in pairs(layout) do
+                        t.eq(tmux("show-options", "-gv", option), value, "theme changed layout option: " .. option)
+                    end
                     t.eq(tmux("show-options", "-gv", "status-style"), "bg=" .. c.selection .. ",fg=" .. c.foreground)
                     t.eq(tmux("show-options", "-gwv", "mode-style"), "fg=" .. c.foreground .. ",bg=" .. c.selection)
                     t.eq(
