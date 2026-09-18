@@ -222,25 +222,7 @@ in copy mode, and red when synchronized input is enabled. Red takes priority
 when both states are active. Selection and search colors remain distinct.
 
 Choose the same appearance and variant as Neovim, such as `nova-light-soft.conf`.
-Switching Neovim's palette does not automatically reload tmux. These fragments
-set global presentation defaults, not key bindings, terminal capabilities,
-window numbering, or application output colors. Existing session/window-local
-overrides may take precedence.
-
-The theme preserves status bar visibility, position, alignment, and section
-length limits. Configure these separately to taste. For example, to pair a top
-bar with lualine at the bottom and give the session name and time enough room:
-
-```tmux
-# Optional personal layout settings; not part of the theme.
-set -g status on
-set -g status-position top
-set -g status-justify left
-set -g status-left-length 16
-set -g status-right-length 32
-```
-
-Increase the length limits for longer session names or custom status content.
+Source the matching file again when changing palettes.
 
 ### Zellij
 
