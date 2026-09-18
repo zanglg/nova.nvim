@@ -13,6 +13,7 @@ for _, spec in ipairs({
     "load_spec",
     "static_spec",
     "extras_spec",
+    "tmux_spec",
 }) do
     require(spec)(t)
 end

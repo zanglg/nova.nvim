@@ -812,6 +812,53 @@ local function starship(theme)
     return join(lines)
 end
 
+local function tmux(theme)
+    -- Keep the status bar paired with lualine's normal a/b/c sections.
+    -- Named placeholders leave tmux's #{} formats and strftime % tokens intact.
+    local template = [[# Status bar: normal.a = ends, normal.b = current window, normal.c = rest.
+set -g status on
+set -g status-position top
+set -g status-justify left
+set -g status-style "bg=${selection},fg=${foreground}"
+set -g status-left-style none
+set -g status-right-style none
+set -g status-left-length 16
+set -g status-right-length 32
+set -g status-left "#[fg=${selection},bg=${blue},bold] #S #[fg=${blue},bg=${selection},nobold]"
+set -g status-right "#[fg=${blue},bg=${selection},nobold]#[fg=${selection},bg=${blue},bold] %Y-%m-%d %H:%M "
+setw -g window-status-style "fg=${foreground},bg=${selection},none"
+setw -g window-status-current-style "fg=${blue},bg=${stripline},none"
+setw -g window-status-separator " "
+setw -g window-status-format " #I #W "
+setw -g window-status-current-format "#[fg=${selection},bg=${stripline}] #[fg=${blue}]#I #W #[fg=${stripline},bg=${selection}]"
+
+# Messages, selection, search, and navigation.
+set -g message-style "fg=${foreground},bg=${popupmenu},fill=${popupmenu}"
+set -g message-command-style "fg=${foreground},bg=${popupmenu},fill=${popupmenu}"
+setw -g mode-style "fg=${foreground},bg=${selection}"
+setw -g copy-mode-match-style "fg=${background},bg=${match}"
+setw -g copy-mode-current-match-style "fg=${background},bg=${current_match}"
+setw -g copy-mode-mark-style "fg=${background},bg=${target}"
+
+# Synchronize-panes takes priority over copy mode: red / yellow / blue.
+setw -g pane-border-style "fg=${splitline}"
+setw -g pane-active-border-style "#{?synchronize-panes,fg=${red},#{?pane_in_mode,fg=${yellow},fg=${blue}}}"
+set -g display-panes-colour "${comment}"
+set -g display-panes-active-colour "${blue}"
+
+# Menus and popups.
+set -g menu-style "fg=${foreground},bg=${popupmenu}"
+set -g menu-selected-style "fg=${blue},bg=${selection}"
+set -g menu-border-style "fg=${splitline},bg=${popupmenu}"
+set -g popup-style "fg=${foreground},bg=${popupmenu}"
+set -g popup-border-style "fg=${splitline},bg=${popupmenu}"
+]]
+    local content = template:gsub("%${([%w_]+)}", function(key)
+        return assert(theme.colors[key], "unknown tmux palette color: " .. key)
+    end)
+    return header("#") .. "# " .. theme.name .. " — tmux 3.7+\n\n" .. content
+end
+
 local function zellij(theme)
     local c = theme.colors
     local lines = {
@@ -966,6 +1013,7 @@ function M.generate(output)
         write(output, "bat/" .. theme.slug .. ".tmTheme", bat(theme), files)
         write(output, "delta/" .. theme.slug .. ".gitconfig", delta(theme), files)
         write(output, "starship/" .. theme.slug .. ".toml", starship(theme), files)
+        write(output, "tmux/" .. theme.slug .. ".conf", tmux(theme), files)
         write(output, "zellij/" .. theme.slug .. ".kdl", zellij(theme), files)
         write(output, "lazygit/" .. theme.slug .. ".yml", lazygit(theme), files)
     end

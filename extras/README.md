@@ -194,6 +194,40 @@ palette and overrides Starship's standard named colors while also exposing
 semantic names such as `accent`, `comment`, `surface`, and `selection` for custom
 prompt modules.
 
+### tmux
+
+Requires tmux 3.7+ and a font with Powerline glyphs. Add one fragment near the
+end of `~/.config/tmux/tmux.conf` (or `~/.tmux.conf`), after other theme settings:
+
+```tmux
+source-file /path/to/nova.nvim/extras/tmux/nova-dark.conf
+```
+
+Apply it immediately without reloading unrelated settings:
+
+```sh
+tmux source-file /path/to/nova.nvim/extras/tmux/nova-dark.conf
+```
+
+The top status bar mirrors Nova lualine's **normal** mode: the session and time
+use section `a` (blue background, selection-colored bold text), the current
+window uses section `b` (stripline background, blue text), and other windows
+use section `c` (selection background, foreground text). Powerline separators
+are retained on both sides of the current window. The bar stays blue when
+Neovim changes editing modes; it does not track lualine dynamically.
+
+Messages, copy-mode selections and searches, pane indicators, menus, and popups
+use the same semantic palette. The active pane border is blue normally, yellow
+in copy mode, and red when synchronized input is enabled. Red takes priority
+when both states are active. Selection and search colors remain distinct.
+
+Choose the same appearance and variant as Neovim, such as `nova-light-soft.conf`.
+Switching Neovim's palette does not automatically reload tmux. These fragments
+set global presentation defaults, not key bindings, terminal capabilities,
+window numbering, or application output colors. Existing session/window-local
+overrides may take precedence. You can override layout options after sourcing
+(e.g. `set -g status-position bottom` or a longer `status-left-length`).
+
 ### Zellij
 
 Copy the KDL files to `~/.config/zellij/themes/`, then configure a pair:

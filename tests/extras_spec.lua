@@ -11,7 +11,7 @@ return function(t)
         local output = vim.fn.tempname()
         local ok, err = xpcall(function()
             local files = generator.generate(output)
-            t.eq(#files, 86)
+            t.eq(#files, 92)
 
             for _, relative in ipairs(files) do
                 local generated = vim.fn.readfile(output .. "/" .. relative, "b")
@@ -40,6 +40,7 @@ return function(t)
             "bat",
             "delta",
             "starship",
+            "tmux",
             "zellij",
             "lazygit",
         }
@@ -113,6 +114,48 @@ return function(t)
                         true
                     )
                 )
+            end
+        end
+    end)
+
+    t.test("tmux themes preserve lualine sections and semantic interaction colors", function()
+        for _, variant in ipairs({ "default", "dim", "soft" }) do
+            for _, appearance in ipairs({ "dark", "light" }) do
+                local c = require("nova.colors").setup({ colors = {}, variant = variant }, appearance)
+                local suffix = variant == "default" and "" or "-" .. variant
+                local content = read("tmux/nova-" .. appearance .. suffix .. ".conf")
+                local function contains(value)
+                    t.truthy(content:find(value, 1, true), "missing tmux mapping: " .. value)
+                end
+
+                contains('set -g status-style "bg=' .. c.selection .. ",fg=" .. c.foreground .. '"')
+                contains("#[fg=" .. c.selection .. ",bg=" .. c.blue .. ",bold] #S ")
+                contains("#[fg=" .. c.selection .. ",bg=" .. c.blue .. ",bold] %Y-%m-%d %H:%M ")
+                contains('setw -g window-status-current-style "fg=' .. c.blue .. ",bg=" .. c.stripline .. ',none"')
+                contains('setw -g window-status-style "fg=' .. c.foreground .. ",bg=" .. c.selection .. ',none"')
+                contains('setw -g window-status-format " #I #W "')
+                contains("#[fg=" .. c.selection .. ",bg=" .. c.stripline .. "] ")
+                contains("#[fg=" .. c.stripline .. ",bg=" .. c.selection .. "]")
+                contains('setw -g mode-style "fg=' .. c.foreground .. ",bg=" .. c.selection .. '"')
+                contains("fg=" .. c.foreground .. ",bg=" .. c.popupmenu .. ",fill=" .. c.popupmenu)
+                for option, color in pairs({ match = c.match, ["current-match"] = c.current_match, mark = c.target }) do
+                    contains("setw -g copy-mode-" .. option .. '-style "fg=' .. c.background .. ",bg=" .. color .. '"')
+                end
+                contains(
+                    "#{?synchronize-panes,fg="
+                        .. c.red
+                        .. ",#{?pane_in_mode,fg="
+                        .. c.yellow
+                        .. ",fg="
+                        .. c.blue
+                        .. "}}"
+                )
+                contains('setw -g pane-border-style "fg=' .. c.splitline .. '"')
+                contains('set -g menu-selected-style "fg=' .. c.blue .. ",bg=" .. c.selection .. '"')
+                contains('set -g popup-style "fg=' .. c.foreground .. ",bg=" .. c.popupmenu .. '"')
+                t.eq(content:find("${", 1, true), nil, "unresolved tmux palette placeholder")
+                t.eq(content:find("bind ", 1, true), nil, "theme must not change key bindings")
+                t.eq(content:find("default-terminal", 1, true), nil, "theme must not change terminal capabilities")
             end
         end
     end)

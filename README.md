@@ -208,7 +208,7 @@ tools from the same six Lua palettes:
 
 - Terminals: Windows Terminal, WezTerm, Alacritty, kitty, and Ghostty.
 - Interactive tools: Herdr, fzf, Helix, Pi coding agent, and eza.
-- Additional integrations: bat, delta, Starship, Zellij, and Lazygit.
+- Additional integrations: bat, delta, Starship, tmux, Zellij, and Lazygit.
 
 Generated files and installation examples are in [extras](extras/README.md).
 Run the generator after changing a palette:

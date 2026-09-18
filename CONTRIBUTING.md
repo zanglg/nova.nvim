@@ -82,4 +82,4 @@ Then run the headless suite:
 nvim --headless -u NONE --cmd "set rtp+=$PWD" -l tests/run.lua
 ```
 
-Headless tests validate configuration, palette construction, highlight builders, repeated colorscheme loading, and stale references. Visual decisions still require runtime review in a real Neovim UI.
+Headless tests validate configuration, palette construction, highlight builders, repeated colorscheme loading, and stale references. When tmux 3.7+ is available, they also load all six tmux themes on a private test server and verify pane-state colors; otherwise that runtime test is skipped. The test server never uses the active tmux session. Visual decisions still require runtime review in a real Neovim UI.
