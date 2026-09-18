@@ -209,20 +209,17 @@ Apply it immediately without reloading unrelated settings:
 tmux source-file /path/to/nova.nvim/extras/tmux/nova-dark.conf
 ```
 
-The status bar mirrors Nova lualine's **normal** mode: the session and time
-use section `a` (blue background, selection-colored bold text), the current
-window uses section `b` (stripline background, blue text), and other windows
-use section `c` (selection background, foreground text). Powerline separators
-are retained on both sides of the current window. The bar stays blue when
-Neovim changes editing modes; it does not track lualine dynamically.
+The status bar uses blue end sections for the session name and time, blue text
+on a contrasting surface for the current window, and neutral text for other
+windows. Powerline separators connect the sections.
 
 Messages, copy-mode selections and searches, pane indicators, menus, and popups
 use the same semantic palette. The active pane border is blue normally, yellow
 in copy mode, and red when synchronized input is enabled. Red takes priority
 when both states are active. Selection and search colors remain distinct.
 
-Choose the same appearance and variant as Neovim, such as `nova-light-soft.conf`.
-Source the matching file again when changing palettes.
+Six themes cover dark and light appearances in default, dim, and soft variants,
+such as `nova-light-soft.conf`. Source the desired file to switch themes.
 
 ### Zellij
 

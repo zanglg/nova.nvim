@@ -118,7 +118,7 @@ return function(t)
         end
     end)
 
-    t.test("tmux themes preserve lualine sections and semantic interaction colors", function()
+    t.test("tmux themes preserve status bar and semantic interaction colors", function()
         for _, variant in ipairs({ "default", "dim", "soft" }) do
             for _, appearance in ipairs({ "dark", "light" }) do
                 local c = require("nova.colors").setup({ colors = {}, variant = variant }, appearance)

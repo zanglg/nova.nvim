@@ -813,9 +813,8 @@ local function starship(theme)
 end
 
 local function tmux(theme)
-    -- Keep the status bar paired with lualine's normal a/b/c sections.
     -- Named placeholders leave tmux's #{} formats and strftime % tokens intact.
-    local template = [[# Status bar: normal.a = ends, normal.b = current window, normal.c = rest.
+    local template = [[# Status bar: blue end sections, accented current window, neutral inactive windows.
 set -g status-style "bg=${selection},fg=${foreground}"
 set -g status-left-style none
 set -g status-right-style none
