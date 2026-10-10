@@ -241,10 +241,6 @@ and time, the current window uses an accented contrasting surface, and
 inactive windows are neutral. The active pane border remains blue normally,
 yellow in copy mode, and red with synchronized input (red takes priority).
 
-The original six `nova-dark.conf` / `nova-light-soft.conf`-style files remain
-available as compatibility entrypoints. They select their corresponding
-`@nova-theme` and load the complete configuration.
-
 ### Zellij
 
 Copy the KDL files to `~/.config/zellij/themes/`, then configure a pair:

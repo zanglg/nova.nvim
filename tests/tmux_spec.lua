@@ -92,8 +92,6 @@ return function(t)
 
                     tmux("source-file", root .. "/nova.conf")
                     t.eq(option("status-style"), "bg=" .. c.selection .. ",fg=" .. c.foreground)
-                    tmux("source-file", root .. "/nova-" .. name .. ".conf")
-                    t.eq(option("@nova-theme"), name)
                     for option_name, value in pairs(layout) do
                         t.eq(option(option_name), value, "theme changed layout option: " .. option_name)
                     end

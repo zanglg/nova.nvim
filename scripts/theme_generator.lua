@@ -883,13 +883,6 @@ source-file -F "#{d:current_file}/statusline.conf"
 ]]
 end
 
-local function tmux_legacy(theme)
-    return header("#")
-        .. "# Compatibility entrypoint for the original " .. theme.slug .. ".conf.\n"
-        .. 'set -g @nova-theme "' .. theme.slug:sub(6) .. '"\n'
-        .. 'source-file -F "#{d:current_file}/nova.conf"\n'
-end
-
 local function zellij(theme)
     local c = theme.colors
     local lines = {
@@ -1044,7 +1037,6 @@ function M.generate(output)
         write(output, "bat/" .. theme.slug .. ".tmTheme", bat(theme), files)
         write(output, "delta/" .. theme.slug .. ".gitconfig", delta(theme), files)
         write(output, "starship/" .. theme.slug .. ".toml", starship(theme), files)
-        write(output, "tmux/" .. theme.slug .. ".conf", tmux_legacy(theme), files)
         write(output, "tmux/palettes/" .. theme.slug .. ".conf", tmux_palette(theme), files)
         write(output, "zellij/" .. theme.slug .. ".kdl", zellij(theme), files)
         write(output, "lazygit/" .. theme.slug .. ".yml", lazygit(theme), files)

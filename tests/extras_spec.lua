@@ -11,7 +11,7 @@ return function(t)
         local output = vim.fn.tempname()
         local ok, err = xpcall(function()
             local files = generator.generate(output)
-            t.eq(#files, 102)
+            t.eq(#files, 96)
 
             for _, relative in ipairs(files) do
                 local generated = vim.fn.readfile(output .. "/" .. relative, "b")
@@ -154,9 +154,11 @@ return function(t)
                 local c = require("nova.colors").setup({ colors = {}, variant = variant }, appearance)
                 local name = appearance .. (variant == "default" and "" or "-" .. variant)
                 local palette = read("tmux/palettes/nova-" .. name .. ".conf")
-                local wrapper = read("tmux/nova-" .. name .. ".conf")
-                t.truthy(wrapper:find('set -g @nova-theme "' .. name .. '"', 1, true))
-                t.truthy(wrapper:find("nova.conf", 1, true))
+                t.eq(
+                    vim.fn.filereadable(root .. "/extras/tmux/nova-" .. name .. ".conf"),
+                    0,
+                    "legacy tmux theme entrypoint must not be generated"
+                )
                 for key, color in pairs(c) do
                     local option = "@nova-" .. key:gsub("_", "-")
                     t.truthy(
