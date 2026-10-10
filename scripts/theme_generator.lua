@@ -812,45 +812,82 @@ local function starship(theme)
     return join(lines)
 end
 
-local function tmux(theme)
-    -- Named placeholders leave tmux's #{} formats and strftime % tokens intact.
-    local template = [[# Status bar: blue end sections, accented current window, neutral inactive windows.
-set -g status-style "bg=${selection},fg=${foreground}"
-set -g status-left-style none
-set -g status-right-style none
-set -g status-left "#[fg=${selection},bg=${blue},bold] #S #[fg=${blue},bg=${selection},nobold]"
-set -g status-right "#[fg=${blue},bg=${selection},nobold]#[fg=${selection},bg=${blue},bold] %Y-%m-%d %H:%M "
-setw -g window-status-style "fg=${foreground},bg=${selection},none"
-setw -g window-status-current-style "fg=${blue},bg=${stripline},none"
-setw -g window-status-separator " "
-setw -g window-status-format " #I #W "
-setw -g window-status-current-format "#[fg=${selection},bg=${stripline}] #[fg=${blue}]#I #W #[fg=${stripline},bg=${selection}]"
+local function tmux_palette(theme)
+    local keys = vim.tbl_keys(theme.colors)
+    table.sort(keys)
+    local lines = {
+        header("#"):gsub("\n$", ""),
+        "# " .. theme.name .. " — tmux palette (colors only)",
+        "",
+    }
+    for _, key in ipairs(keys) do
+        lines[#lines + 1] = string.format('set -g @nova-%s "%s"', key:gsub("_", "-"), theme.colors[key])
+    end
+    return join(lines)
+end
 
+local function tmux_colors()
+    return header("#") .. [[# Palette-only entrypoint. Does not modify statusline or tmux UI styles.
+# Set @nova-theme to dark, light, dark-dim, light-dim, dark-soft, or light-soft.
+# Defaults to dark when @nova-theme is unset.
+source-file -F "#{d:current_file}/palettes/nova-#{?@nova-theme,#{@nova-theme},dark}.conf"
+]]
+end
+
+local function tmux_ui()
+    return header("#") .. [[# Optional non-statusline tmux UI styling. Load colors.conf first.
 # Messages, selection, search, and navigation.
-set -g message-style "fg=${foreground},bg=${popupmenu},fill=${popupmenu}"
-set -g message-command-style "fg=${foreground},bg=${popupmenu},fill=${popupmenu}"
-setw -g mode-style "fg=${foreground},bg=${selection}"
-setw -g copy-mode-match-style "fg=${background},bg=${match}"
-setw -g copy-mode-current-match-style "fg=${background},bg=${current_match}"
-setw -g copy-mode-mark-style "fg=${background},bg=${target}"
+set -gF message-style "fg=#{@nova-foreground},bg=#{@nova-popupmenu},fill=#{@nova-popupmenu}"
+set -gF message-command-style "fg=#{@nova-foreground},bg=#{@nova-popupmenu},fill=#{@nova-popupmenu}"
+setw -gF mode-style "fg=#{@nova-foreground},bg=#{@nova-selection}"
+setw -gF copy-mode-match-style "fg=#{@nova-background},bg=#{@nova-match}"
+setw -gF copy-mode-current-match-style "fg=#{@nova-background},bg=#{@nova-current-match}"
+setw -gF copy-mode-mark-style "fg=#{@nova-background},bg=#{@nova-target}"
 
 # Synchronize-panes takes priority over copy mode: red / yellow / blue.
-setw -g pane-border-style "fg=${splitline}"
-setw -g pane-active-border-style "#{?synchronize-panes,fg=${red},#{?pane_in_mode,fg=${yellow},fg=${blue}}}"
-set -g display-panes-colour "${comment}"
-set -g display-panes-active-colour "${blue}"
+setw -gF pane-border-style "fg=#{@nova-splitline}"
+setw -g pane-active-border-style "#{?synchronize-panes,fg=#{@nova-red},#{?pane_in_mode,fg=#{@nova-yellow},fg=#{@nova-blue}}}"
+set -gF display-panes-colour "#{@nova-comment}"
+set -gF display-panes-active-colour "#{@nova-blue}"
 
 # Menus and popups.
-set -g menu-style "fg=${foreground},bg=${popupmenu}"
-set -g menu-selected-style "fg=${blue},bg=${selection}"
-set -g menu-border-style "fg=${splitline},bg=${popupmenu}"
-set -g popup-style "fg=${foreground},bg=${popupmenu}"
-set -g popup-border-style "fg=${splitline},bg=${popupmenu}"
+set -gF menu-style "fg=#{@nova-foreground},bg=#{@nova-popupmenu}"
+set -gF menu-selected-style "fg=#{@nova-blue},bg=#{@nova-selection}"
+set -gF menu-border-style "fg=#{@nova-splitline},bg=#{@nova-popupmenu}"
+set -gF popup-style "fg=#{@nova-foreground},bg=#{@nova-popupmenu}"
+set -gF popup-border-style "fg=#{@nova-splitline},bg=#{@nova-popupmenu}"
 ]]
-    local content = template:gsub("%${([%w_]+)}", function(key)
-        return assert(theme.colors[key], "unknown tmux palette color: " .. key)
-    end)
-    return header("#") .. "# " .. theme.name .. " — tmux 3.7+\n\n" .. content
+end
+
+local function tmux_statusline()
+    return header("#") .. [[# Nova's optional statusline. Load colors.conf first.
+# Blue end sections, accented current window, neutral inactive windows.
+set -gF status-style "bg=#{@nova-selection},fg=#{@nova-foreground}"
+set -g status-left-style none
+set -g status-right-style none
+set -g status-left "#[fg=#{@nova-selection},bg=#{@nova-blue},bold] #S #[fg=#{@nova-blue},bg=#{@nova-selection},nobold]"
+set -g status-right "#[fg=#{@nova-blue},bg=#{@nova-selection},nobold]#[fg=#{@nova-selection},bg=#{@nova-blue},bold] %Y-%m-%d %H:%M "
+setw -gF window-status-style "fg=#{@nova-foreground},bg=#{@nova-selection},none"
+setw -gF window-status-current-style "fg=#{@nova-blue},bg=#{@nova-stripline},none"
+setw -g window-status-separator " "
+setw -g window-status-format " #I #W "
+setw -g window-status-current-format "#[fg=#{@nova-selection},bg=#{@nova-stripline}] #[fg=#{@nova-blue}]#I #W #[fg=#{@nova-stripline},bg=#{@nova-selection}]"
+]]
+end
+
+local function tmux_entrypoint()
+    return header("#") .. [[# Complete Nova tmux theme. @nova-theme selects the palette.
+source-file -F "#{d:current_file}/colors.conf"
+source-file -F "#{d:current_file}/ui.conf"
+source-file -F "#{d:current_file}/statusline.conf"
+]]
+end
+
+local function tmux_legacy(theme)
+    return header("#")
+        .. "# Compatibility entrypoint for the original " .. theme.slug .. ".conf.\n"
+        .. 'set -g @nova-theme "' .. theme.slug:sub(6) .. '"\n'
+        .. 'source-file -F "#{d:current_file}/nova.conf"\n'
 end
 
 local function zellij(theme)
@@ -1007,10 +1044,16 @@ function M.generate(output)
         write(output, "bat/" .. theme.slug .. ".tmTheme", bat(theme), files)
         write(output, "delta/" .. theme.slug .. ".gitconfig", delta(theme), files)
         write(output, "starship/" .. theme.slug .. ".toml", starship(theme), files)
-        write(output, "tmux/" .. theme.slug .. ".conf", tmux(theme), files)
+        write(output, "tmux/" .. theme.slug .. ".conf", tmux_legacy(theme), files)
+        write(output, "tmux/palettes/" .. theme.slug .. ".conf", tmux_palette(theme), files)
         write(output, "zellij/" .. theme.slug .. ".kdl", zellij(theme), files)
         write(output, "lazygit/" .. theme.slug .. ".yml", lazygit(theme), files)
     end
+
+    write(output, "tmux/colors.conf", tmux_colors(), files)
+    write(output, "tmux/ui.conf", tmux_ui(), files)
+    write(output, "tmux/statusline.conf", tmux_statusline(), files)
+    write(output, "tmux/nova.conf", tmux_entrypoint(), files)
 
     write(output, "windows-terminal/nova.json", json_encode({ schemes = windows_schemes }) .. "\n", files)
     write(output, "palettes/nova.json", json_encode({ palettes = palette_data }) .. "\n", files)

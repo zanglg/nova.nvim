@@ -196,30 +196,54 @@ prompt modules.
 
 ### tmux
 
-Requires tmux 3.7+ and a font with Powerline glyphs. Add one fragment near the
-end of `~/.config/tmux/tmux.conf` (or `~/.tmux.conf`), after other theme settings:
+Requires tmux 3.7+; the bundled statusline also requires Powerline glyphs.
+The theme is split into **palette**, **tmux UI styling**, and **statusline**
+modules. Choose one of: `dark`, `light`, `dark-dim`, `light-dim`,
+`dark-soft`, or `light-soft` (`dark` is the default if unset).
 
-```tmux
-source-file /path/to/nova.nvim/extras/tmux/nova-dark.conf
-```
+For the complete Nova theme, set the variant before sourcing the entrypoint
+near the end of your `~/.tmux.conf`:
 
-Apply it immediately without reloading unrelated settings:
+~~~tmux
+set -g @nova-theme "dark"
+source-file /path/to/nova.nvim/extras/tmux/nova.conf
+~~~
 
-```sh
-tmux source-file /path/to/nova.nvim/extras/tmux/nova-dark.conf
-```
+For an existing **custom statusline**, load only the palette. This defines
+user options such as `@nova-blue`, `@nova-foreground`, `@nova-selection`,
+`@nova-current-match` and all other Nova semantic colors, without modifying
+any tmux statusline or presentation options:
 
-The status bar uses blue end sections for the session name and time, blue text
-on a contrasting surface for the current window, and neutral text for other
-windows. Powerline separators connect the sections.
+~~~tmux
+set -g @nova-theme "light-soft"
+source-file /path/to/nova.nvim/extras/tmux/colors.conf
 
-Messages, copy-mode selections and searches, pane indicators, menus, and popups
-use the same semantic palette. The active pane border is blue normally, yellow
-in copy mode, and red when synchronized input is enabled. Red takes priority
-when both states are active. Selection and search colors remain distinct.
+# Example: use Nova's palette with your own statusline.
+set -g status-left '#[fg=#{@nova-blue}] #S '
+~~~
 
-Six themes cover dark and light appearances in default, dim, and soft variants,
-such as `nova-light-soft.conf`. Source the desired file to switch themes.
+To apply Nova's non-statusline UI styling (copy mode, borders, messages,
+menus, popups), additionally source `ui.conf` after `colors.conf`.
+To use the supplied statusline, source `statusline.conf` after the palette.
+These modules never change `status`, its position, justification, or length
+limits, and never modify key bindings or terminal capabilities.
+
+To change the variant while tmux is running, re-source the chosen entrypoint:
+
+~~~sh
+tmux set-option -g @nova-theme "dark-dim"
+tmux source-file /path/to/nova.nvim/extras/tmux/nova.conf
+~~~
+
+For a custom statusline, re-source `colors.conf` instead (and `ui.conf` if
+used). When the complete theme is loaded, blue end sections show the session
+and time, the current window uses an accented contrasting surface, and
+inactive windows are neutral. The active pane border remains blue normally,
+yellow in copy mode, and red with synchronized input (red takes priority).
+
+The original six `nova-dark.conf` / `nova-light-soft.conf`-style files remain
+available as compatibility entrypoints. They select their corresponding
+`@nova-theme` and load the complete configuration.
 
 ### Zellij
 

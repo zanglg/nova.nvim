@@ -11,7 +11,7 @@ return function(t)
         local output = vim.fn.tempname()
         local ok, err = xpcall(function()
             local files = generator.generate(output)
-            t.eq(#files, 92)
+            t.eq(#files, 102)
 
             for _, relative in ipairs(files) do
                 local generated = vim.fn.readfile(output .. "/" .. relative, "b")
@@ -118,54 +118,72 @@ return function(t)
         end
     end)
 
-    t.test("tmux themes preserve status bar and semantic interaction colors", function()
+    t.test("tmux palette and layout are independently reusable", function()
+        local loader = read("tmux/colors.conf")
+        local complete = read("tmux/nova.conf")
+        local ui = read("tmux/ui.conf")
+        local statusline = read("tmux/statusline.conf")
+
+        t.truthy(loader:find("source-file -F", 1, true))
+        t.truthy(loader:find("#{@nova-theme}", 1, true))
+        t.truthy(loader:find(",dark}", 1, true))
+        for _, file in ipairs({ loader, ui }) do
+            t.eq(file:find("status-left ", 1, true), nil)
+            t.eq(file:find("status-right ", 1, true), nil)
+            t.eq(file:find("window-status-", 1, true), nil)
+        end
+        t.truthy(complete:find("colors.conf", 1, true))
+        t.truthy(complete:find("ui.conf", 1, true))
+        t.truthy(complete:find("statusline.conf", 1, true))
+
+        t.truthy(statusline:find('set -gF status-style "bg=#{@nova-selection},fg=#{@nova-foreground}"', 1, true))
+        t.truthy(statusline:find("#[fg=#{@nova-selection},bg=#{@nova-blue},bold] #S ", 1, true))
+        t.truthy(statusline:find("#[fg=#{@nova-selection},bg=#{@nova-blue},bold] %Y-%m-%d %H:%M ", 1, true))
+        t.truthy(
+            statusline:find('setw -gF window-status-current-style "fg=#{@nova-blue},bg=#{@nova-stripline},none"', 1, true)
+        )
+        t.truthy(statusline:find('setw -g window-status-format " #I #W "', 1, true))
+        t.truthy(statusline:find("#[fg=#{@nova-selection},bg=#{@nova-stripline}] ", 1, true))
+        t.truthy(statusline:find("#[fg=#{@nova-stripline},bg=#{@nova-selection}]", 1, true))
+        t.truthy(ui:find('setw -gF mode-style "fg=#{@nova-foreground},bg=#{@nova-selection}"', 1, true))
+        t.truthy(ui:find("fg=#{@nova-red},#{?pane_in_mode,fg=#{@nova-yellow},fg=#{@nova-blue}}", 1, true))
+        t.truthy(ui:find('set -gF popup-style "fg=#{@nova-foreground},bg=#{@nova-popupmenu}"', 1, true))
+
         for _, variant in ipairs({ "default", "dim", "soft" }) do
             for _, appearance in ipairs({ "dark", "light" }) do
                 local c = require("nova.colors").setup({ colors = {}, variant = variant }, appearance)
-                local suffix = variant == "default" and "" or "-" .. variant
-                local content = read("tmux/nova-" .. appearance .. suffix .. ".conf")
-                local function contains(value)
-                    t.truthy(content:find(value, 1, true), "missing tmux mapping: " .. value)
+                local name = appearance .. (variant == "default" and "" or "-" .. variant)
+                local palette = read("tmux/palettes/nova-" .. name .. ".conf")
+                local wrapper = read("tmux/nova-" .. name .. ".conf")
+                t.truthy(wrapper:find('set -g @nova-theme "' .. name .. '"', 1, true))
+                t.truthy(wrapper:find("nova.conf", 1, true))
+                for key, color in pairs(c) do
+                    local option = "@nova-" .. key:gsub("_", "-")
+                    t.truthy(
+                        palette:find('set -g ' .. option .. ' "' .. color .. '"', 1, true),
+                        "missing tmux palette option: " .. option .. " in " .. name
+                    )
                 end
-
-                contains('set -g status-style "bg=' .. c.selection .. ",fg=" .. c.foreground .. '"')
-                contains("#[fg=" .. c.selection .. ",bg=" .. c.blue .. ",bold] #S ")
-                contains("#[fg=" .. c.selection .. ",bg=" .. c.blue .. ",bold] %Y-%m-%d %H:%M ")
-                contains('setw -g window-status-current-style "fg=' .. c.blue .. ",bg=" .. c.stripline .. ',none"')
-                contains('setw -g window-status-style "fg=' .. c.foreground .. ",bg=" .. c.selection .. ',none"')
-                contains('setw -g window-status-format " #I #W "')
-                contains("#[fg=" .. c.selection .. ",bg=" .. c.stripline .. "] ")
-                contains("#[fg=" .. c.stripline .. ",bg=" .. c.selection .. "]")
-                contains('setw -g mode-style "fg=' .. c.foreground .. ",bg=" .. c.selection .. '"')
-                contains("fg=" .. c.foreground .. ",bg=" .. c.popupmenu .. ",fill=" .. c.popupmenu)
-                for option, color in pairs({ match = c.match, ["current-match"] = c.current_match, mark = c.target }) do
-                    contains("setw -g copy-mode-" .. option .. '-style "fg=' .. c.background .. ",bg=" .. color .. '"')
-                end
-                contains(
-                    "#{?synchronize-panes,fg="
-                        .. c.red
-                        .. ",#{?pane_in_mode,fg="
-                        .. c.yellow
-                        .. ",fg="
-                        .. c.blue
-                        .. "}}"
-                )
-                contains('setw -g pane-border-style "fg=' .. c.splitline .. '"')
-                contains('set -g menu-selected-style "fg=' .. c.blue .. ",bg=" .. c.selection .. '"')
-                contains('set -g popup-style "fg=' .. c.foreground .. ",bg=" .. c.popupmenu .. '"')
-                for _, option in ipairs({
-                    "status",
-                    "status-position",
-                    "status-justify",
-                    "status-left-length",
-                    "status-right-length",
-                }) do
-                    t.eq(content:find("set -g " .. option .. " ", 1, true), nil, "theme must not set " .. option)
-                end
-                t.eq(content:find("${", 1, true), nil, "unresolved tmux palette placeholder")
-                t.eq(content:find("bind ", 1, true), nil, "theme must not change key bindings")
-                t.eq(content:find("default-terminal", 1, true), nil, "theme must not change terminal capabilities")
+                t.eq(palette:find("status-", 1, true), nil)
+                t.eq(palette:find("window-status-", 1, true), nil)
+                t.eq(palette:find("message-style", 1, true), nil)
+                t.eq(palette:find("pane-border-style", 1, true), nil)
             end
+        end
+
+        for _, body in ipairs({ loader, ui, statusline, complete }) do
+            for _, option in ipairs({
+                "status",
+                "status-position",
+                "status-justify",
+                "status-left-length",
+                "status-right-length",
+            }) do
+                t.eq(body:find("set -g " .. option .. " ", 1, true), nil, "must not set " .. option)
+            end
+            t.eq(body:find("$" .. "{", 1, true), nil)
+            t.eq(body:find("bind ", 1, true), nil)
+            t.eq(body:find("default-terminal", 1, true), nil)
         end
     end)
 
